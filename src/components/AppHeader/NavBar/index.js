@@ -4,7 +4,9 @@ import './style.scss';
 
 function NavBar() {
   return (
-    <div>NavBar</div>
+    <div className="navBar__container">
+      <a href="">Connexion/Inscription</a>
+    </div>
   );
 }
 
