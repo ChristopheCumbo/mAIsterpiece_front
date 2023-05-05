@@ -1,0 +1,20 @@
+@use '../../../src/styles/vars';
+.pictureOfTheWeek {
+  text-align: center;
+  background-color: #F5EDED;
+  padding: 2rem;
+
+  &__img {
+    height: 250px;
+    width: 350px;
+    border: 3px solid #F58B0E;
+    border-radius: 10px;
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-weight: 700;
+  }
+
+}
+
