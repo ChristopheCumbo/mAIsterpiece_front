@@ -1,0 +1,34 @@
+@use '../../../src/styles/vars';
+
+.appHeader {
+  height: 15vh;
+  padding: .5rem;
+  background-color: rgb(246, 198, 181);
+  border-bottom: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+
+  &__logoNavbar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__searchBar {
+    display: flex;
+    flex-direction: column;
+    width: vars.$searchBarHeaderWidthMobile;
+
+    @media (width > 480px) {
+      width: vars.$searchBarHeaderWidthDesktop;
+    }
+  }
+
+
+}
+
+
