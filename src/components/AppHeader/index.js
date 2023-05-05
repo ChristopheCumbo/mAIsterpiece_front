@@ -35,7 +35,7 @@ function AppHeader() {
             type="text"
             name="headerSearch"
             id="headerSearch"
-            placeholder="Votre recherche ici ..."
+            placeholder="Rechercher votre image"
           />
         </form>
 
