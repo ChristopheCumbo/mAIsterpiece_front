@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 // import composants
 import LoginPage from '../LoginPage';
 import HomePage from '../HomePage';
+import RegisterPage from '../RegisterPage/RegisterPage';
 
 import './styles.css';
 
@@ -16,7 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element=<HomePage /> />
         <Route path="/login" element=<LoginPage /> />
-        <Route path="/register" element=<p>la d'inscription</p> />
+        <Route path="/register" element=<RegisterPage /> />
         <Route path="/contact" element=<p>la page contact</p> />
         <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
         <Route path="/user" element=<p>la page d'un user</p> />

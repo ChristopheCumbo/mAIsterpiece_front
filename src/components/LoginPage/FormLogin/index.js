@@ -11,7 +11,7 @@ function FormLogin() {
         <img className="formLogin__logoImg" src={Logo} alt=" logo" />
         <p>mAIsterpiece</p>
       </div>
-      <p className="inscription">Inscription</p>
+      <p className="connexion">Connexion</p>
       <div>
         <form className="formLogin__input">
           <input
@@ -29,9 +29,9 @@ function FormLogin() {
             placeholder="Mot de passe"
           />
           <div className="formLogin__button">
-            <button className="formLogin__connexion" type="button">Connexion</button>
+            <button className="formLogin__connexion" type="submit">Connexion</button>
             <p>Pas encore de compte ?</p>
-            <button type="button">Inscription</button>
+            <button className="formLogin__inscription" type="button"><a href="/register">Inscription</a></button>
           </div>
         </form>
       </div>

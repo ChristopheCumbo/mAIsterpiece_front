@@ -1,4 +1,4 @@
-.formLogin {
+.formRegister {
   height: 100vh;
   text-align: center;
   display: flex;
@@ -27,7 +27,7 @@
   }
 
   &__login {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     width: 50vh;
     height: 2rem;
     border: 2px solid #FF8A00;
@@ -42,15 +42,19 @@
     width: 50vh;
     height: 2rem;
     border: 2px solid #FF8A00;
-    padding: 1rem;
+    padding-left: 0.5rem;
+    border: 2px solid #ff8a00;
+    height: 2rem;
     margin-bottom: 3rem;
+    padding: 1rem;
+    width: 50vh;
 
     @media (width < 500px) {
       width: 30vh;
     }
   }
 
-  .connexion {
+  .inscription {
     padding-bottom: 5rem;
   }
 
@@ -62,17 +66,24 @@
   &__input p {
     font-weight: 700;
     font-size: 1rem;
-    padding-top: 2.5rem;
+    padding-top: 1.5rem;
     padding-bottom: 1rem;
 
   }
 
-  & button {
+  &__connexion {
+    margin-top: 3rem;
+  }
+
+  &__buttonInscription {
     border-radius: 10px;
     border: 2px solid #FF8A00;
     font-weight: 700;
     padding: 3px;
     width: 6rem;
-    margin-top: 0px;
+  }
+
+  & a {
+    color:#FF8A00;
   }
 }

@@ -20,8 +20,10 @@ function AppHeader() {
     >
       <div className="appHeader__logoNavbar">
         <div className="appHeader__logoAndTitle">
-          <img className="appHeader__logoImg" src={Logo} alt=" logo" />
-          mAIsterpiece
+          <a href="/">
+            <img className="appHeader__logoImg" src={Logo} alt=" logo" />
+          </a>
+          <a href="/">mAIsterpiece</a>
         </div>
         <NavBar />
       </div>
