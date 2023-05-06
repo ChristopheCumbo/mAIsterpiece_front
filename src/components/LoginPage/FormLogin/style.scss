@@ -1,0 +1,72 @@
+.formLogin {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #F5EDED;
+
+  &__logoAndTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+  }
+
+  &__logoImg {
+    height: 40px;
+    width: 40px;
+    margin-left: 0.4rem;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__login {
+    margin-bottom: 4rem;
+    width: 50vh;
+    height: 2rem;
+    border: 2px solid #FF8A00;
+    padding-left: 0.5rem;
+  }
+
+  &__password {
+    width: 50vh;
+    height: 2rem;
+    border: 2px solid #FF8A00;
+    padding-left: 0.5rem;
+  }
+
+  .inscription {
+    padding-bottom: 3rem;
+  }
+
+  & p {
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  &__input p {
+    font-weight: 700;
+    font-size: 1rem;
+    padding-top: 2.5rem;
+    padding-bottom: 1rem;
+
+  }
+
+  &__connexion {
+    margin-top: 3rem;
+  }
+
+  & button {
+    border-radius: 10px;
+    border: 2px solid #FF8A00;
+    font-weight: 700;
+    padding: 3px;
+    width: 6rem;
+  }
+}
