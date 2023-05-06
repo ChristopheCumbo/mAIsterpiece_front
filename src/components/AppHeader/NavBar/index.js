@@ -5,7 +5,7 @@ import './style.scss';
 function NavBar() {
   return (
     <div className="navBar__container">
-      <a href="">Connexion/Inscription</a>
+      <a href="/register">Connexion/Inscription</a>
     </div>
   );
 }
