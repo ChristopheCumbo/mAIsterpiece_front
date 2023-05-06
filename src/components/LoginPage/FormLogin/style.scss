@@ -32,6 +32,10 @@
     height: 2rem;
     border: 2px solid #FF8A00;
     padding-left: 0.5rem;
+
+    @media (width < 500px) {
+      width: 30vh;
+    }
   }
 
   &__password {
@@ -39,6 +43,10 @@
     height: 2rem;
     border: 2px solid #FF8A00;
     padding-left: 0.5rem;
+
+    @media (width < 500px) {
+      width: 30vh;
+    }
   }
 
   .inscription {

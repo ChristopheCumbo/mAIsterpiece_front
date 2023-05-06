@@ -11,7 +11,7 @@ function FormLogin() {
         <img className="formLogin__logoImg" src={Logo} alt=" logo" />
         <p>mAIsterpiece</p>
       </div>
-      <p className="inscription">Inscription</p>
+      <p className="inscription">Connexion</p>
       <div>
         <form className="formLogin__input">
           <input
