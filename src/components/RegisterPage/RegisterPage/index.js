@@ -10,9 +10,9 @@ import './style.scss';
 function RegisterPage() {
   return (
     <div className="loginPage">
-      <AppHeader />
+      {/* <AppHeader /> */}
       <FormRegister />
-      <AppFooter />
+      {/* <AppFooter /> */}
     </div>
   );
 }

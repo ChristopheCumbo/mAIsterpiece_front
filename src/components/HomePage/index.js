@@ -1,24 +1,22 @@
 // import PropTypes from 'prop-types';
 
-import AppFooter from '../AppFooter';
-import AppHeader from '../AppHeader';
-import Home from '../Home';
+// components
+import Gallery from '../Gallery';
 import PictureOfTheWeek from '../PictureOfTheWeek';
+// style
 import './style.scss';
 
 function HomePage() {
   return (
-    <div>
-      <AppHeader />
+    <div className="homePage__container">
       <PictureOfTheWeek />
-      <Home />
-      <AppFooter />
+      <Gallery />
     </div>
   );
 }
 
-HomePage.propTypes = {
+// HomePage.propTypes = {
 
-};
+// };
 
 export default HomePage;
