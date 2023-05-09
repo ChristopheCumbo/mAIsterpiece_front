@@ -10,9 +10,9 @@ import './style.scss';
 function LoginPage() {
   return (
     <div className="loginPage">
-      <AppHeader />
+      {/* <AppHeader /> */}
       <FormLogin />
-      <AppFooter />
+      {/* <AppFooter /> */}
     </div>
   );
 }

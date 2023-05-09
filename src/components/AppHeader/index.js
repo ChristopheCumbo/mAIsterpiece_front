@@ -15,7 +15,8 @@ function AppHeader() {
     <div
       className="appHeader"
       style={{
-        backgroundImage: 'url("https://www.zupimages.net/up/23/18/3bwm.jpg")',
+        // backgroundImage: 'url("https://www.zupimages.net/up/23/18/3bwm.jpg")',
+        backgroundImage: 'url("https://www.zupimages.net/up/23/19/oqik.jpg")',
       }}
     >
       <div className="appHeader__logoNavbar">

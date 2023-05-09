@@ -1,7 +1,7 @@
 @use '../../../src/styles/vars';
 
 .appHeader {
-  height: 20vh;
+  height: auto;
   padding: .5rem;
   background-color: rgb(246, 198, 181);
   border-bottom: 3px solid #F58B0E;
@@ -14,6 +14,10 @@
   font-weight: 700;
   -webkit-text-stroke: 0.2px;
   -webkit-text-stroke-color: #F58B0E;
+
+  @media (width > 480px) {
+    height: 20vh;
+  }
 
   a {
     -webkit-text-stroke: 0.2px;
@@ -62,6 +66,12 @@
   &__logoAndTitle img{
   margin-right: 0.5rem;
   }
+
+  .appHeader__textAboveSearchBar {
+  @media (width <= 480px) {
+    display: none;
+  }
+}
 
 
 }
