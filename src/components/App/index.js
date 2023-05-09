@@ -2,6 +2,10 @@
 // import of react-router-dom
 import { Routes, Route } from 'react-router-dom';
 
+// imports from react and react-redux
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 // components
 import LoginPage from '../LoginPage';
 import HomePage from '../HomePage';
@@ -12,8 +16,21 @@ import AppFooter from '../AppFooter';
 // style
 import './styles.css';
 
+// actions
+import { actionLoadPictures } from '../../actions/pictures';
+
 // Main fonction for the application
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(
+    () => {
+      // on veut dispatcher une intention : va chercher les recettes sur l'API back
+      dispatch(actionLoadPictures());
+    },
+    [], // au premier rendu
+  );
+
   return (
     <div className="app">
       {/* <img src={reactLogo} alt="react logo" />

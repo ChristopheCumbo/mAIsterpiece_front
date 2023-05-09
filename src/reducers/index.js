@@ -1,12 +1,11 @@
-const initialState = {
-  
-};
+import { combineReducers } from 'redux';
 
-function reducer(state = initialState, action = {}) {
-  switch (action.type) {
-    default:
-      return state;
-  }
-}
+import picturesReducer from './pictures';
+import userReducer from './user';
 
-export default reducer;
+const rootReducer = combineReducers({
+  pictures: picturesReducer,
+  user: userReducer,
+});
+
+export default rootReducer;

@@ -1,8 +1,13 @@
 // import PropTypes from 'prop-types';
-
+// imports from react-redux
+import { useSelector } from 'react-redux';
+// style
 import './style.scss';
 
 function Gallery() {
+  // list of images
+  const pictures = useSelector((state) => state.pictures.listHomePage);
+  // console.log(pictures);
   return (
     <div className="gallery__container">
       <div className="gallery__title">
@@ -20,15 +25,11 @@ function Gallery() {
         </div>
       </div>
       <div className="gallery__content">
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/4tlv.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/x3r4.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/gb8y.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/4a3q.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/vi6a.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/wasp.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/gh6c.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/8ptc.jpg" alt="images de la semaine" />
-        <img className="gallery__img" src="https://www.zupimages.net/up/23/18/qs7v.jpg" alt="images de la semaine" />
+        {
+          pictures.map((picture) => (
+            <img className="gallery__img" src={picture.src.medium} key={picture.id} alt="" />
+          ))
+        }
       </div>
     </div>
   );
