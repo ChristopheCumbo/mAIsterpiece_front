@@ -1,4 +1,5 @@
 import {
+  UPDATE_INPUT_SEARCH_BAR,
   UPDATE_PICTURES_HOMEPAGE,
   UPDATE_PICTURE_OF_THE_WEEK,
   UPDATE_SORTING_HOMEPAGE_PICTURES,
@@ -13,6 +14,7 @@ const initialState = {
     },
   },
   sortHomePageId: 'optionMostRecents',
+  inputSearchBar: '',
 };
 
 function reducer(state = initialState, action = {}) {
@@ -36,6 +38,12 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         sortHomePageId: action.payload,
+      };
+
+    case UPDATE_INPUT_SEARCH_BAR:
+      return {
+        ...state, // on recopie tout ce qu'il y a dans le state
+        inputSearchBar: action.payload.newValue,
       };
 
     default:

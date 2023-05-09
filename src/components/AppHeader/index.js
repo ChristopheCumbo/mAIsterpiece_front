@@ -1,3 +1,7 @@
+import { useSelector, useDispatch } from 'react-redux';
+
+import { actionUpdateSearchBar } from '../../actions/pictures';
+
 // import PropTypes from 'prop-types';
 
 // import image de fond
@@ -11,6 +15,14 @@ import NavBar from './NavBar';
 import './style.scss';
 
 function AppHeader() {
+  const inputSearchBar = useSelector((state) => state.pictures.inputSearchBar);
+
+  const dispatch = useDispatch();
+
+  const handleChangeInputSearchBar = (event) => {
+    dispatch(actionUpdateSearchBar(event.target.value));
+  };
+
   return (
     <div
       className="appHeader"
@@ -39,6 +51,8 @@ function AppHeader() {
             name="headerSearch"
             id="headerSearch"
             placeholder="Rechercher votre image"
+            value={inputSearchBar}
+            onChange={handleChangeInputSearchBar}
           />
         </form>
 
