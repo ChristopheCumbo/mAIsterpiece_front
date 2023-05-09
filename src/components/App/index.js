@@ -17,7 +17,7 @@ import AppFooter from '../AppFooter';
 import './styles.css';
 
 // actions
-import { actionLoadPictures } from '../../actions/pictures';
+import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
 
 // Main fonction for the application
 function App() {
@@ -25,10 +25,12 @@ function App() {
 
   useEffect(
     () => {
+      // Update of the picture of the week
+      dispatch(actionLoadPictureOfTheWeek());
       // on veut dispatcher une intention : va chercher les recettes sur l'API back
       dispatch(actionLoadPictures());
     },
-    [], // au premier rendu
+    [], // first render
   );
 
   return (
