@@ -4,6 +4,7 @@ export const UPDATE_PICTURES_HOMEPAGE = 'UPDATE_PICTURES_HOMEPAGE';
 export const LOAD_PICTURE_OF_THE_WEEK = 'LOAD_PICTURE_OF_THE_WEEK';
 export const UPDATE_PICTURE_OF_THE_WEEK = 'UPDATE_PICTURE_OF_THE_WEEK';
 export const UPDATE_SORTING_HOMEPAGE_PICTURES = 'UPDATE_SORTING_HOMEPAGE_PICTURES';
+export const UPDATE_INPUT_SEARCH_BAR = 'UPDATE_INPUT_SEARCH_BAR';
 
 // action creator
 /**
@@ -45,4 +46,15 @@ export const actionUpdatePictureOfTheWeek = (datasPictureOfTheWeek) => ({
 export const actionUpdateSortingHomepagePictures = (sortId) => ({
   type: UPDATE_SORTING_HOMEPAGE_PICTURES,
   payload: sortId,
+});
+
+/**
+ * action creator qui renvoie l'action UPDATE_INPUT_SEARCH_BAR
+ * @return {Object} action
+ */
+export const actionUpdateSearchBar = (newValue) => ({
+  type: UPDATE_INPUT_SEARCH_BAR,
+  payload: {
+    newValue,
+  },
 });

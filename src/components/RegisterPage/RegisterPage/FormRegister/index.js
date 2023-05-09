@@ -1,6 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { actionUpdateLoginFormRegister, actionUpdateEmailFormRegister, actionUpdatePasswordFormRegister, actionUpdateConfirmPasswordFormRegister } from '../../../../actions/user';
+import {
+  actionUpdateLoginFormRegister,
+  actionUpdateEmailFormRegister,
+  actionUpdatePasswordFormRegister,
+  actionUpdateConfirmPasswordFormRegister,
+} from '../../../../actions/user';
 
 // import PropTypes from 'prop-types';
 
