@@ -3,6 +3,7 @@ export const LOAD_PICTURES = 'LOAD_PICTURES';
 export const UPDATE_PICTURES_HOMEPAGE = 'UPDATE_PICTURES_HOMEPAGE';
 export const LOAD_PICTURE_OF_THE_WEEK = 'LOAD_PICTURE_OF_THE_WEEK';
 export const UPDATE_PICTURE_OF_THE_WEEK = 'UPDATE_PICTURE_OF_THE_WEEK';
+export const UPDATE_SORTING_HOMEPAGE_PICTURES = 'UPDATE_SORTING_HOMEPAGE_PICTURES';
 
 // action creator
 /**
@@ -30,9 +31,18 @@ export const actionLoadPictureOfTheWeek = () => ({
 
 /**
  * Updating the homepage's picture of the week
- * @param { Array } datasPictureOfTheWeek from the picture
+ * @param { Object } datasPictureOfTheWeek from the picture
 */
 export const actionUpdatePictureOfTheWeek = (datasPictureOfTheWeek) => ({
   type: UPDATE_PICTURE_OF_THE_WEEK,
   payload: datasPictureOfTheWeek,
+});
+
+/**
+ * Updating the homepage's pictures sorting
+ * @param { String } sortId choosen id from the available sorts (see data.js)
+*/
+export const actionUpdateSortingHomepagePictures = (sortId) => ({
+  type: UPDATE_SORTING_HOMEPAGE_PICTURES,
+  payload: sortId,
 });
