@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
 
 // import des composants
-import AppFooter from '../AppFooter';
-import AppHeader from '../AppHeader';
+// import AppFooter from '../AppFooter';
+// import AppHeader from '../AppHeader';
 import FormLogin from './FormLogin';
 
 import './style.scss';
