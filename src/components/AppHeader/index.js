@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { actionUpdateSearchBar } from '../../actions/pictures';
 
@@ -33,10 +34,10 @@ function AppHeader() {
     >
       <div className="appHeader__logoNavbar">
         <div className="appHeader__logoAndTitle">
-          <a href="/">
+          <Link to="/">
             <img className="appHeader__logoImg" src={Logo} alt=" logo" />
-          </a>
-          <a href="/">mAIsterpiece</a>
+          </Link>
+          <Link to="/">mAIsterpiece</Link>
         </div>
         <NavBar />
       </div>
