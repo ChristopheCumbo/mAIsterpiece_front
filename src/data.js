@@ -1,18 +1,18 @@
 export default [
   {
-    id: 'optionMostRecents',
+    id: 'picturesMostRecents',
     textContent: 'les plus récentes',
   },
   {
-    id: 'optionMostReviewed',
+    id: 'picturesMostReviewed',
     textContent: 'les plus commentées',
   },
   {
-    id: 'optionMostLiked',
+    id: 'picturesMostLiked',
     textContent: 'les plus aimées',
   },
   {
-    id: 'optionMostClicked',
+    id: 'picturesMostClicked',
     textContent: 'les plus vues',
   },
 ];

@@ -12,8 +12,20 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     case LOAD_PICTURES: {
       // console.log('picturesMiddleware executé', action);
       try {
+        const sortId = action.payload;
+        console.log(sortId);
+        // let adressAPI = `/api/${sortId}`;
+        let adressAPI = 'https://api.pexels.com/v1/curated?page=1&per_page=30';
+        if (sortId === 'picturesMostRecents') {
+          // adressAPI = '/api/home-list';
+          adressAPI = 'https://api.pexels.com/v1/curated?page=2&per_page=30';
+        }
+        // const result = await axios.get(adressAPI);
+
+
         // la requete
-        const result = await axios.get('https://api.pexels.com/v1/curated?page=1&per_page=30', {
+        // const result = await axios.get('https://api.pexels.com/v1/curated?page=1&per_page=30', {
+        const result = await axios.get(adressAPI, {
           headers: {
             Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
           },
@@ -22,7 +34,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // ici on a recu les resultats on devrait en profiter pour passer isLoading à false
 
         // on veut mettre dans le state le tableau result.data : on va demander au reducer en dispatchant une action
-        store.dispatch(actionUpdatePicturesHomePage(result.data.photos));
+        store.dispatch(actionUpdatePicturesHomePage(result.data.photos, sortId));
       }
       catch (e) {
         // error message

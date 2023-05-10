@@ -4,6 +4,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from 'src/reducers/';
 import userMiddleware from '../middlewares/userMiddleware';
 import picturesMiddleware from '../middlewares/picturesMiddleware';
+import filterMiddleware from '../middlewares/filterMiddleware';
 
 /*
 pour donner à notre store à la fois les devtools :
@@ -16,6 +17,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancers = composeEnhancers(
   applyMiddleware(
     // ici la liste de nos middlewares
+    // filterMiddleware,
     picturesMiddleware,
     userMiddleware,
   ),

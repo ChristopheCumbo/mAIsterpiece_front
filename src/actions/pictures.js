@@ -5,22 +5,33 @@ export const LOAD_PICTURE_OF_THE_WEEK = 'LOAD_PICTURE_OF_THE_WEEK';
 export const UPDATE_PICTURE_OF_THE_WEEK = 'UPDATE_PICTURE_OF_THE_WEEK';
 export const UPDATE_SORTING_HOMEPAGE_PICTURES = 'UPDATE_SORTING_HOMEPAGE_PICTURES';
 export const UPDATE_INPUT_SEARCH_BAR = 'UPDATE_INPUT_SEARCH_BAR';
+export const LOAD_PICTURES_FILTERED = 'LOAD_PICTURES_FILTERED';
 
 // action creator
 /**
  * First loading of images from API
 */
-export const actionLoadPictures = () => ({
+export const actionLoadPictures = (sortId) => ({
   type: LOAD_PICTURES,
+  payload: sortId,
 });
+
+
+/**
+ * ********************************
+*/
+// export const actionLoadPicturesFiltered = (id) => ({
+//   type: LOAD_PICTURES_FILTERED,
+//   payload: id,
+// });
 
 /**
  * Updating the homepage's pictures
  * @param { Array } listHomePage list of pictures
 */
-export const actionUpdatePicturesHomePage = (listHomePage) => ({
+export const actionUpdatePicturesHomePage = (listHomePage, sortId) => ({
   type: UPDATE_PICTURES_HOMEPAGE,
-  payload: { listHomePage },
+  payload: { listHomePage, sortId },
 });
 
 /**
