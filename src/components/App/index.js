@@ -12,6 +12,7 @@ import HomePage from '../HomePage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
+import PageContact from '../PageContact';
 
 // style
 import './styles.css';
@@ -42,7 +43,7 @@ function App() {
         <Route path="/" element=<HomePage /> />
         <Route path="/login" element=<LoginPage /> />
         <Route path="/register" element=<RegisterPage /> />
-        <Route path="/contact" element=<p>la page contact</p> />
+        <Route path="/contact" element=<PageContact /> />
         <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
         <Route path="/user" element=<p>la page d'un user</p> />
         <Route path="/addpicture" element=<p>la page d'ajout d'une image</p> />
