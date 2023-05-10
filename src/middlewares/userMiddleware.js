@@ -1,13 +1,13 @@
-import axios from "axios";
-import { CHECK_LOGIN, actionSaveConnectedUser } from "../actions/user";
-
+// axios
+import axios from 'axios';
+// actions
+import { CHECK_LOGIN, actionSaveConnectedUser } from '../actions/user';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
+    // Authentification from the backend
     case CHECK_LOGIN: {
       const { inputLoginFormAuth, inputPasswordFormAuth } = store.getState().user;
-
-      // -> requete post vers http://localhost:3002/login dans un middleware
 
       try {
         const result = await axios.post('http://localhost:3002/login', {

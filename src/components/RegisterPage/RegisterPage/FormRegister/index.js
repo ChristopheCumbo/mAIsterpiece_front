@@ -7,15 +7,17 @@ import {
   actionUpdateEmailFormRegister,
   actionUpdatePasswordFormRegister,
   actionUpdateConfirmPasswordFormRegister,
+  actionRegister,
 } from '../../../../actions/user';
 
 // import PropTypes from 'prop-types';
 
+// styles and logo
 import Logo from '../../../../assets/proposition_logo.png';
-
 import './style.scss';
 
 function FormRegister() {
+  // from the state
   const inputLoginFormRegister = useSelector((state) => state.user.inputLoginFormRegister);
   const inputEmailFormRegister = useSelector((state) => state.user.inputEmailFormRegister);
   const inputPasswordFormRegister = useSelector((state) => state.user.inputPasswordFormRegister);
@@ -23,20 +25,22 @@ function FormRegister() {
 
   const dispatch = useDispatch();
 
+  // Handlers ****************
   const handleChangeInputLogin = (event) => {
     dispatch(actionUpdateLoginFormRegister(event.target.value));
   };
-
   const handleChangeEmailLogin = (event) => {
     dispatch(actionUpdateEmailFormRegister(event.target.value));
   };
-
   const handleChangePasswordLogin = (event) => {
     dispatch(actionUpdatePasswordFormRegister(event.target.value));
   };
-
   const handleChangeConfirmPasswordLogin = (event) => {
     dispatch(actionUpdateConfirmPasswordFormRegister(event.target.value));
+  };
+  const handleRegister = (event) => {
+    event.preventDefault();
+    dispatch(actionRegister());
   };
 
   return (
@@ -45,11 +49,11 @@ function FormRegister() {
         <img className="formRegister__logoImg" src={Logo} alt=" logo" />
         <p>mAIsterpiece</p>
       </div>
-      <p className="inscription">Inscription</p>
+      <p className="register">Inscription</p>
       <div>
-        <form className="formRegister__input">
+        <form className="formRegister__container" onSubmit={handleRegister}>
           <input
-            className="formRegister__login"
+            className="formRegister__input"
             type="text"
             name="inputLogin"
             id="inputLogin"
@@ -58,28 +62,28 @@ function FormRegister() {
             onChange={handleChangeInputLogin}
           />
           <input
-            className="formRegister__password"
+            className="formRegister__input"
             type="email"
-            name="inputPassword"
-            id="inputPassword"
+            name="inputEmail"
+            id="inputEmail"
             placeholder="Email"
             value={inputEmailFormRegister}
             onChange={handleChangeEmailLogin}
           />
           <input
-            className="formRegister__login"
+            className="formRegister__input"
             type="password"
-            name="inputLogin"
-            id="inputLogin"
+            name="inputFirstPassword"
+            id="inputFirstPassword"
             placeholder="Mot de passe"
             value={inputPasswordFormRegister}
             onChange={handleChangePasswordLogin}
           />
           <input
-            className="formRegister__password"
+            className="formRegister__input"
             type="password"
-            name="inputPassword"
-            id="inputPassword"
+            name="inputSecondPassword"
+            id="inputSecondPassword"
             placeholder="Confirmer le mot de passe"
             value={inputConfirmPasswordFormRegister}
             onChange={handleChangeConfirmPasswordLogin}

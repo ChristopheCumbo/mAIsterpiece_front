@@ -22,6 +22,7 @@ const initialState = {
   inputEmailFormRegister: '',
   inputPasswordFormRegister: '',
   inputConfirmPasswordFormRegister: '',
+  // state others
   pseudo: '',
   avatar: '',
   logged: false,

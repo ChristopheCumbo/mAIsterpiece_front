@@ -8,6 +8,7 @@ export const UPDATE_LOGIN_FORM_REGISTER = 'UPDATE_LOGIN_FORM_REGISTER';
 export const UPDATE_EMAIL_FORM_REGISTER = 'UPDATE_EMAIL_FORM_REGISTER';
 export const UPDATE_PASSWORD_REGISTER = 'UPDATE_PASSWORD_REGISTER';
 export const UPDATE_CONFIRM_PASSWORD_REGISTER = 'UPDATE_CONFIRM_PASSWORD_REGISTER';
+export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
 
 
 // - action creators LoginPage
@@ -102,4 +103,10 @@ export const actionUpdateConfirmPasswordFormRegister = (newValue) => ({
   },
 });
 
-
+/**
+ * Registers the new user on the backend
+ * @return {Action}
+ */
+export const actionRegister = () => ({
+  type: REGISTER_NEW_USER,
+});
