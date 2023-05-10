@@ -1,3 +1,25 @@
 .navBar__container{
   padding-right: 0.5rem;
 }
+
+a {
+  position: relative;
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: rgb(255, 255, 255);
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.2s;
+}
+
+a:hover::after,
+a:focus::after{
+  transform: scale(1);
+}

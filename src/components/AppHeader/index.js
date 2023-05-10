@@ -37,12 +37,12 @@ function AppHeader() {
           <Link to="/">
             <img className="appHeader__logoImg" src={Logo} alt=" logo" />
           </Link>
-          <Link to="/">mAIsterpiece</Link>
+          <Link to="/" id="appHeader__brand">mAIsterpiece</Link>
         </div>
         <NavBar />
       </div>
       <div className="appHeader__searchBar">
-        <p className="appHeader__textAboveSearchBar">Bienvenue sur A.I. Masterpiece ! Ici, vous pourrez apprécier
+        <p className="appHeader__textAboveSearchBar">Bienvenue sur mAIsterpiece ! Ici, vous pourrez apprécier
           et télécharger vos images générées par IA
         </p>
         <form>

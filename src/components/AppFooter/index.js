@@ -18,7 +18,7 @@ function AppFooter() {
 }
 
 // AppFooter.propTypes = {
-
-// };
+  
+  // };
 
 export default AppFooter;
