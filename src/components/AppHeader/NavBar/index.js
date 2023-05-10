@@ -1,11 +1,12 @@
 // import PropTypes from 'prop-types';
 
+import { Link } from 'react-router-dom';
 import './style.scss';
 
 function NavBar() {
   return (
     <div className="navBar__container">
-      <a href="/register">Connexion/Inscription</a>
+      <Link to="/register">Connexion/Inscription</Link>
     </div>
   );
 }
