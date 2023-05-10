@@ -1,5 +1,9 @@
 // import pour la LoginPage
-import { UPDATE_LOGIN_FORM_AUTH, UPDATE_PASSWORD_AUTH } from '../actions/user';
+import {
+  SAVE_CONNECTED_USER,
+  UPDATE_LOGIN_FORM_AUTH,
+  UPDATE_PASSWORD_AUTH,
+} from '../actions/user';
 // import pour la RegisterPage
 import {
   UPDATE_LOGIN_FORM_REGISTER,
@@ -18,6 +22,9 @@ const initialState = {
   inputEmailFormRegister: '',
   inputPasswordFormRegister: '',
   inputConfirmPasswordFormRegister: '',
+  pseudo: '',
+  avatar: '',
+  logged: false,
 };
 
 function reducer(state = initialState, action = {}) {
@@ -28,11 +35,24 @@ function reducer(state = initialState, action = {}) {
         ...state, // on recopie tout ce qu'il y a dans le state
         inputLoginFormAuth: action.payload.newValue,
       };
+
     case UPDATE_PASSWORD_AUTH:
       return {
         ...state, // on recopie tout ce qu'il y a dans le state
         inputPasswordFormAuth: action.payload.newValue,
       };
+
+    case SAVE_CONNECTED_USER:
+      return {
+        ...state,
+        logged: true,
+        pseudo: state.user.inputLoginFormAuth,
+        jwt: action.payload.jwt,
+        avatar: action.payload.avatar,
+        inputLoginFormAuth: '',
+        inputPasswordFormAuth: '',
+      };
+
     // case concernant la RegisterPage
     case UPDATE_LOGIN_FORM_REGISTER:
       return {
