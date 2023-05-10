@@ -1,3 +1,7 @@
+import { useSelector, useDispatch } from 'react-redux';
+// import des actions type
+import { actionUpdateLoginFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
+
 // import PropTypes from 'prop-types';
 
 import Logo from '../../../assets/proposition_logo.png';
@@ -5,6 +9,19 @@ import Logo from '../../../assets/proposition_logo.png';
 import './style.scss';
 
 function FormLogin() {
+  const InputLoginFormAuth = useSelector((state) => state.user.inputLoginFormAuth);
+  const inputPasswordFormAuth = useSelector((state) => state.user.inputPasswordFormAuth);
+
+  const dispatch = useDispatch();
+
+  const handleChangeInputLogin = (event) => {
+    dispatch(actionUpdateLoginFormAuth(event.target.value));
+  };
+
+  const handleChangePasswordLogin = (event) => {
+    dispatch(actionUpdatePasswordFormAuth(event.target.value));
+  };
+
   return (
     <div className="formLogin">
       <div className="formLogin__logoAndTitle">
@@ -20,6 +37,8 @@ function FormLogin() {
             name="inputLogin"
             id="inputLogin"
             placeholder="Login"
+            value={InputLoginFormAuth} // controle en lecture
+            onChange={handleChangeInputLogin}
           />
           <input
             className="formLogin__password"
@@ -27,6 +46,8 @@ function FormLogin() {
             name="inputPassword"
             id="inputPassword"
             placeholder="Mot de passe"
+            value={inputPasswordFormAuth} // controle en lecture
+            onChange={handleChangePasswordLogin}
           />
           <div className="formLogin__button">
             <button className="formLogin__connexion" type="submit">Connexion</button>
