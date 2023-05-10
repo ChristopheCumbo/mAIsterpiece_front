@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import des actions type
-import { actionUpdateLoginFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
+import { actionCheckLogin, actionUpdateLoginFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
 
 // import PropTypes from 'prop-types';
 
@@ -17,12 +17,16 @@ function FormLogin() {
 
   const dispatch = useDispatch();
 
+  // Handlers *************
   const handleChangeInputLogin = (event) => {
     dispatch(actionUpdateLoginFormAuth(event.target.value));
   };
-
   const handleChangePasswordLogin = (event) => {
     dispatch(actionUpdatePasswordFormAuth(event.target.value));
+  };
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(actionCheckLogin());
   };
 
   return (
@@ -33,7 +37,7 @@ function FormLogin() {
       </div>
       <p className="connexion">Connexion</p>
       <div>
-        <form className="formLogin__input">
+        <form className="formLogin__input" onSubmit={handleSubmit}>
           <input
             className="formLogin__login"
             type="text"
