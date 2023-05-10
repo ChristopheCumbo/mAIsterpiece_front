@@ -43,35 +43,45 @@
     }
   }
 
-  &__headerSearch{
+  &__headerSearch {
     width: 100%;
     height: 100%;
-    font-size: 0.4rem;
+    font-size: 0.8rem;
     border: 2px solid #F58B0E;
-    opacity : 0.5;
-    margin-bottom: 0.5rem;
+    opacity: 0.5;
+    margin-bottom: 0.9rem;
   }
 
-  &__logoImg{
+  &__logoImg {
     height: 25px;
     width: 25px;
     margin-left: 0.4rem;
   }
 
-  &__logoAndTitle{
+  &__logoAndTitle {
     display: flex;
     align-items: center;
+    font-size : 2rem;
   }
 
-  &__logoAndTitle img{
-  margin-right: 0.5rem;
+  &__logoAndTitle img {
+    margin-right: 0.5rem;
   }
 
-  .appHeader__textAboveSearchBar {
-  @media (width <= 480px) {
-    display: none;
+  &__textAboveSearchBar {
+
+    font-size: 1.5rem;
+
+    @media (width <=480px) {
+      display: none;
+    }
   }
 }
 
+#appHeader__brand {
+  font-size : 1.2rem;
 
+  @media (width > 480px) {
+    font-size : 2rem;
+  }
 }

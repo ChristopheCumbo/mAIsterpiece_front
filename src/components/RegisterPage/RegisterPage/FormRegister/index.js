@@ -1,4 +1,6 @@
+// imports from react-redux and react-router-dom
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import {
   actionUpdateLoginFormRegister,
@@ -84,7 +86,7 @@ function FormRegister() {
           />
           <div className="formRegister__button">
             <button className="formRegister__buttonInscription" type="submit">Inscription</button>
-            <p>Déja un compte ? <a href="/login">Connecter-vous</a></p>
+            <p>Déjà un compte ? <Link to="/login">Connectez-vous</Link></p>
           </div>
         </form>
       </div>

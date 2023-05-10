@@ -6,7 +6,8 @@ import './style.scss';
 function NavBar() {
   return (
     <div className="navBar__container">
-      <Link to="/register">Connexion/Inscription</Link>
+      <Link to="/login">Connexion</Link> /&nbsp;
+      <Link to="/register">Inscription</Link>
     </div>
   );
 }

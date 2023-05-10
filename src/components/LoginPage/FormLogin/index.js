@@ -1,4 +1,6 @@
+// imports from react-redux and react-router-dom
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 // import des actions type
 import { actionUpdateLoginFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
 
@@ -7,6 +9,7 @@ import { actionUpdateLoginFormAuth, actionUpdatePasswordFormAuth } from '../../.
 import Logo from '../../../assets/proposition_logo.png';
 
 import './style.scss';
+
 
 function FormLogin() {
   const InputLoginFormAuth = useSelector((state) => state.user.inputLoginFormAuth);
@@ -51,8 +54,10 @@ function FormLogin() {
           />
           <div className="formLogin__button">
             <button className="formLogin__connexion" type="submit">Connexion</button>
-            <p>Pas encore de compte ?</p>
-            <button className="formLogin__inscription" type="button"><a href="/register">Inscription</a></button>
+
+            <p>Pas encore de compte ? <Link to="/register">Inscrivez-vous</Link></p>
+            {/*
+            <button className="formLogin__inscription" type="button"><a href="/register">Inscription</a></button> */}
           </div>
         </form>
       </div>
