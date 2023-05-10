@@ -28,8 +28,8 @@ function App() {
     () => {
       // Update of the picture of the week
       dispatch(actionLoadPictureOfTheWeek());
-      // on veut dispatcher une intention : va chercher les recettes sur l'API back
-      dispatch(actionLoadPictures());
+      // loading by default : most recents pictures
+      dispatch(actionLoadPictures('picturesMostRecents'));
     },
     [], // first render
   );

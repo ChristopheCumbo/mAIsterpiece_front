@@ -13,7 +13,7 @@ const initialState = {
       medium: '',
     },
   },
-  sortHomePageId: 'optionMostRecents',
+  sortHomePageId: 'picturesMostRecents',
   inputSearchBar: '',
 };
 
@@ -24,6 +24,7 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         listHomePage: action.payload.listHomePage,
+        sortHomePageId: action.payload.sortId,
       };
 
     case UPDATE_PICTURE_OF_THE_WEEK:

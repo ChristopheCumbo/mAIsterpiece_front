@@ -2,7 +2,7 @@
 // imports from react-redux
 import { useDispatch, useSelector } from 'react-redux';
 // actions
-import { actionUpdateSortingHomepagePictures } from '../../actions/pictures';
+import { LOAD_PICTURES_FILTERED, actionLoadPictures, actionLoadPicturesFiltered, actionUpdateSortingHomepagePictures } from '../../actions/pictures';
 // import list of sorts
 import data from '../../data';
 // style
@@ -21,7 +21,9 @@ function Gallery() {
   // Handler for changing sort on click on link
   const handleChangeSort = (event) => {
     event.preventDefault();
-    dispatch(actionUpdateSortingHomepagePictures(event.currentTarget.id));
+    dispatch(actionLoadPictures(event.currentTarget.id));
+    // dispatch(actionUpdateSortingHomepagePictures(event.currentTarget.id));
+    // dispatch(actionLoadPicturesFiltered(event.currentTarget.id));
   };
   return (
     <div className="gallery__container">

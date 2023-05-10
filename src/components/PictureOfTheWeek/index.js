@@ -7,7 +7,7 @@ import './style.scss';
 function PictureOfTheWeek() {
   // datas of the picture of the week
   const picture = useSelector((state) => state.pictures.pictureOfTheWeek);
-  console.log(picture);
+  // console.log(picture);
   return (
     <div className="pictureOfTheWeek">
       <h2>Image de la semaine</h2>
