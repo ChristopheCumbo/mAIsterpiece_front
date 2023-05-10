@@ -1,0 +1,66 @@
+.contact {
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #F5EDED;
+  align-items: center;
+
+  @media (width <= 480px) {
+    height: 83vh;
+  }
+
+  &__logoAndTitle {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: center;
+    padding-top: 7rem;
+  }
+
+  & a{
+    width: 50%;
+    border: 3px solid orange;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @media (width < 880px) {
+      width: 70%;
+    }
+
+    @media (width <= 480px) {
+      width: 90%;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: bold;
+      padding-top: 0.5rem;
+    }
+
+  }
+
+  &__logoImg {
+    height: 50px;
+    width: 50px;
+    margin-left: 0.4rem;
+  }
+
+  &__logoSvg {
+    height: 50px;
+    width: 50px;
+    margin-left: 0.4rem;
+  }
+
+  &__contact_us{
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  & h1{
+    font-size: 1.8rem;
+    font-weight: 700;
+    padding-bottom: 9rem;
+  }
+}
