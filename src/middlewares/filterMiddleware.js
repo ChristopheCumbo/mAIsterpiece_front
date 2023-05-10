@@ -1,4 +1,4 @@
-// import axios from 'axios';
+// TEST MIDDLEWARE
 
 import { LOAD_PICTURES_FILTERED } from "../actions/pictures";
 
