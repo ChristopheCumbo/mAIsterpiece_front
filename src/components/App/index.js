@@ -1,4 +1,3 @@
-// import reactLogo from './react-logo.svg';
 // import of react-router-dom
 import { Routes, Route } from 'react-router-dom';
 
@@ -13,18 +12,21 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import PageContact from '../PageContact';
-import Error404 from '../Error404';
+import AppHeaderMin from '../AppHeader/AppHeaderMin';
 
 // style
 import './styles.css';
 
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
+import { useState } from 'react';
 
 
 // Main fonction for the application
 function App() {
   const dispatch = useDispatch();
+  // state's variable to set the small menu (bool)
+  const [showScrollHeader, setShowScrollHeader] = useState(false);
 
   useEffect(
     () => {
@@ -32,15 +34,51 @@ function App() {
       dispatch(actionLoadPictureOfTheWeek());
       // loading by default : most recents pictures
       dispatch(actionLoadPictures('picturesMostRecents'));
+      const appHeaderHeight = document.querySelector('.appHeader').offsetHeight;
+      // console.log(document.querySelector('.appHeader').offsetHeight);
+      const handleScroll = () => {
+        // const isScrollComplete = window.scrollY >= appHeaderHeight;
+        const isScrollComplete = window.scrollY >= appHeaderHeight - 49;
+        setShowScrollHeader(isScrollComplete);
+      };
+      window.addEventListener('scroll', handleScroll);
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+      };
     },
     [], // first render
   );
 
+  // useEffect(
+  //   () => {
+  //     console.log(AppHeaderHeight);
+  //   },
+  //   [AppHeaderHeight],
+  // );
+
+  // console.log(AppHeaderHeight);
+  //      (window.scrollY >= <AppHeader />.offsetHeight)
+  // function showAppHeaderMin() {
+  //   console.log(window.scrollY);
+  //   if (window.scrollY >= AppHeaderHeight) {
+  //     return <AppHeaderMin />;
+  //   }
+  //   return '';
+  // }
+
   return (
     <div className="app">
-      {/* <img src={reactLogo} alt="react logo" />
-      <h1>Composant : App</h1> */}
       <AppHeader />
+      {/* {showAppHeaderMin()} */}
+      {/* {
+        window.addEventListener('scroll', () => {
+          (window.scrollY >= AppHeaderHeight)
+            && <AppHeaderMin />
+        })
+      } */}
+      {
+        showScrollHeader && <AppHeaderMin />
+      }
       <Routes>
         <Route path="/" element=<HomePage /> />
         <Route path="/login" element=<LoginPage /> />

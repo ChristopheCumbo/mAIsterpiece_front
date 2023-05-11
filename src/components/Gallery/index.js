@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { LOAD_PICTURES_FILTERED, actionLoadPictures, actionLoadPicturesFiltered, actionUpdateSortingHomepagePictures } from '../../actions/pictures';
 // import list of sorts
 import data from '../../data';
-// style
+// style and figures
 import './style.scss';
+import { Heart, MessageSquare, User } from 'react-feather';
 
 
 function Gallery() {
@@ -65,7 +66,24 @@ function Gallery() {
       <div className="gallery__content">
         {
           pictures.map((picture) => (
-            <img className="gallery__img" src={picture.src.medium} key={picture.id} alt="" />
+            <div className="gallery__imgContainer" key={picture.id}>
+              <img className="gallery__img" src={picture.src.medium} alt="" />
+              {/* <img className="gallery__img" src={picture.url} alt="" /> */}
+              <div className="gallery__imgDatas">
+                <div className="gallery__author">
+                  <User />
+                  <p>Martin Martin</p>
+                </div>
+                <div className="gallery__imgLikesAndComments">
+                  <div className="gallery__imgLikes">
+                    167 &nbsp; <Heart />
+                  </div>
+                  <div className="gallery__imgComments">
+                    12 &nbsp; <MessageSquare />
+                  </div>
+                </div>
+              </div>
+            </div>
           ))
         }
       </div>
