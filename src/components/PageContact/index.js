@@ -12,8 +12,8 @@ function PageContact() {
         <img className="contact__logoImg" src={Logo} alt=" logo" />
         <p className="contact__contact_us"> mAIsterpiece</p>
       </div>
-        <h1 className="">Nous contacter</h1>
-      <Link to="">
+      <h1 className="">Nous contacter</h1>
+      <Link to="https://www.google.com/intl/fr/gmail/about/">
         <div className="contact__infos">
           <img className="contact__logoSvg" src={svg} alt=" enveloppe" />
           <p>Email:</p>

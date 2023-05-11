@@ -1,0 +1,31 @@
+.zoomPicture {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #FF8A00;
+  margin: 2rem;
+
+/* -------- Container Picture --------*/
+  &__containerPicture {
+    text-align: center;
+    width: 50%;
+    height: auto;
+  }
+
+  &__Picture {
+    height: auto;
+    text-align: center;
+    width: 55%;
+}
+
+&__ai {
+  padding-top: 0.3rem;
+  font-weight: 700;
+}
+
+&__prompt {
+  padding-top: 0.3rem;
+  font-weight: 700;
+}
+}

@@ -22,8 +22,11 @@
   & a{
     width: 50%;
     border: 3px solid orange;
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding:2rem 0rem;
+    
+    &:hover {
+    background-color:orange ;
+    }
 
     @media (width < 880px) {
       width: 70%;
