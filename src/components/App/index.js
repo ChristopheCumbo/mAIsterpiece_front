@@ -13,6 +13,7 @@ import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import PageContact from '../PageContact';
 import AppHeaderMin from '../AppHeader/AppHeaderMin';
+import Error404 from '../Error404';
 
 // style
 import './styles.css';
@@ -20,6 +21,7 @@ import './styles.css';
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
 import { useState } from 'react';
+
 
 
 // Main fonction for the application
