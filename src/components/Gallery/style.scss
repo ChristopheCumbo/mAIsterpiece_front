@@ -116,6 +116,7 @@
 .gallery__imgContainer {
   z-index: 3;
   transition: all 0.5s;
+  height: auto;
 }
 
 .gallery__imgContainer:hover {
@@ -124,6 +125,8 @@
 }
 
 .gallery__img {
+  position: relative;
+  bottom: 0;
   width: 100%;
   height: auto;
   text-align: center;
@@ -142,13 +145,14 @@
   position: absolute;
   width: 100%;
   color: white;
-  padding: 2rem .6rem .6rem;
-  bottom: 0;
+  padding: .6rem .6rem 2rem;
+  top: 0;
   border-radius: 10px;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-end;
-  background: linear-gradient(0deg, rgba(0, 0, 0, .5) 0%, rgba(156, 156, 156, .25) 70%, rgba(255, 255, 255, .05) 100%);
+  align-items: flex-start;
+  // background: linear-gradient(0deg, rgba(0, 0, 0, .5) 0%, rgba(156, 156, 156, .25) 70%, rgba(255, 255, 255, .05) 100%);
+  background: linear-gradient(0deg, rgba(255, 255, 255, .05) 0%, rgba(156, 156, 156, .25) 30%, rgba(0, 0, 0, .5) 100%);
 }
 
 .gallery__author {
