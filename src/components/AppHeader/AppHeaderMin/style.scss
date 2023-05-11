@@ -1,43 +1,50 @@
-@use '../../../src/styles/vars';
+@use '../../../../src/styles/vars';
 
-.appHeader {
+
+.appHeaderMin {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  // margin : 0 auto;
   height: auto;
+  width: 100%;
   padding: .5rem;
-  background-color: rgb(246, 198, 181);
   // backdrop-filter: blur(20px);
+  background-color: #F5EDED;
   border-bottom: 3px solid #F58B0E;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   background-size: cover;
   background-position: bottom;
-  color: white;
+  color: rgb(255, 255, 255);
   font-weight: 700;
   -webkit-text-stroke: 0.2px;
   -webkit-text-stroke-color: #F58B0E;
 
-  @media (width > 480px) {
-    height: 20vh;
-  }
+  // @media (width > 480px) {
+  //   height: 20vh;
+  // }
 
   a {
-    // -webkit-text-stroke: 0.2px;
-    // -webkit-text-stroke-color: #F58B0E;
+    -webkit-text-stroke: 0.2px;
+    -webkit-text-stroke-color: #F58B0E;
     font-size: 1.1rem;
   }
 
-  &__logoNavbar {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-  }
+  // &__logoNavbar {
+  //   width: 100%;
+  //   display: flex;
+  //   flex-direction: row;
+  //   justify-content: space-between;
+  // }
 
   &__searchBar {
-    display: flex;
-    flex-direction: column;
+    // display: flex;
+    // flex-direction: column;
     width: vars.$searchBarHeaderWidthMobile;
-    margin-bottom: 1rem;
+    // margin-bottom: 1rem;
 
     @media (width > 480px) {
       width: vars.$searchBarHeaderWidthDesktop;
@@ -50,7 +57,7 @@
     font-size: 0.8rem;
     border: 2px solid #F58B0E;
     opacity: 0.5;
-    margin-bottom: 0.9rem;
+    // margin-bottom: 0.9rem;
   }
 
   &__logoImg {
@@ -62,38 +69,24 @@
   &__logoAndTitle {
     display: flex;
     align-items: center;
-    font-size : 2rem;
+    font-size: 2rem;
   }
 
   &__logoAndTitle img {
     margin-right: 0.5rem;
   }
-
-  &__textAboveSearchBar {
-
-    text-align: center;
-    font-size: 1.5rem;
-
-    @media (width <700px) {
-      font-size: 1rem;
-    }
-
-    @media (width <=480px) {
-      display: none;
-    }
-  }
 }
 
-#appHeader__brand {
+#appHeaderMin__brand {
   font-family: 'Krona One', sans-serif;
-  font-size : 1.2rem;
+  font-size: 1.2rem;
 
   @media (width > 480px) {
-    font-size : 1.5rem;
+    font-size: 1.5rem;
   }
 
-  @media (width >= 900px) {
-    font-size : 2rem;
+  @media (width >=900px) {
+    font-size: 2rem;
   }
 
 

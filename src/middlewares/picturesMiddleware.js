@@ -19,6 +19,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         if (sortId === 'picturesMostRecents') {
           // adressAPI = '/api/home-list';
           adressAPI = 'https://api.pexels.com/v1/curated?page=2&per_page=30';
+          // adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/home/list';
         }
         // const result = await axios.get(adressAPI);
 
