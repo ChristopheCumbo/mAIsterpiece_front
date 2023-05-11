@@ -21,6 +21,7 @@ import './styles.css';
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
 import { useState } from 'react';
 
+
 // Main fonction for the application
 function App() {
   const dispatch = useDispatch();
@@ -86,7 +87,7 @@ function App() {
         <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
         <Route path="/user" element=<p>la page d'un user</p> />
         <Route path="/addpicture" element=<p>la page d'ajout d'une image</p> />
-        <Route path="*" element=<p>la page 404</p> />
+        <Route path="*" element=<Error404 /> />
       </Routes>
       <AppFooter />
     </div>
