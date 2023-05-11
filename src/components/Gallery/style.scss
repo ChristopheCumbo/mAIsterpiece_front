@@ -91,6 +91,7 @@
 
 .gallery__menu:hover .gallery__menu--dropdown {
   display: block;
+  z-index: 10;
 }
 
 
@@ -126,7 +127,7 @@
 
 .gallery__img {
   position: relative;
-  bottom: 0;
+  // bottom: 0;
   width: 100%;
   height: auto;
   text-align: center;

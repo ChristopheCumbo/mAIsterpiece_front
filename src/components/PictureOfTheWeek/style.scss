@@ -4,22 +4,77 @@
   text-align: center;
   background-color: #F5EDED;
   padding: 1rem;
-  
+  transition: all 0.5s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 
   &__img {
-    width: 50%;
-
-    @media (width > 480px) {
-      width: 30%;
-    }
+    width: auto;
     // height: 30%;
     border: 3px solid #F58B0E;
     border-radius: 10px;
-    margin-top: 1rem;
+    // margin-top: 1rem;
   }
 
   & h2 {
     font-weight: 700;
-    font-size : 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__imgDatas {
+    display: none;
+    position: absolute;
+    width: 100%;
+    color: white;
+    padding: .6rem .6rem 2rem;
+    top: 0;
+    border-radius: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    background: linear-gradient(0deg, rgba(255, 255, 255, .05) 0%, rgba(156, 156, 156, .25) 30%, rgba(0, 0, 0, .5) 100%);
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    font-size: small;
+    padding-bottom: .2rem;
+  }
+
+  &__imgLikes,
+  &__imgComments {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 600;
+  }
+
+}
+
+.pictureOfTheWeek__imgContainer {
+  z-index: 3;
+  transition: all 0.5s;
+  height: auto;
+  max-width: 50%;
+
+  @media (width > 480px) {
+    max-width: 30%;
+  }
+}
+
+.pictureOfTheWeek__imgContainer:hover {
+  position: relative;
+  transform: scale(1.05);
+}
+
+@media (width > 480px) {
+  .pictureOfTheWeek__imgContainer:hover .pictureOfTheWeek__imgDatas {
+    display: flex;
   }
 }
