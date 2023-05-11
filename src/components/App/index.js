@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 // imports from react and react-redux
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // components
@@ -14,15 +14,13 @@ import AppFooter from '../AppFooter';
 import PageContact from '../PageContact';
 import AppHeaderMin from '../AppHeader/AppHeaderMin';
 import Error404 from '../Error404';
+import ZoomPicture from '../ZoomPicture';
 
 // style
 import './styles.css';
 
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
-import { useState } from 'react';
-
-
 
 // Main fonction for the application
 function App() {
@@ -88,7 +86,7 @@ function App() {
         <Route path="/contact" element=<PageContact /> />
         <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
         <Route path="/user" element=<p>la page d'un user</p> />
-        <Route path="/addpicture" element=<p>la page d'ajout d'une image</p> />
+        <Route path="/picture/:id" element=<ZoomPicture /> />
         <Route path="*" element=<Error404 /> />
       </Routes>
       <AppFooter />
