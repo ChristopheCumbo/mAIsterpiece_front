@@ -13,12 +13,14 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AppHeader from '../AppHeader';
 import AppFooter from '../AppFooter';
 import PageContact from '../PageContact';
+import Error404 from '../Error404';
 
 // style
 import './styles.css';
 
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
+
 
 // Main fonction for the application
 function App() {
@@ -47,7 +49,7 @@ function App() {
         <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
         <Route path="/user" element=<p>la page d'un user</p> />
         <Route path="/addpicture" element=<p>la page d'ajout d'une image</p> />
-        <Route path="*" element=<p>la page 404</p> />
+        <Route path="*" element=<Error404 /> />
       </Routes>
       <AppFooter />
     </div>
