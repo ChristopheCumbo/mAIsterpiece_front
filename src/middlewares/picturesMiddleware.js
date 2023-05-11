@@ -31,11 +31,12 @@ const picturesMiddleware = (store) => (next) => async (action) => {
             Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
           },
         });
-        // console.log(result);
+        console.log(result);
         // ici on a recu les resultats on devrait en profiter pour passer isLoading à false
 
         // on veut mettre dans le state le tableau result.data : on va demander au reducer en dispatchant une action
         store.dispatch(actionUpdatePicturesHomePage(result.data.photos, sortId));
+        // store.dispatch(actionUpdatePicturesHomePage(result, sortId));
       }
       catch (e) {
         // error message
