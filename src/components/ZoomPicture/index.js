@@ -14,6 +14,8 @@ import './style.scss';
 
 
 function ZoomPicture() {
+  const logged = useSelector((state) => state.user.logged);
+
   // Retrieves the picture's id
   const { id } = useParams();
   // Retrieves the datas of this picture
@@ -25,6 +27,7 @@ function ZoomPicture() {
   });
   // console.log(picture);
 
+  // if picture is the picture of the week
   if (!picture) {
     picture = useSelector((state) => {
       // "==" instead of "===" because there is a space after pictureOfTheWeek.id
@@ -38,6 +41,8 @@ function ZoomPicture() {
   if (!picture) {
     return <Navigate to="/error" replace />;
   }
+
+ 
 
   // console.log(picture.src.medium);
 
@@ -58,7 +63,7 @@ function ZoomPicture() {
         />
       </div>
       <MoreReviewsButton />
-      <AddReviews />
+      {logged && <AddReviews />}
     </div>
   );
 }

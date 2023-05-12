@@ -25,7 +25,7 @@ const initialState = {
   // state others
   pseudo: '',
   avatar: '',
-  logged: false,
+  logged: true,
 };
 
 function reducer(state = initialState, action = {}) {
