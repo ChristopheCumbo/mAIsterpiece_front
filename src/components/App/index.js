@@ -87,6 +87,7 @@ function App() {
         <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
         <Route path="/user" element=<p>la page d'un user</p> />
         <Route path="/picture/:id" element=<ZoomPicture /> />
+        <Route path="/error" element=<Error404 /> />
         <Route path="*" element=<Error404 /> />
       </Routes>
       <AppFooter />

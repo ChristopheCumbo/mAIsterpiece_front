@@ -1,0 +1,23 @@
+.zoomPicture__zoomAside {
+  height: auto;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid #FF8A00;
+  margin: 2rem;
+  padding: 1rem;
+}
+
+.zoomPicture__zoomTitleAside {
+  font-weight: 700;
+  padding-bottom: 0.4rem;
+  font-size: 1.2rem;
+
+}
+
+.zoomPicture__zoomContentAside {
+  padding-bottom: 1.3rem;
+  padding-left: 0.5rem;
+  font-size: 1.1rem;
+}

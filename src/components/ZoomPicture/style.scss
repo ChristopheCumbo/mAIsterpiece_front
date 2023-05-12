@@ -15,6 +15,17 @@
     padding-bottom: 2rem;
   }
 
+  &__reviewsAndAside {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 0 10rem;
+  }
+
+  &__reviewsContainer {
+    width: 75%;
+  }
+
   }
 
 
