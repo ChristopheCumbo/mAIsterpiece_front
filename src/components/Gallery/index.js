@@ -1,6 +1,7 @@
 // import PropTypes from 'prop-types';
-// imports from react-redux
+// imports from react-redux and react-router-dom
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 // actions
 import { LOAD_PICTURES_FILTERED, actionLoadPictures, actionLoadPicturesFiltered, actionUpdateSortingHomepagePictures } from '../../actions/pictures';
 // import list of sorts
@@ -8,6 +9,7 @@ import data from '../../data';
 // style and figures
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';
+
 
 
 function Gallery() {
@@ -66,7 +68,7 @@ function Gallery() {
       <div className="gallery__content">
         {
           pictures.map((picture) => (
-            <div className="gallery__imgContainer" key={picture.id}>
+            <Link className="gallery__imgContainer" key={picture.id} to={`/picture/${picture.id}`}>
               <img className="gallery__img" src={picture.src.medium} alt="" />
               {/* <img className="gallery__img" src={picture.url} alt="" /> */}
               <div className="gallery__imgDatas">
@@ -83,7 +85,7 @@ function Gallery() {
                   </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))
         }
       </div>
