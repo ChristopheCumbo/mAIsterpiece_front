@@ -17,20 +17,29 @@ function ZoomPicture() {
   // Retrieves the picture's id
   const { id } = useParams();
   // Retrieves the datas of this picture
-  const picture = useSelector((state) => {
+  let picture = useSelector((state) => {
     return state.pictures.listHomePage.find((testedPicture) => {
       // "==" instead of "===" because there is a space after testedPicture.id
       return testedPicture.id == id;
     });
   });
-  console.log(picture);
+  // console.log(picture);
+
+  if (!picture) {
+    picture = useSelector((state) => {
+      // "==" instead of "===" because there is a space after pictureOfTheWeek.id
+      if (id == state.pictures.pictureOfTheWeek.id) {
+        return state.pictures.pictureOfTheWeek;
+      }
+    });
+  }
 
   // if no picture for that id, navigate to 404
   if (!picture) {
     return <Navigate to="/error" replace />;
   }
 
-  console.log(picture.src.medium);
+  // console.log(picture.src.medium);
 
   return (
     <div className="zoomPicture">
