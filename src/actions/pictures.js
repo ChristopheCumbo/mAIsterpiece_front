@@ -7,7 +7,8 @@ export const UPDATE_SORTING_HOMEPAGE_PICTURES = 'UPDATE_SORTING_HOMEPAGE_PICTURE
 export const UPDATE_INPUT_SEARCH_BAR = 'UPDATE_INPUT_SEARCH_BAR';
 export const LOAD_PICTURES_FILTERED = 'LOAD_PICTURES_FILTERED';
 export const UPDATE_FORM_ADD_REVIEWS = 'UPDATE_FORM_ADD_REVIEWS';
-
+export const SEND_REVIEWS = 'SEND_REVIEWS';
+export const REDUCER_SEND_REVIEWS = 'REDUCER_SEND_REVIEWS';
 // action creator
 /**
  * First loading of images from API
@@ -75,4 +76,12 @@ export const actionUpdateFormAddReviews = (newValue) => ({
   payload: {
     newValue,
   },
+});
+
+export const actionSendReviews = () => ({
+  type: SEND_REVIEWS,
+});
+
+export const actionReducerSendReviews = () => ({
+  type: REDUCER_SEND_REVIEWS,
 });

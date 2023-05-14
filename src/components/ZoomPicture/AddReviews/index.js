@@ -3,7 +3,7 @@
 // import react-redux
 import { useDispatch, useSelector } from 'react-redux';
 // import action type
-import { actionUpdateFormAddReviews } from '../../../actions/pictures';
+import { actionSendReviews, actionUpdateFormAddReviews } from '../../../actions/pictures';
 import './style.scss';
 
 function AddReviews() {
@@ -16,11 +16,16 @@ function AddReviews() {
     dispatch(actionUpdateFormAddReviews(event.target.value));
   };
 
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+    dispatch(actionSendReviews());
+  };
+
   return (
     <div>
       <div className="zoomPicture__addComment">
         <p className="zoomPicture__formTitle">Ajouter un commentaire</p>
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             className="zoomPicture__inputReviews"
             type="text"

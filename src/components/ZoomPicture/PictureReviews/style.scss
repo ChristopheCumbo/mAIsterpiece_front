@@ -20,14 +20,23 @@
 &__login {
   font-weight: 700;
   padding-bottom: 0.4rem;
-  font-size: 1.2rem;
-
+  font-size: 1.4rem;
+  background-color: #F58B0E;
+  color: white;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  border-radius: 5px;
+  margin-bottom: 0.6rem;
 }
 
+
 &__textReviews {
-  padding-bottom: 1.3rem;
-  padding-left: 0.5rem;
   font-size: 1.1rem;
+  border: 2px solid #F58B0E;
+  background-color: white;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-left: 1rem;
 
   @media (width < 500px) {
     width: auto;
@@ -35,8 +44,12 @@
   }
 }
 
+&__containerReviews{
+  padding-bottom: 1.5rem;
+}
+
 &__moreReviews {
-  border: 2px solid #ff8a00;
+  border: 2px solid #F58B0E;
   border-radius: 10px;
   font-weight: 700;
   padding: 5px;

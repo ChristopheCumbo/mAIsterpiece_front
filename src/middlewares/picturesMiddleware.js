@@ -3,6 +3,8 @@ import axios from 'axios';
 import {
   LOAD_PICTURES,
   LOAD_PICTURE_OF_THE_WEEK,
+  SEND_REVIEWS,
+  actionReducerSendReviews,
   actionUpdatePictureOfTheWeek,
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
@@ -22,7 +24,6 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           // adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/home/list';
         }
         // const result = await axios.get(adressAPI);
-
 
         // la requete
         // const result = await axios.get('https://api.pexels.com/v1/curated?page=1&per_page=30', {
@@ -61,6 +62,26 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // error message
         console.log(e);
       }
+      break;
+    }
+
+    case SEND_REVIEWS: {
+      const { inputFormReviews } = store.getState().pictures;
+
+      try {
+        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/picture/id', {
+          inputFormReviews,
+        });
+        console.log('jai cliqué l appel API se déclenche');
+
+        store.dispatch(actionReducerSendReviews());
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+        console.log('jai cliqué l appel API se déclenche');
+      }
+
       break;
     }
 
