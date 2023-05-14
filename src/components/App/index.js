@@ -15,12 +15,14 @@ import PageContact from '../PageContact';
 import AppHeaderMin from '../AppHeader/AppHeaderMin';
 import Error404 from '../Error404';
 import ZoomPicture from '../ZoomPicture';
+import MemberPage from '../MemberPage';
 
 // style
 import './styles.css';
 
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
+
 
 // Main fonction for the application
 function App() {
@@ -84,8 +86,8 @@ function App() {
         <Route path="/login" element=<LoginPage /> />
         <Route path="/register" element=<RegisterPage /> />
         <Route path="/contact" element=<PageContact /> />
-        <Route path="/mentionlegales" element=<p>la page de mention legales</p> />
-        <Route path="/user" element=<p>la page d'un user</p> />
+        <Route path="/mentionslegales" element=<p>la page de mention légales</p> />
+        <Route path="/membre/:memberId" element=<MemberPage /> />
         <Route path="/picture/:id" element=<ZoomPicture /> />
         <Route path="/error" element=<Error404 /> />
         <Route path="*" element=<Error404 /> />
