@@ -22,8 +22,8 @@ function ProfileEditable({ pseudo, avatar, bio }) {
         <div>
           <label htmlFor="memberPage__formProfile--bio">Bio : </label>
           <textarea
-            rows="7"
-            cols="75"
+            // rows="7"
+            // cols="75"
             className="settings-input"
             name="memberPage__form--bio"
             id="memberPage__form--bio"
