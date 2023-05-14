@@ -1,8 +1,10 @@
 // import PropTypes from 'prop-types';
 // import from react-router-dom and react-redux
-import { Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+// import React feather
+import { XCircle } from 'react-feather';
 // Import components
 
 import AddReviews from './AddReviews';
@@ -42,13 +44,20 @@ function ZoomPicture() {
     return <Navigate to="/error" replace />;
   }
 
- 
-
   // console.log(picture.src.medium);
 
   return (
     <div className="zoomPicture">
-      <h1 className="zoomPicture__title">Zoom sur votre image</h1>
+      <div className="zoomPicture__header">
+        <div className="zoomPicture__containerTitle">
+          <h1 className="zoomPicture__title">Zoom sur votre image</h1>
+        </div>
+        <div>
+          <Link to="/">
+            <XCircle className="zoomPicture__closePage" />
+          </Link>
+        </div>
+      </div>
       <ContainerPicture
         imgSrc={picture.src.large}
         imgPrompt="a good picture of myself"

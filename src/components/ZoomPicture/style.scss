@@ -26,6 +26,23 @@
     width: 75%;
   }
 
+  &__header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+
+  &__containerTitle{
+    width: 100%;
+  }
+
+  &__closePage{
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+ 
   }
 
 
