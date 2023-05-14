@@ -25,6 +25,6 @@ ZoomAside.propTypes = {
 ZoomAside.defaultProps = {
   author: 'non communiqué',
   ia: 'non communiquée',
-}
+};
 
 export default ZoomAside;

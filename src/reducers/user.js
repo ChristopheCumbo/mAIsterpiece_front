@@ -14,16 +14,17 @@ import {
   from '../actions/user';
 
 const initialState = {
-  // state input page de connexion
+  // state input for connexion page
   inputLoginFormAuth: '',
   inputPasswordFormAuth: '',
-  // state input page d'inscription'
+  // state input for register page
   inputLoginFormRegister: '',
   inputEmailFormRegister: '',
   inputPasswordFormRegister: '',
   inputConfirmPasswordFormRegister: '',
   // state others
-  pseudo: '',
+  userId: '1234',
+  pseudo: 'Martin Martin',
   avatar: '',
   logged: true,
 };
