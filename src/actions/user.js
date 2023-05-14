@@ -10,7 +10,6 @@ export const UPDATE_PASSWORD_REGISTER = 'UPDATE_PASSWORD_REGISTER';
 export const UPDATE_CONFIRM_PASSWORD_REGISTER = 'UPDATE_CONFIRM_PASSWORD_REGISTER';
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
 
-
 // - action creators LoginPage
 
 /**
@@ -55,8 +54,6 @@ export const actionSaveConnectedUser = (avatar, jwt) => ({
     jwt,
   },
 });
-
-
 
 // - action creators RegisterPage
 
