@@ -13,6 +13,10 @@ function ZoomAside({ author, ia }) {
         <p className="zoomPicture__zoomTitleAside">IA</p>
         <p className="zoomPicture__zoomContentAside">{ia}</p>
       </div>
+      <div className="zoomPicture__zoomTags">
+        <p className="zoomPicture__zoomTitleAside">Tags</p>
+        <p className="zoomPicture__zoomContentAside">"Beau, coloré, carré"</p>
+      </div>
     </div>
   );
 }

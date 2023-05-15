@@ -17,13 +17,21 @@
 
   &__reviewsAndAside {
     display: flex;
-    flex-direction: row;
+
+    flex-direction: column;
+    @media (width > 480px) {
+      flex-direction: row;
+      padding: 0 10rem;
+    }
+
     width: 100%;
-    padding: 0 10rem;
   }
 
   &__reviewsContainer {
+    width: 100%;
+    @media (width > 480px) {
     width: 75%;
+    }
   }
 
   }
