@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 // import from react-router-dom and react-redux
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 // import React feather
@@ -14,6 +14,7 @@ import MoreReviewsButton from './MoreReviewsButton';
 import PictureReviews from './PictureReviews';
 import ZoomAside from './ZoomAside';
 import './style.scss';
+import PreviousPage from '../PreviousPage';
 
 
 function ZoomPicture() {
@@ -54,11 +55,7 @@ function ZoomPicture() {
         <div className="zoomPicture__containerTitle">
           <h1 className="zoomPicture__title">Zoom sur votre image</h1>
         </div>
-        <div>
-          <Link to="/">
-            <XCircle className="zoomPicture__closePage" />
-          </Link>
-        </div>
+        <PreviousPage />
       </div>
       <ContainerPicture
         imgSrc={!picture.src ? picture.url : picture.src.large}

@@ -33,7 +33,7 @@ function Carousel() {
             {
               pictures.map((picture, index) => (
                 <Slide index={index}>
-                  <ImageWithZoom src={picture.src.medium} data-description={picture.src.photographer} alt="" />
+                  <ImageWithZoom src={picture.url} data-description="Martin Martin" alt="" />
                 </Slide>
               ))
             }
