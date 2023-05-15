@@ -22,6 +22,11 @@
   font-weight: 700;
   -webkit-text-stroke: 0.2px;
   -webkit-text-stroke-color: #F58B0E;
+/* 
+  .navBar__container__mobile{
+  display: none;
+}
+*/
 
   // @media (width > 480px) {
   //   height: 20vh;
@@ -64,6 +69,7 @@
     height: 25px;
     width: 25px;
     margin-left: 0.4rem;
+    margin-right: 0.5rem;
   }
 
   &__logoAndTitle {
@@ -72,11 +78,17 @@
     font-size: 2rem;
   }
 
-  &__logoAndTitle img {
-    margin-right: 0.5rem;
-  }
 }
 
+#appHeaderMin__brand {
+
+
+@media (width < 480px) {
+  display: none;
+}
+}
+
+/* 
 #appHeaderMin__brand {
   font-family: 'Krona One', sans-serif;
   font-size: 1.2rem;
@@ -88,6 +100,9 @@
   @media (width >=900px) {
     font-size: 2rem;
   }
-
-
 }
+  */
+
+  
+
+
