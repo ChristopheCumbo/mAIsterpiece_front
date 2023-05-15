@@ -7,11 +7,14 @@
   margin: 2rem;
 
 /* -------- Container Picture --------*/
-  &__containerPicture {
-    text-align: center;
+&__containerPicture {
+  text-align: center;
+  width: 90%;
+  @media (width > 480px) {
     width: 50%;
-    height: auto;
   }
+  height: auto;
+}
 
   &__Picture {
     height: auto;

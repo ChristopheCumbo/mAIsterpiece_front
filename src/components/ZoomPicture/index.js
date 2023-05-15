@@ -46,6 +46,7 @@ function ZoomPicture() {
   }
 
   // console.log(picture.src.medium);
+  // console.log(picture.src);
 
   return (
     <div className="zoomPicture">
@@ -60,7 +61,7 @@ function ZoomPicture() {
         </div>
       </div>
       <ContainerPicture
-        imgSrc={picture.src.large}
+        imgSrc={!picture.src ? picture.url : picture.src.large}
         imgPrompt="a good picture of myself"
       />
       <div className="zoomPicture__reviewsAndAside">
@@ -68,7 +69,7 @@ function ZoomPicture() {
           <PictureReviews />
         </div>
         <ZoomAside
-          author={picture.photographer}
+          author={!picture.photographer ? '' : picture.photographer}
           ia="MidJourney"
         />
       </div>

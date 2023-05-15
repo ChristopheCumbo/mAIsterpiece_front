@@ -24,6 +24,10 @@ function ZoomAside({ author, ia }) {
         <MessageSquare className="zoomPicture__zoomTitleAside" />
         <p className="zoomPicture__zoomContentAside">7</p>
       </div>
+      <div className="zoomPicture__zoomTags">
+        <p className="zoomPicture__zoomTitleAside">Tags</p>
+        <p className="zoomPicture__zoomContentAside">"Beau, coloré, carré"</p>
+      </div>
       <div className="zoomPicture__containerButtonAlert">
         <p>Signaler</p>
         <button className="zoomPicture__reportButton" type="button"><AlertTriangle /> </button>
@@ -40,6 +44,6 @@ ZoomAside.propTypes = {
 ZoomAside.defaultProps = {
   author: 'non communiqué',
   ia: 'non communiquée',
-}
+};
 
 export default ZoomAside;

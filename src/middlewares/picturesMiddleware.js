@@ -20,8 +20,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         let adressAPI = 'https://api.pexels.com/v1/curated?page=1&per_page=30';
         if (sortId === 'picturesMostRecents') {
           // adressAPI = '/api/home-list';
-          adressAPI = 'https://api.pexels.com/v1/curated?page=2&per_page=30';
-          // adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/home/list';
+          // adressAPI = 'https://api.pexels.com/v1/curated?page=2&per_page=30';
+          adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/home/list';
         }
         // const result = await axios.get(adressAPI);
 
@@ -36,8 +36,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // ici on a recu les resultats on devrait en profiter pour passer isLoading à false
 
         // on veut mettre dans le state le tableau result.data : on va demander au reducer en dispatchant une action
-        store.dispatch(actionUpdatePicturesHomePage(result.data.photos, sortId));
-        // store.dispatch(actionUpdatePicturesHomePage(result, sortId));
+        // store.dispatch(actionUpdatePicturesHomePage(result.data.photos, sortId));
+        store.dispatch(actionUpdatePicturesHomePage(result.data, sortId));
       }
       catch (e) {
         // error message
@@ -50,6 +50,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       try {
         // request
         const result = await axios.get('https://api.pexels.com/v1/photos/12488389', {
+        // const result = await axios.get('http://alexandre-longeaud-server.eddi.cloud/picture-of-the-week', {
           headers: {
             Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
           },
