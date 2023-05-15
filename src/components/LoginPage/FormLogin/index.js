@@ -10,7 +10,6 @@ import Logo from '../../../assets/proposition_logo.png';
 
 import './style.scss';
 
-
 function FormLogin() {
   const InputLoginFormAuth = useSelector((state) => state.user.inputLoginFormAuth);
   const inputPasswordFormAuth = useSelector((state) => state.user.inputPasswordFormAuth);

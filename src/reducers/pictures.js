@@ -1,4 +1,6 @@
 import {
+  REDUCER_SEND_REVIEWS,
+  UPDATE_FORM_ADD_REVIEWS,
   UPDATE_INPUT_SEARCH_BAR,
   UPDATE_PICTURES_HOMEPAGE,
   UPDATE_PICTURE_OF_THE_WEEK,
@@ -15,6 +17,7 @@ const initialState = {
   },
   sortHomePageId: 'picturesMostRecents',
   inputSearchBar: '',
+  inputFormReviews: '',
 };
 
 function reducer(state = initialState, action = {}) {
@@ -45,6 +48,18 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state, // on recopie tout ce qu'il y a dans le state
         inputSearchBar: action.payload.newValue,
+      };
+
+    case UPDATE_FORM_ADD_REVIEWS:
+      return {
+        ...state, // on recopie tout ce qu'il y a dans le state
+        inputFormReviews: action.payload.newValue,
+      };
+
+    case REDUCER_SEND_REVIEWS:
+      // after the first call to API to get the homepage's pictures
+      return {
+        ...state,
       };
 
     default:
