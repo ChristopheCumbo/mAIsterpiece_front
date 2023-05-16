@@ -29,6 +29,8 @@ function App() {
   const dispatch = useDispatch();
   // state's variable to set the small menu (bool)
   const [showScrollHeader, setShowScrollHeader] = useState(false);
+  // state which allows to manage the poster of the burger menu or not
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(
     () => {
@@ -68,9 +70,14 @@ function App() {
   //   return '';
   // }
 
+  // Function that allows you to invert the state associated with the onClick for displaying the burger menu
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <div className="app">
-      <AppHeader />
+    <div onClick={isOpen ? toggleMenu : null} className="app">
+      <AppHeader isOpen={isOpen} setIsOpen={setIsOpen} />
       {/* {showAppHeaderMin()} */}
       {/* {
         window.addEventListener('scroll', () => {

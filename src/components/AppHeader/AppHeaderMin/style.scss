@@ -78,15 +78,36 @@
     font-size: 2rem;
   }
 
+  .navBar__container__mobile{
+    position: absolute;
+    right: 0px;
+    top: -16px;
+    button{
+      background-color: white;
+    }
+    @media (width > 480px) {
+      display: none;
+    }
+   }
 }
 
 #appHeaderMin__brand {
-
+  font-family: 'Krona One', sans-serif;
+  font-size: 1.2rem;
 
 @media (width < 480px) {
   display: none;
 }
+@media (width > 480px) {
+  font-size: 1.5rem;
 }
+
+@media (width >=900px) {
+  font-size: 2rem;
+}
+}
+
+
 
 /* 
 #appHeaderMin__brand {
