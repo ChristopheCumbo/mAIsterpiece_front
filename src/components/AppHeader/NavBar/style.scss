@@ -3,6 +3,7 @@
   text-align: right;
   font-size: 1.5rem;
   color: #ffffff;
+  position: relative;
   // -webkit-text-stroke: 0.2px;
   // -webkit-text-stroke-color: #ffffff;
   // background-color: rgba(0, 0, 0, .2);
@@ -58,10 +59,28 @@
   }
  }
 
-
  .navBar__container__mobile{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: 1;
   button{
     background-color: white;
+    margin-bottom: 0.2rem;
+  }
+  
+  ul{
+    background-color: orange;
+    border-radius: 5px;
+    padding: 0.1rem;
+    font-size: 0.8rem;
+    text-align: left;
+  }
+
+  li{
+    padding: 0.2rem;
+  }
+
   }
   @media (width > 480px) {
     display: none;
@@ -69,5 +88,5 @@
  }
  
  
- }
+ 
  

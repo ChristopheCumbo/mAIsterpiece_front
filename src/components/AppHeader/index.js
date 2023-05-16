@@ -1,9 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { actionUpdateSearchBar } from '../../actions/pictures';
+import PropTypes from 'prop-types';
 
-// import PropTypes from 'prop-types';
+import { actionUpdateSearchBar } from '../../actions/pictures';
 
 // import image de fond
 // import BackgroundImage from 'https://www.zupimages.net/up/23/18/3bwm.jpg'
@@ -15,7 +15,7 @@ import NavBar from './NavBar';
 // import scss
 import './style.scss';
 
-function AppHeader() {
+function AppHeader({ isOpen, setIsOpen }) {
   const inputSearchBar = useSelector((state) => state.pictures.inputSearchBar);
 
   const dispatch = useDispatch();
@@ -39,7 +39,7 @@ function AppHeader() {
           </Link>
           <Link to="/" id="appHeader__brand">mAIsterpiece</Link>
         </div>
-        <NavBar />
+        <NavBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
       <div className="appHeader__searchBar">
         <p className="appHeader__textAboveSearchBar">Bienvenue sur mAIsterpiece ! Ici, vous pourrez apprécier
@@ -62,8 +62,9 @@ function AppHeader() {
   );
 }
 
-// AppHeader.propTypes = {
-
-// };
+AppHeader.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
+};
 
 export default AppHeader;

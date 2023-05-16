@@ -1,16 +1,14 @@
-import { useState } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import './style.scss';
 import { Menu, X } from 'react-feather';
 
-function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-
+function NavBar({ isOpen, setIsOpen }) {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
+
   return (
     <div className="navBar__container">
       <Link className="navBar__link" to="/login">Connexion</Link> <span>/&nbsp;</span>
@@ -20,9 +18,11 @@ function NavBar() {
         <button type="button" onClick={toggleMenu}>
           {isOpen ? <X /> : <Menu />}
         </button>
-        <ul className={`${isOpen ? '' : 'li-close'}`}>
-          <li><Link to="/register">Inscription</Link></li>
+        <ul onClick={toggleMenu} className={`${isOpen ? '' : 'li-close'}`}>
+          <li> <Link to="/register">Inscription</Link></li>
           <li> <Link to="/login">Connexion</Link></li>
+          <li> <Link to="/contact">Contact</Link></li>
+          <li> <Link to="/mentionslegales">Mention Legales</Link></li>
         </ul>
       </div>
 
@@ -30,8 +30,10 @@ function NavBar() {
   );
 }
 
-// NavBar.propTypes = {
+NavBar.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  setIsOpen: PropTypes.func.isRequired,
 
-// };
+};
 
 export default NavBar;
