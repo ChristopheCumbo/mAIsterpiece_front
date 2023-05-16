@@ -1,47 +1,81 @@
-import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext, ImageWithZoom } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
+// Note pour le carousel : mettre largeur maximum d'une image importée dans le paramètre         spaceBetween (={600} par exemple) de <Swiper>
+
+// import from react, react-redux, and react-router-dom
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import React, { useRef, useState } from "react";
+import { Link } from 'react-router-dom';
+
+// Import Swiper React components
+import { Swiper, SwiperSlide, useSwiper, useSwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+// import required modules of Swiper
+import { Pagination, Navigation } from "swiper";
 // PropTypes
 import PropTypes from 'prop-types';
-// imports from react-redux
-import { useSelector } from 'react-redux';
-// style
+// import components
+import SliderFooter from './SliderFooter';
+// style and icons
 import './style.scss';
+import { CloudLightning, Heart, MessageSquare } from 'react-feather';
+
 
 function Carousel() {
-  // list of images
+  // list of this member's images in the state
   const pictures = useSelector((state) => state.pictures.listHomePage);
 
-  // let i = 0;
+  const [slideIndex, setSlideIndex] = useState(0);
+
+  // console.log("PICTURES = ");
+  // console.log(pictures);
 
   return (
-    <div className="memberPage__carousel">
-      <CarouselProvider
-        naturalSlideWidth={10}
-        naturalSlideHeight={10}
-        totalSlides={30}
-        infinite
-        // isPlaying="false"
-        // interval="3000"
-        // isIntrinsicHeight
-        className="memberPage__provider"
-      >
-        <div className="memberPage__sliderContainer">
-          {/* <ButtonBack>Back</ButtonBack> */}
-          <ButtonBack id="memberPage__buttonBack" />
-          {/* <Slider> */}
-          <Slider className="memberPage__slider">
-            {
-              pictures.map((picture, index) => (
-                <Slide index={index}>
-                  <ImageWithZoom src={picture.url} data-description="Martin Martin" alt="" />
-                </Slide>
-              ))
-            }
-          </Slider>
-          <ButtonNext id="memberPage__buttonNext" />
-        </div>
-      </CarouselProvider>
-    </div>
+    <>
+      <div className="memberPage__sliderContainer">
+
+        <Swiper
+          slidesPerView={'auto'}
+          autoHeight={true}
+          centeredSlides={true}
+          spaceBetween={600}
+          pagination={{
+            type: "fraction",
+          }}
+          navigation={true}
+          modules={[Pagination, Navigation]}
+          onSlideChange={(swiper) => {
+            // swiperRef.current = swiper.activeIndex;
+            // console.log(swiper.activeIndex);
+            setSlideIndex(swiper.activeIndex);
+          }}
+          className="memberPage__SwiperContainer"
+        >
+          {
+            pictures.map((picture) => (
+              <SwiperSlide key={picture.id}>
+                <Link to={`/picture/${picture.id}`}>
+                  <img
+                    src={picture.src.large}
+                    alt=""
+                  />
+                </Link>
+              </SwiperSlide>
+            ))
+          }
+        </Swiper>
+        {/* <button type="button" onClick={() => swiperRef.current.slideNext()}>
+        Go to Next Slide
+      </button> */}
+
+      </div>
+      {
+        (pictures !== [])
+        && <SliderFooter {...pictures[slideIndex]} />
+      }
+    </>
   );
 }
 
