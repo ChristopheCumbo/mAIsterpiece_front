@@ -17,7 +17,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         const sortId = action.payload;
         console.log(sortId);
         let adressAPI = 'https://api.pexels.com/v1/curated?page=6&per_page=30';
-        // let adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures/filtre/clicked';
+        // let adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures/filtre/liked';
         if (sortId === 'picturesMostRecents') {
           adressAPI = 'https://api.pexels.com/v1/curated?page=9&per_page=30';
           // adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures';

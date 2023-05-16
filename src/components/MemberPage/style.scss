@@ -96,7 +96,7 @@
   // transform: translateY(-7px);
 }
 
-.memberPage__provider {
+// .memberPage__provider {
   // min-height: 500px;
   // width: calc(100vw + 32px);
 
@@ -111,20 +111,20 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: calc(100vw - 33px);
-    transform: translateX(-32px);
+    // width: calc(100vw - 33px);
+    // transform: translateX(-32px);
 
-    @media (width > 480px) {
+    // @media (width > 480px) {
       width: 100%;
-      transform: none;
-    }
+    //   transform: none;
+    // }
 
     max-width: 600px;
     margin: 0 auto;
     padding: 1rem 1rem;
-    border-left: 2px solid #ff8a00;
+    // border-left: 2px solid #ff8a00;
     border-bottom: 2px solid #ff8a00;
-    border-right: 2px solid #ff8a00;
+    // border-right: 2px solid #ff8a00;
     font-weight: 600;
 
     &--likes,
@@ -136,7 +136,7 @@
     }
   }
 
-}
+// }
 
 .memberPage__sliderContainer {
   width: 100%;
