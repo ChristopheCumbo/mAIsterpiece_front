@@ -10,6 +10,7 @@ import Carousel from './Carousel';
 import ProfileEditable from './ProfileEditable';
 import ProfileNonEditable from './ProfileNonEditable';
 import Settings from './Settings';
+import PreviousPage from '../PreviousPage';
 
 function MemberPage() {
   // check in the state if the user is logged
@@ -17,7 +18,7 @@ function MemberPage() {
   // check connected user's id (blank if not)
   const userId = useSelector((state) => state.user.userId);
   // test only
-  const pseudo = 'MArtin MArtin';
+  const pseudo = 'Martin Martin';
   const avatar = '';
   const bio = 'Le plus fort des créateurs ! Exercitationem unde officia porro veritatis dignissimos eum, id iste dicta fugit neque voluptatem pariatur architecto minus commodi est magni velit doloremque quos!';
   const email = 'aaa@gmail.com';
@@ -25,7 +26,7 @@ function MemberPage() {
   const { memberId } = useParams();
   return (
     <div className="memberPage__container">
-
+      <PreviousPage />
       <div className="memberPage__header">
         {(isLogged && (userId === memberId))
           ? (
@@ -41,6 +42,7 @@ function MemberPage() {
             </div>
           )}
       </div>
+
 
       <Carousel />
 
