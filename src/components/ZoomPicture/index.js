@@ -42,7 +42,7 @@ function ZoomPicture() {
     });
   }
 
-  // if no picture for that id, navigate to 404
+  // if no picture for that id navigate to 404
   if (!picture) {
     return <Navigate to="/error" replace />;
   }
