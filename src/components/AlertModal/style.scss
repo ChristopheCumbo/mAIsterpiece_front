@@ -7,6 +7,9 @@
   position: absolute;  
   top: 50%; left: 50%; 
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-around;
 
   @media (width < 480px) {
     width: 17.5rem;
@@ -46,6 +49,17 @@
   .closeButton{
     border: none;
   }
+
+  .previousPage{
+    width: 100%;
+  }
+
+  form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
 
 }
 
