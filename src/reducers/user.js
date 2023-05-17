@@ -3,6 +3,7 @@ import {
   SAVE_CONNECTED_USER,
   UPDATE_LOGIN_FORM_AUTH,
   UPDATE_PASSWORD_AUTH,
+  UPDATE_TEXTAREA_BIO,
 } from '../actions/user';
 // import pour la RegisterPage
 import {
@@ -22,6 +23,8 @@ const initialState = {
   inputEmailFormRegister: '',
   inputPasswordFormRegister: '',
   inputConfirmPasswordFormRegister: '',
+  // state input for bio's textarea
+  inputTextareaBio: 'Présentez-vous aux autres utilisateurs',
   // state others
   userId: '1234',
   pseudo: 'Martin Martin',
@@ -78,6 +81,13 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state, // on recopie tout ce qu'il y a dans le state
         inputConfirmPasswordFormRegister: action.payload.newValue,
+      };
+
+    // case for bio on Member Page
+    case UPDATE_TEXTAREA_BIO:
+      return {
+        ...state,
+        inputTextareaBio: action.payload.newValue,
       };
 
     default:
