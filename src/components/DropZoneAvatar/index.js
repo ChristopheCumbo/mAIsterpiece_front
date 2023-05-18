@@ -11,11 +11,11 @@ import './style.scss';
 
 function DropZoneAvatar({ uploadedFiles, setUploadedFiles }) {
   // const [uploadedFiles, setUploadedFiles] = useState([]);
-  console.log('state avant upload: ', uploadedFiles);
+  // console.log('state avant upload: ', uploadedFiles);
   const onDrop = useCallback(acceptedFiles => {
     setUploadedFiles(acceptedFiles[0]);
-    console.log('onDrop');
-    console.log(acceptedFiles[0].name);
+    // console.log('onDrop');
+    // console.log(acceptedFiles[0].name);
   }, []);
   const {
     acceptedFiles,
@@ -37,7 +37,7 @@ function DropZoneAvatar({ uploadedFiles, setUploadedFiles }) {
       <section>
         <div {...getRootProps({ className: 'dropzone' })}>
           <input {...getInputProps()} />
-          <p>Drag 'n' drop some files here, or click to select files</p>
+          <p>Glissez-déposez une image d'avatar ici, ou cliquez pour sélectionner un fichier sur votre disque dur</p>
         </div>
         <aside>
           <h4>{(uploadedFiles !== []) ? uploadedFiles.name : 'Pas de fichier'}</h4>

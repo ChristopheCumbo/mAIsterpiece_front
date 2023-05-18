@@ -6,7 +6,7 @@ import './style.scss';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DropZoneAvatar from '../DropZoneAvatar';
-import { actionUpdateTextAreaBio } from '../../actions/user';
+import { actionSendProfile, actionUpdateTextAreaBio } from '../../actions/user';
 
 function ProfileEditable({ pseudo, avatar, bio }) {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function ProfileEditable({ pseudo, avatar, bio }) {
 
   const handleSubmitProfile = (evt) => {
     evt.preventDefault();
-    dispatch(actionSendProfile());
+    dispatch(actionSendProfile(uploadedFiles));
   };
 
 

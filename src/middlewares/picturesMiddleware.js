@@ -3,6 +3,7 @@ import axios from 'axios';
 import {
   LOAD_PICTURES,
   LOAD_PICTURE_OF_THE_WEEK,
+  SEND_NEW_PICTURE,
   SEND_REVIEWS,
   actionReducerSendReviews,
   actionUpdatePictureOfTheWeek,
@@ -15,7 +16,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       // console.log('picturesMiddleware executé', action);
       try {
         const sortId = action.payload;
-        console.log(sortId);
+        // console.log(sortId);
         let adressAPI = 'https://api.pexels.com/v1/curated?page=6&per_page=30';
         // let adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures/filtre/liked';
         if (sortId === 'picturesMostRecents') {
@@ -54,7 +55,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
             Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
           },
         });
-        console.log(result);
+        // console.log(result);
         // store the datas of the picture of the week
         store.dispatch(actionUpdatePictureOfTheWeek(result.data));
       }
@@ -72,14 +73,48 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/picture/id', {
           inputFormReviews,
         });
-        console.log('jai cliqué l appel API se déclenche');
+        // console.log('SEND_REVIEWS');
 
         store.dispatch(actionReducerSendReviews());
       }
       catch (e) {
         console.log(e);
         // afficher un message d'erreur
-        console.log('jai cliqué l appel API se déclenche');
+      }
+
+      break;
+    }
+
+    case SEND_NEW_PICTURE: {
+      const { inputPrompt, inputTags } = store.getState().pictures;
+
+      const formDataToJson = (formData) => {
+        const jsonObject = {};
+        formData.forEach((value, key) => {
+          jsonObject[key] = value;
+        });
+        return JSON.stringify(jsonObject);
+      };
+
+      try {
+        const formData = new FormData();
+        formData.append('files', action.payload.newPictureFile);
+        const jsonData = formDataToJson(formData);
+
+        const result = await axios.post('http://localhost:3001', {
+          jsonData,
+          inputPrompt,
+          inputTags,
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
       }
 
       break;

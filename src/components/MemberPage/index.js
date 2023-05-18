@@ -1,8 +1,9 @@
 // import PropTypes from 'prop-types';
 
-// import from react-router-dom and react-redux
+// imports from react, react-router-dom and react-redux
 import { Navigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 // Style
 import './style.scss';
 // Sub-components
@@ -11,12 +12,18 @@ import ProfileEditable from './ProfileEditable';
 import ProfileNonEditable from './ProfileNonEditable';
 import Settings from './Settings';
 import PreviousPage from '../PreviousPage';
+import AddPicture from '../AddPicture';
 
 function MemberPage() {
   // check in the state if the user is logged
   const isLogged = useSelector((state) => state.user.logged);
   // check connected user's id (blank if not)
   const userId = useSelector((state) => state.user.userId);
+  // for the visibility of the AddPicture modal
+  const [isAddPictureVisible, setIsAddPictureVisible] = useState(false);
+  const showMenuAddPicture = () => {
+    setIsAddPictureVisible(true);
+  };
   // test only
   const pseudo = 'Martin Martin';
   const avatar = '';
@@ -32,7 +39,8 @@ function MemberPage() {
           ? (
             <div className="memberPage__title">
               <h2>Mes Productions</h2>
-              <button type="button" id="memberPage__buttonTitle">Ajouter une image</button>
+              <button onClick={showMenuAddPicture} type="button" id="memberPage__buttonTitle">Ajouter une image</button>
+              {isAddPictureVisible && <AddPicture setIsAddPictureVisible={setIsAddPictureVisible} className="alertModal" />}
             </div>
           )
           : (
