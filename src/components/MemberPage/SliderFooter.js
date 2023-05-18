@@ -4,8 +4,8 @@ import './style.scss';
 import { Heart, MessageSquare } from 'react-feather';
 
 function SliderFooter({ photographer }) {
-  console.log('FOOTER = ');
-  console.log(photographer);
+  // console.log('FOOTER = ');
+  // console.log(photographer);
   return (
     <div className="memberPage__sliderFooter">
       {/* Martin Martin & <a href="#">MidJourney</a> */}

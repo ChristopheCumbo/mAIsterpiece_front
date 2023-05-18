@@ -9,6 +9,9 @@ export const UPDATE_EMAIL_FORM_REGISTER = 'UPDATE_EMAIL_FORM_REGISTER';
 export const UPDATE_PASSWORD_REGISTER = 'UPDATE_PASSWORD_REGISTER';
 export const UPDATE_CONFIRM_PASSWORD_REGISTER = 'UPDATE_CONFIRM_PASSWORD_REGISTER';
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
+// Profile
+export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
+export const SEND_PROFILE = 'SEND_PROFILE';
 
 // - action creators LoginPage
 
@@ -106,4 +109,26 @@ export const actionUpdateConfirmPasswordFormRegister = (newValue) => ({
  */
 export const actionRegister = () => ({
   type: REGISTER_NEW_USER,
+});
+
+/**
+ * action creator for UPDATE_TEXTAREA_BIO
+ * @return {Object} action
+ */
+export const actionUpdateTextAreaBio = (newValue) => ({
+  type: UPDATE_TEXTAREA_BIO,
+  payload: {
+    newValue,
+  },
+});
+
+/**
+ * action creator for SEND_PROFILE
+ * @return {Object} action
+ */
+export const actionSendProfile = (newAvatarFile) => ({
+  type: SEND_PROFILE,
+  payload: {
+    newAvatarFile,
+  },
 });

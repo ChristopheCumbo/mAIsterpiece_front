@@ -1,7 +1,7 @@
 // axios
 import axios from 'axios';
 // actions
-import { CHECK_LOGIN, REGISTER_NEW_USER, actionSaveConnectedUser } from '../actions/user';
+import { CHECK_LOGIN, REGISTER_NEW_USER, SEND_PROFILE, actionSaveConnectedUser } from '../actions/user';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -46,6 +46,40 @@ const userMiddleware = (store) => (next) => async (action) => {
         // on veut enregirstrer dans le state le fait qu'on soit logué
         // on va demander au reducer : dispatch d'une action
         store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case SEND_PROFILE: {
+      const { inputTextareaBio } = store.getState().user;
+
+      const formDataToJson = (formData) => {
+        const jsonObject = {};
+        formData.forEach((value, key) => {
+          jsonObject[key] = value;
+        });
+        return JSON.stringify(jsonObject);
+      };
+
+      try {
+        const formData = new FormData();
+        formData.append('files', action.payload.newAvatarFile);
+        const jsonData = formDataToJson(formData);
+
+        const result = await axios.post('http://localhost:3001', {
+          jsonData,
+          inputTextareaBio,
+        }, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
       }
       catch (e) {
         console.log(e);
