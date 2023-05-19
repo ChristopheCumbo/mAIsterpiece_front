@@ -2,10 +2,12 @@ import axios from 'axios';
 // import { createClient } from 'pexels';
 import {
   LOAD_PICTURES,
+  LOAD_PICTURE_DATAS,
   LOAD_PICTURE_OF_THE_WEEK,
   SEND_NEW_PICTURE,
   SEND_REVIEWS,
   actionReducerSendReviews,
+  actionUpdatePictureDatas,
   actionUpdatePictureOfTheWeek,
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
@@ -74,6 +76,22 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // console.log(result);
         // store the datas of the picture of the week
         store.dispatch(actionUpdatePictureOfTheWeek(result.data));
+      }
+      catch (e) {
+        // error message
+        console.log(e);
+      }
+      break;
+    }
+
+    case LOAD_PICTURE_DATAS: {
+      try {
+        const { id } = action.payload;
+        // request
+        const result = await axios.get(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}`);
+        // console.log(result);
+        // store the datas of the picture
+        store.dispatch(actionUpdatePictureDatas(result.data));
       }
       catch (e) {
         // error message

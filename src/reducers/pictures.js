@@ -5,6 +5,7 @@ import {
   UPDATE_INPUT_ADD_TAGS,
   UPDATE_INPUT_SEARCH_BAR,
   UPDATE_PICTURES_HOMEPAGE,
+  UPDATE_PICTURE_DATAS,
   UPDATE_PICTURE_OF_THE_WEEK,
   UPDATE_SORTING_HOMEPAGE_PICTURES,
 } from '../actions/pictures';
@@ -23,6 +24,10 @@ const initialState = {
   // for controlled inputs when uploading a picture
   inputPrompt: '',
   inputTags: '',
+  pictureZoom: null,
+  // pictureZoom: {
+  //   isLoaded: false,
+  // },
 };
 
 function reducer(state = initialState, action = {}) {
@@ -79,6 +84,13 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         inputTags: action.payload.newValue,
+      };
+
+    case UPDATE_PICTURE_DATAS:
+      // 
+      return {
+        ...state,
+        pictureZoom: { ...action.payload.picture },
       };
 
     default:
