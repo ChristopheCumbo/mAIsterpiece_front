@@ -27,7 +27,8 @@ function ZoomPicture() {
   let picture = useSelector((state) => {
     return state.pictures.listHomePage.find((testedPicture) => {
       // "==" instead of "===" because there is a space after testedPicture.id
-      return testedPicture.id == id;
+      // return testedPicture.id == id;
+      return testedPicture[0].id == id;
     });
   });
   // console.log(picture);
@@ -59,7 +60,8 @@ function ZoomPicture() {
         <PreviousPage />
       </div>
       <ContainerPicture
-        imgSrc={!picture.src ? picture.url : picture.src.large}
+        // imgSrc={!picture.src ? picture.url : picture.src.large}
+        imgSrc={!picture.src ? picture[0].url : picture.src.large}
         imgPrompt="a good picture of myself"
       />
       <div className="zoomPicture__reviewsAndAside">
@@ -67,8 +69,12 @@ function ZoomPicture() {
           <PictureReviews />
         </div>
         <ZoomAside
-          author={!picture.photographer ? '' : picture.photographer}
-          ia="MidJourney"
+          // author={!picture.photographer ? '' : picture.photographer}
+          author={!picture.photographer ? picture.user_pseudo : picture.photographer}
+          avatar={picture[0] ? picture.user_avatar : null}
+          ia={picture[0] ? picture[0].ia.name : null}
+          likes={picture[0] ? picture.nombre_like : 0}
+          reviews={picture[0] ? picture.nombre_review : 0}
         />
       </div>
       <MoreReviewsButton />

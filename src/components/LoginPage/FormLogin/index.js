@@ -2,7 +2,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import des actions type
-import { actionCheckLogin, actionUpdateLoginFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
+import { actionCheckLogin, actionUpdateEmailFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
 
 // import PropTypes from 'prop-types';
 
@@ -11,14 +11,14 @@ import Logo from '../../../assets/proposition_logo.png';
 import './style.scss';
 
 function FormLogin() {
-  const InputLoginFormAuth = useSelector((state) => state.user.inputLoginFormAuth);
+  const InputEmailFormAuth = useSelector((state) => state.user.inputEmailFormAuth);
   const inputPasswordFormAuth = useSelector((state) => state.user.inputPasswordFormAuth);
 
   const dispatch = useDispatch();
 
   // Handlers *************
-  const handleChangeInputLogin = (event) => {
-    dispatch(actionUpdateLoginFormAuth(event.target.value));
+  const handleChangeInputEmail = (event) => {
+    dispatch(actionUpdateEmailFormAuth(event.target.value));
   };
   const handleChangePasswordLogin = (event) => {
     dispatch(actionUpdatePasswordFormAuth(event.target.value));
@@ -38,13 +38,13 @@ function FormLogin() {
       <div>
         <form className="formLogin__input" onSubmit={handleSubmit}>
           <input
-            className="formLogin__login"
+            className="formLogin__email"
             type="text"
-            name="inputLogin"
-            id="inputLogin"
-            placeholder="Login"
-            value={InputLoginFormAuth} // controle en lecture
-            onChange={handleChangeInputLogin}
+            name="inputEmail"
+            id="inputEmail"
+            placeholder="Votre email de connexion"
+            value={InputEmailFormAuth} // controle en lecture
+            onChange={handleChangeInputEmail}
           />
           <input
             className="formLogin__password"

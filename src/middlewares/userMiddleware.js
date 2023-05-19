@@ -7,17 +7,18 @@ const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     // Authentification from the backend
     case CHECK_LOGIN: {
-      const { inputLoginFormAuth, inputPasswordFormAuth } = store.getState().user;
+      const { inputEmailFormAuth, inputPasswordFormAuth } = store.getState().user;
 
       try {
-        const result = await axios.post('http://localhost:3002/login', {
-          inputLoginFormAuth,
-          inputPasswordFormAuth,
+        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/login_check', {
+          username: inputEmailFormAuth,
+          password: inputPasswordFormAuth,
         });
-        console.log(result.data.token);
+        console.log('token du middleware :', result.data.token);
         // on veut enregirstrer dans le state le fait qu'on soit logué
         // on va demander au reducer : dispatch d'une action
-        store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+        // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+        store.dispatch(actionSaveConnectedUser(result.data.token));
       }
       catch (e) {
         console.log(e);
