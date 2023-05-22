@@ -30,7 +30,7 @@ const initialState = {
   userId: '1234',
   pseudo: 'Martin Martin',
   avatar: '',
-  logged: false,
+  logged: true,
   jwt: '',
 };
 

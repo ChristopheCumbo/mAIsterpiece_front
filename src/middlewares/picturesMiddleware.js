@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import { createClient } from 'pexels';
 import {
+  ACTION_TOGGLE_LIKE_API,
   LOAD_PICTURES,
   LOAD_PICTURE_DATAS,
   LOAD_PICTURE_OF_THE_WEEK,
@@ -145,6 +146,29 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           },
         });
         // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_TOGGLE_LIKE_API: {
+      const { jwt } = store.getState().user;
+      // console.log('Middleware JWT : ', jwt);
+      const { id } = action.payload;
+      try {
+        const result = await axios.post(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}/like`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
+        // console.log(result);
       }
       catch (e) {
         console.log(e);
