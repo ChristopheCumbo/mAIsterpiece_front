@@ -25,7 +25,7 @@ function ZoomPicture() {
   const logged = useSelector((state) => state.user.logged);
   const picture = useSelector((state) => state.pictures.pictureZoom);
 
-  console.log('picture dans le state = ', picture);
+  // console.log('picture dans le state = ', picture);
   // Retrieves the picture's id
   const { id } = useParams();
 

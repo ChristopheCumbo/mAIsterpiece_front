@@ -15,18 +15,21 @@ function PictureOfTheWeek() {
     <div className="pictureOfTheWeek">
       <h2>Image de la semaine</h2>
       <Link className="pictureOfTheWeek__imgContainer" to={`/picture/${picture.id}`}>
-        <img className="pictureOfTheWeek__img" src={picture.src.medium} alt="images de la semaine" />
+        {/* <img className="pictureOfTheWeek__img" src={picture.src.medium} alt="images de la semaine" /> */}
+        <img className="pictureOfTheWeek__img" src={picture.url} alt="images de la semaine" />
         <div className="pictureOfTheWeek__imgDatas">
           <div className="pictureOfTheWeek__author">
-            <User />
-            <p>Martin Martin</p>
+            {picture.user_avatar === '' ? <User /> : <img src={picture.user_avatar} alt="" className="gallery__avatarPicture" />}
+            <p>{picture.user_pseudo}</p>
+            {/* <User />
+            <p>Martin Martin</p> */}
           </div>
           <div className="pictureOfTheWeek__imgLikesAndComments">
             <div className="pictureOfTheWeek__imgLikes">
-              167 &nbsp; <Heart />
+              {picture.nombre_like} &nbsp; <Heart />
             </div>
             <div className="pictureOfTheWeek__imgComments">
-              12 &nbsp; <MessageSquare />
+              {picture.nombre_review} &nbsp; <MessageSquare />
             </div>
           </div>
         </div>

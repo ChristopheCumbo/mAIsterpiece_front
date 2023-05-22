@@ -17,7 +17,7 @@ function Gallery() {
   const dispatch = useDispatch();
   // list of images
   const pictures = useSelector((state) => state.pictures.listHomePage);
-  console.log(pictures);
+  // console.log(pictures);
   // id for sorting images
   const sortIdFromState = useSelector((state) => state.pictures.sortHomePageId);
   // extracts the choosen sort

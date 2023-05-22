@@ -67,13 +67,13 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     case LOAD_PICTURE_OF_THE_WEEK: {
       try {
         // request
-        const result = await axios.get('https://api.pexels.com/v1/photos/12488389', {
-          // const result = await axios.get('http://alexandre-longeaud-server.eddi.cloud/picture-of-the-week', {
-          headers: {
-            Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
-          },
-        });
-        // console.log(result);
+        // const result = await axios.get('https://api.pexels.com/v1/photos/12488389', {
+        const result = await axios.get('http://alexandre-longeaud-server.eddi.cloud/api/pictures/week');
+        // headers: {
+        //   Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
+        // },
+        // });
+        // console.log('Image de la semaine : ', result);
         // store the datas of the picture of the week
         store.dispatch(actionUpdatePictureOfTheWeek(result.data));
       }
