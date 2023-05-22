@@ -1,25 +1,33 @@
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { actionToggleLikeAPI } from '../../actions/pictures';
 
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';
-import { useState } from 'react';
 
-function Card({ url, userPseudo, userAvatar, nombreLike, nombreReview }) {
+function Card({ id, url, userPseudo, userAvatar, nombreLike, nombreReview }) {
+  const dispatch = useDispatch();
   // TODO fonction d'initialisation du like si on est connecté
   const [like, setLike] = useState(false);
-  const [nbLikes, setNbLikes]= useState(nombreLike);
+  const [nbLikes, setNbLikes] = useState(nombreLike);
+  // check in the state if the user is logged
+  const isLogged = useSelector((state) => state.user.logged);
 
   const handleToggleLike = (event) => {
     event.preventDefault();
     setLike(!like);
     if (!like) {
       setNbLikes(nbLikes + 1);
-      console.log('nombre de like + = ', nbLikes);
+      // console.log('nombre de like + = ', nbLikes);
     }
     else {
       setNbLikes(nbLikes - 1);
-      console.log('nombre de like - = ', nbLikes);
+      // console.log('nombre de like - = ', nbLikes);
     }
+    // toggle like via API
+    // console.log(id);
+    dispatch(actionToggleLikeAPI(id));
   };
 
   return (
@@ -32,7 +40,7 @@ function Card({ url, userPseudo, userAvatar, nombreLike, nombreReview }) {
         </div>
         <div className="gallery__imgLikesAndComments">
           {/* <div className="gallery__imgLikes"> */}
-          <div className="gallery__imgLikes" onClick={handleToggleLike}>
+          <div className="gallery__imgLikes" onClick={isLogged ? handleToggleLike : null}>
             {nbLikes} &nbsp; <Heart className={like && 'heartFilled'} />
           </div>
           <div className="gallery__imgComments">

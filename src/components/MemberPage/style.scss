@@ -5,6 +5,7 @@
   min-height: 80vh;
   position: relative;
 
+
   @media (width > 480px) {
     border: 2px solid #FF8A00;
     padding: 2rem;
@@ -143,7 +144,7 @@
   width: 100%;
   @media (width > 480px) {
     width: 80%;
-    // max-width: 600px;
+    // max-width: 900px;
   }
   margin: 0 auto;
   display: flex;

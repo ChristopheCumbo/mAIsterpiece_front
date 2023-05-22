@@ -73,6 +73,7 @@ function Gallery() {
           pictures.map((picture) => (
             <Link className="gallery__imgContainer" key={picture[0].id} to={`/picture/${picture[0].id}`}>
               <Card
+                id={picture[0].id}
                 url={picture[0].url}
                 userPseudo={picture.user_pseudo}
                 userAvatar={picture.user_avatar}
