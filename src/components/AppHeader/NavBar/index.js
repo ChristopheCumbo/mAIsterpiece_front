@@ -2,34 +2,40 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import './style.scss';
-import { Menu, X } from 'react-feather';
-import { useSelector } from 'react-redux';
+import { Menu, User, X } from 'react-feather';
+import { useSelector, useDispatch } from 'react-redux';
+import { actionClearJwt } from '../../../actions/user';
 
 function NavBar({ isOpen, setIsOpen }) {
+  // check in the state if the user is logged
+  const isLogged = useSelector((state) => state.user.logged);
+
+  const dispatch = useDispatch();
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // check in the state if the user is logged
-  const isLogged = useSelector((state) => state.user.logged);
+  const handleLogout = (event) => {
+    event.preventDefault();
+    dispatch(actionClearJwt(event.target.value));
+  };
 
   return (
     <div className="navBar__container">
-      {!isLogged ? (
-        <>
-          <Link className="navBar__link" to="/login">Connexion</Link> <span>/&nbsp;</span>
-          <Link className="navBar__link" to="/register">Inscription</Link>
-        </>
-
-      ) : (
-        <Link className="navBar__link" to="">Deconnexion</Link>
-      )}
-     
-    {isLogged && (
-        <Link className="navBar__link" to="">Deconnexion</Link>
-
-      )}
-
+      {!isLogged
+        ? (
+          <>
+            <Link className="navBar__link" to="/login">Connexion</Link> <span>/&nbsp;</span>
+            <Link className="navBar__link" to="/register">Inscription</Link>
+          </>
+        )
+        : (
+          <>
+            <User className="logo_user" />
+            <Link onClick={handleLogout} className="navBar__link" to="">Deconnexion</Link>
+          </>
+        )}
       <div className="navBar__container__mobile">
         <button type="button" onClick={toggleMenu}>
           {isOpen ? <X /> : <Menu />}
