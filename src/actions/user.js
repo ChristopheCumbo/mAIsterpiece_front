@@ -1,5 +1,5 @@
 // Action type Login Page
-export const UPDATE_LOGIN_FORM_AUTH = 'UPDATE_LOGIN_FORM_AUTH';
+export const UPDATE_EMAIL_FORM_AUTH = 'UPDATE_EMAIL_FORM_AUTH';
 export const UPDATE_PASSWORD_AUTH = 'UPDATE_LOGIN_PASSWORD_AUTH';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const SAVE_CONNECTED_USER = 'SAVE_CONNECTED_USER';
@@ -19,8 +19,8 @@ export const SEND_PROFILE = 'SEND_PROFILE';
  * action creator qui renvoie l'action UPDATE_LOGIN_FORM_AUTH
  * @return {Object} action
  */
-export const actionUpdateLoginFormAuth = (newValue) => ({
-  type: UPDATE_LOGIN_FORM_AUTH,
+export const actionUpdateEmailFormAuth = (newValue) => ({
+  type: UPDATE_EMAIL_FORM_AUTH,
   payload: {
     newValue,
   },
@@ -50,10 +50,16 @@ export const actionCheckLogin = () => ({
  * @param {String} avatar and token jwt
  * @return {Action} l'action à dispatcher
  */
-export const actionSaveConnectedUser = (avatar, jwt) => ({
+// export const actionSaveConnectedUser = (avatar, jwt) => ({
+//   type: SAVE_CONNECTED_USER,
+//   payload: {
+//     avatar,
+//     jwt,
+//   },
+// });
+export const actionSaveConnectedUser = (jwt) => ({
   type: SAVE_CONNECTED_USER,
   payload: {
-    avatar,
     jwt,
   },
 });

@@ -1,7 +1,7 @@
 // import pour la LoginPage
 import {
   SAVE_CONNECTED_USER,
-  UPDATE_LOGIN_FORM_AUTH,
+  UPDATE_EMAIL_FORM_AUTH,
   UPDATE_PASSWORD_AUTH,
   UPDATE_TEXTAREA_BIO,
 } from '../actions/user';
@@ -16,7 +16,7 @@ import {
 
 const initialState = {
   // state input for connexion page
-  inputLoginFormAuth: '',
+  inputEmailFormAuth: '',
   inputPasswordFormAuth: '',
   // state input for register page
   inputLoginFormRegister: '',
@@ -29,16 +29,17 @@ const initialState = {
   userId: '1234',
   pseudo: 'Martin Martin',
   avatar: '',
-  logged: true,
+  logged: false,
+  jwt: '',
 };
 
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    // case concernant la LoginPage
-    case UPDATE_LOGIN_FORM_AUTH:
+    // case for LoginPage
+    case UPDATE_EMAIL_FORM_AUTH:
       return {
-        ...state, // on recopie tout ce qu'il y a dans le state
-        inputLoginFormAuth: action.payload.newValue,
+        ...state,
+        inputEmailFormAuth: action.payload.newValue,
       };
 
     case UPDATE_PASSWORD_AUTH:
@@ -48,13 +49,15 @@ function reducer(state = initialState, action = {}) {
       };
 
     case SAVE_CONNECTED_USER:
+      console.log('reducer jwt', action.payload.jwt);
+      console.log('reducer email', state.inputEmailFormAuth);
       return {
         ...state,
         logged: true,
-        pseudo: state.user.inputLoginFormAuth,
         jwt: action.payload.jwt,
-        avatar: action.payload.avatar,
-        inputLoginFormAuth: '',
+        // pseudo: state.user.inputLoginFormAuth,
+        // avatar: action.payload.avatar,
+        inputEmailFormAuth: '',
         inputPasswordFormAuth: '',
       };
 

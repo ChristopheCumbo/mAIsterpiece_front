@@ -8,6 +8,8 @@ export const LOAD_PICTURES_FILTERED = 'LOAD_PICTURES_FILTERED';
 export const SEND_REVIEWS = 'SEND_REVIEWS';
 export const REDUCER_SEND_REVIEWS = 'REDUCER_SEND_REVIEWS';
 export const SEND_NEW_PICTURE = 'SEND_NEW_PICTURE';
+export const LOAD_PICTURE_DATAS = 'LOAD_PICTURE_DATAS';
+export const UPDATE_PICTURE_DATAS = 'UPDATE_PICTURE_DATAS';
 // for controlled fields
 export const UPDATE_INPUT_ADD_PROMPT = 'UPDATE_INPUT_ADD_PROMPT';
 export const UPDATE_INPUT_ADD_TAGS = 'UPDATE_INPUT_ADD_TAGS';
@@ -115,3 +117,28 @@ export const actionSubmitNewPicture = (newPictureFile) => ({
     newPictureFile,
   },
 });
+
+/**
+ * action creator for retrieving via API one picture's datas
+ * @return {Object} action
+ */
+export const actionLoadPictureDatas = (id) => ({
+  type: LOAD_PICTURE_DATAS,
+  payload: {
+    id,
+  },
+});
+
+/**
+ * action creator for updating one picture's datas
+ * @return {Object} action
+ */
+export const actionUpdatePictureDatas = (picture) => ({
+  type: UPDATE_PICTURE_DATAS,
+  payload: {
+    picture,
+  },
+});
+
+
+

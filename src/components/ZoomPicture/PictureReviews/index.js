@@ -1,29 +1,31 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
-function PictureReviews() {
+function PictureReviews({ reviews }) {
+  // console.log('reviews = ', reviews);
   return (
     <div className="zoomPicture__reviews">
       <h2>Commentaires</h2>
-      <div className="zoomPicture__containerReviews">
-        <p className="zoomPicture__login">Le_colorieur_fou</p>
-        <p className="zoomPicture__textReviews">Jolie grenouille j'aime beaucoup Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil in dolorum beatae! Quod ex nesciunt ullam voluptatem cupiditate libero aspernatur! Amet consequatur ad voluptatum recusandae!</p>
-      </div>
-      <div className="zoomPicture__containerReviews">
-        <p className="zoomPicture__login">Le_colorieur_fou</p>
-        <p className="zoomPicture__textReviews">Jolie grenouille j'aime beaucoup</p>
-      </div>
-      <div className="zoomPicture__containerReviews">
-        <p className="zoomPicture__login">Le_colorieur_fou</p>
-        <p className="zoomPicture__textReviews">Jolie grenouille j'aime beaucoup Exercitationem unde officia porro veritatis dignissimos eum, id iste dicta fugit neque voluptatem pariatur architecto minus commodi est magni velit doloremque quos! Corrupti accusantium ullam in non odit a, blanditiis hic at labore qui necessitatibus vitae.</p>
-      </div>
-    </div>
+      {
+        reviews.map((review, indexMap) => (
+          <div className="zoomPicture__containerReviews" key={indexMap}>
+            {/* <div className="zoomPicture__containerReviews" key={review.review_content}> */}
+            <p className="zoomPicture__login">{review.reviewer_pseudo}</p>
+            <p className="zoomPicture__textReviews">{review.review_content}</p>
+          </div>
+        ))
+      }
+    </div >
   );
 }
 
 PictureReviews.propTypes = {
+  reviews: PropTypes.array,
+};
 
+PictureReviews.defaultProps = {
+  reviews: [],
 };
 
 export default PictureReviews;

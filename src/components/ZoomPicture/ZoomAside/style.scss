@@ -19,7 +19,13 @@
   padding-bottom: 0.4rem;
   font-size: 1rem;
   color: black;
+  width: 32px;
+  max-height: 32px;
 
+}
+
+.zoomPicture__liked {
+  fill: #FF8A00;
 }
 
 .zoomPicture__zoomContentAside {
