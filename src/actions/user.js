@@ -12,8 +12,13 @@ export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
 // Profile
 export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
 export const SEND_PROFILE = 'SEND_PROFILE';
+export const CLEAR_JWT = 'CLEAR_JWT';
 
 // - action creators LoginPage
+
+export const actionClearJwt = () => ({
+  type: 'CLEAR_JWT',
+});
 
 /**
  * action creator qui renvoie l'action UPDATE_LOGIN_FORM_AUTH

@@ -10,6 +10,8 @@ export const REDUCER_SEND_REVIEWS = 'REDUCER_SEND_REVIEWS';
 export const SEND_NEW_PICTURE = 'SEND_NEW_PICTURE';
 export const LOAD_PICTURE_DATAS = 'LOAD_PICTURE_DATAS';
 export const UPDATE_PICTURE_DATAS = 'UPDATE_PICTURE_DATAS';
+export const ACTION_TOGGLE_LIKE_API = 'ACTION_TOGGLE_LIKE_API';
+
 // for controlled fields
 export const UPDATE_INPUT_ADD_PROMPT = 'UPDATE_INPUT_ADD_PROMPT';
 export const UPDATE_INPUT_ADD_TAGS = 'UPDATE_INPUT_ADD_TAGS';
@@ -140,5 +142,13 @@ export const actionUpdatePictureDatas = (picture) => ({
   },
 });
 
-
-
+/**
+ * action creator for toggle the like of a picture in database
+ * @return {Object} action
+ */
+export const actionToggleLikeAPI = (id) => ({
+  type: ACTION_TOGGLE_LIKE_API,
+  payload: {
+    id,
+  },
+});

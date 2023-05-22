@@ -2,27 +2,57 @@ import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 import './style.scss';
-import { Menu, X } from 'react-feather';
+import { Menu, User, X } from 'react-feather';
+import { useSelector, useDispatch } from 'react-redux';
+import { actionClearJwt } from '../../../actions/user';
 
 function NavBar({ isOpen, setIsOpen }) {
+  // check in the state if the user is logged
+  const isLogged = useSelector((state) => state.user.logged);
+
+  const dispatch = useDispatch();
+
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
+  const handleLogout = (event) => {
+    event.preventDefault();
+    dispatch(actionClearJwt(event.target.value));
+  };
+
   return (
     <div className="navBar__container">
-      <Link className="navBar__link" to="/login">Connexion</Link> <span>/&nbsp;</span>
-      <Link className="navBar__link" to="/register">Inscription</Link>
-
+      {!isLogged
+        ? (
+          <>
+            <Link className="navBar__link" to="/login">Connexion</Link> <span>/&nbsp;</span>
+            <Link className="navBar__link" to="/register">Inscription</Link>
+          </>
+        )
+        : (
+          <>
+            <User className="logo_user" />
+            <Link onClick={handleLogout} className="navBar__link" to="">Deconnexion</Link>
+          </>
+        )}
       <div className="navBar__container__mobile">
         <button type="button" onClick={toggleMenu}>
           {isOpen ? <X /> : <Menu />}
         </button>
         <ul onClick={toggleMenu} className={`${isOpen ? '' : 'li-close'}`}>
-          <li> <Link to="/register">Inscription</Link></li>
-          <li> <Link to="/login">Connexion</Link></li>
+          {!isLogged && (
+            <>
+              <li> <Link to="/register">Inscription</Link></li>
+              <li> <Link to="/login">Connexion</Link></li>
+            </>
+          )}
+          {isLogged && (
+            <li><Link to="">Deconnexion</Link></li>
+          )}
           <li> <Link to="/contact">Contact</Link></li>
           <li> <Link to="/mentionslegales">Mention Legales</Link></li>
+
         </ul>
       </div>
 
