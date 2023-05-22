@@ -1,6 +1,6 @@
 // imports from react-redux and react-router-dom
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import des actions type
 import { actionCheckLogin, actionUpdateEmailFormAuth, actionUpdatePasswordFormAuth } from '../../../actions/user';
 
@@ -15,6 +15,7 @@ function FormLogin() {
   const inputPasswordFormAuth = useSelector((state) => state.user.inputPasswordFormAuth);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Handlers *************
   const handleChangeInputEmail = (event) => {
@@ -26,6 +27,7 @@ function FormLogin() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(actionCheckLogin());
+    navigate(-1);
   };
 
   return (

@@ -75,6 +75,7 @@ function Gallery() {
               <Card
                 id={picture[0].id}
                 url={picture[0].url}
+                userId={picture.user_id}
                 userPseudo={picture.user_pseudo}
                 userAvatar={picture.user_avatar}
                 nombreLike={picture.nombre_like}

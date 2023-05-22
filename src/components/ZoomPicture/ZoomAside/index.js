@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { AlertTriangle, Heart, MessageSquare, User } from 'react-feather';
 import AlertModal from '../../AlertModal';
 
-function ZoomAside({ author, avatar, ia, iaLink, likes, reviews, views }) {
+function ZoomAside({ author, authorId, avatar, ia, iaLink, likes, reviews, views }) {
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
     setIsVisible(!isVisible);
@@ -22,7 +22,8 @@ function ZoomAside({ author, avatar, ia, iaLink, likes, reviews, views }) {
             ? <User className="zoomPicture__zoomTitleAside" />
             : <img src={avatar} alt="avatar du créateur" className="zoomPicture__zoomTitleAside" />
         }
-        <p className="zoomPicture__zoomContentAside">{author}</p>
+        {/* <p className="zoomPicture__zoomContentAside">{author}</p> */}
+        <Link to={`/membre/${authorId}`} className="zoomPicture__zoomContentAside">{author}</Link>
       </div>
       <div className="zoomPicture__zoomInfo">
         <p className="zoomPicture__zoomTitleAside">IA</p>

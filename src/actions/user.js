@@ -13,6 +13,9 @@ export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
 export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
 export const SEND_PROFILE = 'SEND_PROFILE';
 export const CLEAR_JWT = 'CLEAR_JWT';
+// for member page
+export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
+export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
 
 // - action creators LoginPage
 
@@ -142,4 +145,21 @@ export const actionSendProfile = (newAvatarFile) => ({
   payload: {
     newAvatarFile,
   },
+});
+
+/**
+ * Loading one member's pictures
+*/
+export const actionLoadMemberPictures = (id) => ({
+  type: LOAD_MEMBER_PICTURES,
+  payload: id,
+});
+
+/**
+ * Updating one member's pictures
+ * @param { Array } listMemberPicture list of pictures from the id's member
+*/
+export const actionUpdateMemberPictures = (listMemberPicture) => ({
+  type: UPDATE_MEMBER_PICTURES,
+  payload: listMemberPicture,
 });

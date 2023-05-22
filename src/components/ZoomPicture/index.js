@@ -80,6 +80,7 @@ function ZoomPicture() {
         </div>
         <ZoomAside
           author={(picture !== null) ? picture.user_pseudo : ''}
+          authorId={(picture !== null) ? picture.user_id : ''}
           avatar={(picture !== null) ? picture.user_avatar : null}
           ia={(picture !== null) ? picture.ia_name : null}
           iaLink={(picture !== null) ? picture.ia_link : null}
