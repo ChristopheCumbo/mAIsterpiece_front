@@ -48,6 +48,7 @@
  }
 
  .navBar__link {
+  margin-left: 0.5rem;
   @media (width < 480px) {
     display: none;
   }
