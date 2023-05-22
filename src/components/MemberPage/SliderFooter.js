@@ -1,20 +1,22 @@
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.scss';
 import { Heart, MessageSquare } from 'react-feather';
 
-function SliderFooter({ photographer }) {
-  console.log('FOOTER = ');
-  console.log(photographer);
+function SliderFooter(picture) {
+  // console.log('FOOTER = ');
+  // console.log('picture dans SliderFooter : ', picture);
   return (
     <div className="memberPage__sliderFooter">
-      {/* Martin Martin & <a href="#">MidJourney</a> */}
-      {photographer}  <a href="#">MidJourney</a>
+      <Link to={picture.ia_link} className="memberPage__sliderFooter--ia">{picture.ia_name}</Link>
+      {/* <Link to={''} className="zoomPicture__zoomContentAside">IA</Link> */}
+      {/* {photographer}  <a href="#">MidJourney</a> */}
       <div className="memberPage__sliderFooter--likes">
-        155 &nbsp; <Heart />
+        {picture.likesCount} &nbsp; <Heart />
       </div>
       <div className="memberPage__sliderFooter--comments">
-        18 &nbsp; <MessageSquare />
+        {picture.reviewsCount} &nbsp; <MessageSquare />
       </div>
     </div>
 
@@ -22,11 +24,10 @@ function SliderFooter({ photographer }) {
 }
 
 SliderFooter.propTypes = {
-  photographer: PropTypes.string,
 };
 
 SliderFooter.defaultProps = {
-  photographer: '',
+
 };
 
 export default SliderFooter;

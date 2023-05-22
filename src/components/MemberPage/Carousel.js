@@ -25,12 +25,13 @@ import { CloudLightning, Heart, MessageSquare } from 'react-feather';
 
 function Carousel() {
   // list of this member's images in the state
-  const pictures = useSelector((state) => state.pictures.listHomePage);
+  // const pictures = useSelector((state) => state.pictures.listHomePage);
+  const pictures = useSelector((state) => state.user.memberListOfPictures.pictures);
 
   const [slideIndex, setSlideIndex] = useState(0);
 
   // console.log("PICTURES = ");
-  // console.log(pictures);
+  // console.log("PICTURES = ", pictures);
 
   return (
     <>
@@ -55,10 +56,10 @@ function Carousel() {
         >
           {
             pictures.map((picture) => (
-              <SwiperSlide key={picture.id}>
-                <Link to={`/picture/${picture.id}`}>
+              <SwiperSlide key={picture.picture_id}>
+                <Link to={`/picture/${picture.picture_id}`}>
                   <img
-                    src={picture.src.large}
+                    src={picture.picture_url}
                     alt=""
                   />
                 </Link>
@@ -72,7 +73,7 @@ function Carousel() {
 
       </div>
       {
-        (pictures !== [])
+        (pictures.length !== 0)
         && <SliderFooter {...pictures[slideIndex]} />
       }
     </>

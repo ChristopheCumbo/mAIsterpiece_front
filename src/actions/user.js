@@ -1,5 +1,5 @@
 // Action type Login Page
-export const UPDATE_LOGIN_FORM_AUTH = 'UPDATE_LOGIN_FORM_AUTH';
+export const UPDATE_EMAIL_FORM_AUTH = 'UPDATE_EMAIL_FORM_AUTH';
 export const UPDATE_PASSWORD_AUTH = 'UPDATE_LOGIN_PASSWORD_AUTH';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const SAVE_CONNECTED_USER = 'SAVE_CONNECTED_USER';
@@ -9,15 +9,26 @@ export const UPDATE_EMAIL_FORM_REGISTER = 'UPDATE_EMAIL_FORM_REGISTER';
 export const UPDATE_PASSWORD_REGISTER = 'UPDATE_PASSWORD_REGISTER';
 export const UPDATE_CONFIRM_PASSWORD_REGISTER = 'UPDATE_CONFIRM_PASSWORD_REGISTER';
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
+// Profile
+export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
+export const SEND_PROFILE = 'SEND_PROFILE';
+export const CLEAR_JWT = 'CLEAR_JWT';
+// for member page
+export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
+export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
 
 // - action creators LoginPage
+
+export const actionClearJwt = () => ({
+  type: 'CLEAR_JWT',
+});
 
 /**
  * action creator qui renvoie l'action UPDATE_LOGIN_FORM_AUTH
  * @return {Object} action
  */
-export const actionUpdateLoginFormAuth = (newValue) => ({
-  type: UPDATE_LOGIN_FORM_AUTH,
+export const actionUpdateEmailFormAuth = (newValue) => ({
+  type: UPDATE_EMAIL_FORM_AUTH,
   payload: {
     newValue,
   },
@@ -47,10 +58,16 @@ export const actionCheckLogin = () => ({
  * @param {String} avatar and token jwt
  * @return {Action} l'action à dispatcher
  */
-export const actionSaveConnectedUser = (avatar, jwt) => ({
+// export const actionSaveConnectedUser = (avatar, jwt) => ({
+//   type: SAVE_CONNECTED_USER,
+//   payload: {
+//     avatar,
+//     jwt,
+//   },
+// });
+export const actionSaveConnectedUser = (jwt) => ({
   type: SAVE_CONNECTED_USER,
   payload: {
-    avatar,
     jwt,
   },
 });
@@ -106,4 +123,43 @@ export const actionUpdateConfirmPasswordFormRegister = (newValue) => ({
  */
 export const actionRegister = () => ({
   type: REGISTER_NEW_USER,
+});
+
+/**
+ * action creator for UPDATE_TEXTAREA_BIO
+ * @return {Object} action
+ */
+export const actionUpdateTextAreaBio = (newValue) => ({
+  type: UPDATE_TEXTAREA_BIO,
+  payload: {
+    newValue,
+  },
+});
+
+/**
+ * action creator for SEND_PROFILE
+ * @return {Object} action
+ */
+export const actionSendProfile = (newAvatarFile) => ({
+  type: SEND_PROFILE,
+  payload: {
+    newAvatarFile,
+  },
+});
+
+/**
+ * Loading one member's pictures
+*/
+export const actionLoadMemberPictures = (id) => ({
+  type: LOAD_MEMBER_PICTURES,
+  payload: id,
+});
+
+/**
+ * Updating one member's pictures
+ * @param { Array } listMemberPicture list of pictures from the id's member
+*/
+export const actionUpdateMemberPictures = (listMemberPicture) => ({
+  type: UPDATE_MEMBER_PICTURES,
+  payload: listMemberPicture,
 });

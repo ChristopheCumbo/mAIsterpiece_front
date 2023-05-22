@@ -1,8 +1,11 @@
 import {
   REDUCER_SEND_REVIEWS,
   UPDATE_FORM_ADD_REVIEWS,
+  UPDATE_INPUT_ADD_PROMPT,
+  UPDATE_INPUT_ADD_TAGS,
   UPDATE_INPUT_SEARCH_BAR,
   UPDATE_PICTURES_HOMEPAGE,
+  UPDATE_PICTURE_DATAS,
   UPDATE_PICTURE_OF_THE_WEEK,
   UPDATE_SORTING_HOMEPAGE_PICTURES,
 } from '../actions/pictures';
@@ -18,6 +21,13 @@ const initialState = {
   sortHomePageId: 'picturesMostRecents',
   inputSearchBar: '',
   inputFormReviews: '',
+  // for controlled inputs when uploading a picture
+  inputPrompt: '',
+  inputTags: '',
+  pictureZoom: null,
+  // pictureZoom: {
+  //   isLoaded: false,
+  // },
 };
 
 function reducer(state = initialState, action = {}) {
@@ -46,13 +56,13 @@ function reducer(state = initialState, action = {}) {
 
     case UPDATE_INPUT_SEARCH_BAR:
       return {
-        ...state, // on recopie tout ce qu'il y a dans le state
+        ...state,
         inputSearchBar: action.payload.newValue,
       };
 
     case UPDATE_FORM_ADD_REVIEWS:
       return {
-        ...state, // on recopie tout ce qu'il y a dans le state
+        ...state,
         inputFormReviews: action.payload.newValue,
       };
 
@@ -60,6 +70,27 @@ function reducer(state = initialState, action = {}) {
       // after the first call to API to get the homepage's pictures
       return {
         ...state,
+      };
+
+    case UPDATE_INPUT_ADD_PROMPT:
+      // controlled field for adding the prompt when adding a new picture
+      return {
+        ...state,
+        inputPrompt: action.payload.newValue,
+      };
+
+    case UPDATE_INPUT_ADD_TAGS:
+      // controlled field for adding tags when adding a new picture
+      return {
+        ...state,
+        inputTags: action.payload.newValue,
+      };
+
+    case UPDATE_PICTURE_DATAS:
+      // 
+      return {
+        ...state,
+        pictureZoom: { ...action.payload.picture },
       };
 
     default:

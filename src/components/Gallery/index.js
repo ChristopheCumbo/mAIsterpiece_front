@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 // actions
 import { LOAD_PICTURES_FILTERED, actionLoadPictures, actionLoadPicturesFiltered, actionUpdateSortingHomepagePictures } from '../../actions/pictures';
+// Compoenents
+import Card from './Card';
 // import list of sorts
 import data from '../../data';
 // style and figures
@@ -17,7 +19,7 @@ function Gallery() {
   const dispatch = useDispatch();
   // list of images
   const pictures = useSelector((state) => state.pictures.listHomePage);
-  console.log(pictures);
+  // console.log(pictures);
   // id for sorting images
   const sortIdFromState = useSelector((state) => state.pictures.sortHomePageId);
   // extracts the choosen sort
@@ -69,23 +71,32 @@ function Gallery() {
       <div className="gallery__content">
         {
           pictures.map((picture) => (
-            <Link className="gallery__imgContainer" key={picture.id} to={`/picture/${picture.id}`}>
-              <img className="gallery__img" src={picture.src.medium} alt="" />
-              {/* <img className="gallery__img" src={picture.url} alt="" /> */}
+            <Link className="gallery__imgContainer" key={picture[0].id} to={`/picture/${picture[0].id}`}>
+              <Card
+                id={picture[0].id}
+                url={picture[0].url}
+                userId={picture.user_id}
+                userPseudo={picture.user_pseudo}
+                userAvatar={picture.user_avatar}
+                nombreLike={picture.nombre_like}
+                nombreReview={picture.nombre_review}
+              />
+              {/* <img className="gallery__img" src={picture.src.medium} alt="" /> */}
+              {/* <img className="gallery__img" src={picture[0].url} alt="" />
               <div className="gallery__imgDatas">
                 <div className="gallery__author">
-                  <User />
-                  <p>Martin Martin</p>
+                  { picture.user_avatar ==='' ? <User /> : <img src={picture.user_avatar} alt="" className="gallery__avatarPicture" />}
+                  <p>{picture.user_pseudo}</p>
                 </div>
                 <div className="gallery__imgLikesAndComments">
-                  <div className="gallery__imgLikes">
-                    167 &nbsp; <Heart />
+                  <div className="gallery__imgLikes" onClick={handleToggleLike}>
+                    {picture.nombre_like} &nbsp; <Heart className="heartFilled"/>
                   </div>
                   <div className="gallery__imgComments">
-                    12 &nbsp; <MessageSquare />
+                    {picture.nombre_review} &nbsp; <MessageSquare />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </Link>
           ))
         }
