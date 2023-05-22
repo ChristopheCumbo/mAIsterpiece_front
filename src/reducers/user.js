@@ -3,6 +3,7 @@ import {
   CLEAR_JWT,
   SAVE_CONNECTED_USER,
   UPDATE_EMAIL_FORM_AUTH,
+  UPDATE_MEMBER_PICTURES,
   UPDATE_PASSWORD_AUTH,
   UPDATE_TEXTAREA_BIO,
 } from '../actions/user';
@@ -27,11 +28,13 @@ const initialState = {
   // state input for bio's textarea
   inputTextareaBio: 'Présentez-vous aux autres utilisateurs',
   // state others
-  userId: '1234',
+  userId: '1',
   pseudo: 'Martin Martin',
   avatar: '',
   logged: true,
   jwt: '',
+  // state for member page
+  memberListOfPictures: [],
 };
 
 function reducer(state = initialState, action = {}) {
@@ -99,6 +102,12 @@ function reducer(state = initialState, action = {}) {
         ...state,
         jwt: '',
         logged: false,
+      };
+
+    case UPDATE_MEMBER_PICTURES:
+      return {
+        ...state,
+        memberListOfPictures: action.payload,
       };
 
     default:

@@ -1,7 +1,7 @@
 // axios
 import axios from 'axios';
 // actions
-import { CHECK_LOGIN, REGISTER_NEW_USER, SEND_PROFILE, actionSaveConnectedUser } from '../actions/user';
+import { CHECK_LOGIN, LOAD_MEMBER_PICTURES, REGISTER_NEW_USER, SEND_PROFILE, actionSaveConnectedUser, actionUpdateMemberPictures } from '../actions/user';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -87,6 +87,23 @@ const userMiddleware = (store) => (next) => async (action) => {
         // afficher un message d'erreur
       }
 
+      break;
+    }
+
+    case LOAD_MEMBER_PICTURES: {
+      try {
+        const id = action.payload;
+        // console.log('MiddleWare user id = ', id);
+        // request
+        const result = await axios.get(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account`);
+        // console.log('Middleware User, Load Member pictures : ', result);
+        // store the datas of the picture
+        store.dispatch(actionUpdateMemberPictures(result.data));
+      }
+      catch (e) {
+        // error message
+        console.log(e);
+      }
       break;
     }
 

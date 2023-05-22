@@ -99,53 +99,55 @@
 }
 
 // .memberPage__provider {
-  // min-height: 500px;
-  // width: calc(100vw + 32px);
+// min-height: 500px;
+// width: calc(100vw + 32px);
+
+// @media (width > 480px) {
+//   width: 100%;
+//   max-width: 600px;
+//   margin: 0 auto;
+// }
+
+.memberPage__sliderFooter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  // width: calc(100vw - 33px);
+  // transform: translateX(-32px);
 
   // @media (width > 480px) {
-  //   width: 100%;
-  //   max-width: 600px;
-  //   margin: 0 auto;
+  width: 100%;
+  //   transform: none;
   // }
 
-  .memberPage__sliderFooter {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  // border-left: 2px solid #ff8a00;
+  border-bottom: 2px solid #ff8a00;
+  // border-right: 2px solid #ff8a00;
+  font-weight: 600;
+
+  &--likes,
+  &--comments {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-items: center;
-    // width: calc(100vw - 33px);
-    // transform: translateX(-32px);
-
-    // @media (width > 480px) {
-      width: 100%;
-    //   transform: none;
-    // }
-
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 1rem 1rem;
-    // border-left: 2px solid #ff8a00;
-    border-bottom: 2px solid #ff8a00;
-    // border-right: 2px solid #ff8a00;
-    font-weight: 600;
-
-    &--likes,
-    &--comments {
-      display: flex;
-      flex-direction: row;
-      justify-content: flex-end;
-      align-items: center;
-    }
   }
+}
 
 // }
 
 .memberPage__sliderContainer {
-  width: 100%;
+  max-width: 100%;
+
   @media (width > 480px) {
-    width: 80%;
+    max-width: 80%;
     // max-width: 900px;
   }
+
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -164,17 +166,32 @@
   // }
 }
 
+.memberPage__SwiperContainer {
+  // background-color: brown;
+  // width: calc(100vw + 32px);
+  // max-height: 200px;
+
+  @media (width > 480px) {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+}
+
+img {
+  width: 100%;
+}
+
 // Styles for overriding "Swiper" css
 
-.swiper-slide {
-  // background-color: #F0F;
-  display: flex !important;
-  justify-content: center;
-}
+// .swiper-slide {
+//   // background-color: #F0F;
+//   display: flex !important;
+//   justify-content: center;
+// }
 
 .swiper-button-next,
 .swiper-button-prev {
-  color:  black !important;
+  color: black !important;
 }
 
 // .memberPage__slider {
