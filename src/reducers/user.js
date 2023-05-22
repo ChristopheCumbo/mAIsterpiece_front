@@ -1,5 +1,6 @@
 // import pour la LoginPage
 import {
+  CLEAR_JWT,
   SAVE_CONNECTED_USER,
   UPDATE_EMAIL_FORM_AUTH,
   UPDATE_PASSWORD_AUTH,
@@ -91,6 +92,13 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         inputTextareaBio: action.payload.newValue,
+      };
+
+    case 'CLEAR_JWT':
+      return {
+        ...state,
+        jwt: '',
+        logged: false,
       };
 
     default:
