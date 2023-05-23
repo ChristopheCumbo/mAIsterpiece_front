@@ -1,7 +1,9 @@
 // import pour la LoginPage
 import {
   CLEAR_JWT,
+  CLEAR_REGISTER_FIELDS,
   SAVE_CONNECTED_USER,
+  SAVE_INFOS_CONNECTED_USER,
   UPDATE_EMAIL_FORM_AUTH,
   UPDATE_MEMBER_PICTURES,
   UPDATE_PASSWORD_AUTH,
@@ -17,17 +19,20 @@ import {
   from '../actions/user';
 
 const initialState = {
-  // state input for connexion page
+  // inputs for connexion page
   inputEmailFormAuth: '',
   inputPasswordFormAuth: '',
-  // state input for register page
+  // inputs for register page
   inputLoginFormRegister: '',
   inputEmailFormRegister: '',
   inputPasswordFormRegister: '',
   inputConfirmPasswordFormRegister: '',
-  // state input for bio's textarea
+  // first connexion after registered
+  firstConnection: false,
+  // input for bio's textarea
   inputTextareaBio: 'Présentez-vous aux autres utilisateurs',
-  // state others
+  // others
+  connectedUser: [],
   userId: '1',
   pseudo: 'Martin Martin',
   avatar: '',
@@ -53,8 +58,8 @@ function reducer(state = initialState, action = {}) {
       };
 
     case SAVE_CONNECTED_USER:
-      console.log('reducer jwt', action.payload.jwt);
-      console.log('reducer email', state.inputEmailFormAuth);
+      // console.log('reducer jwt', action.payload.jwt);
+      // console.log('reducer email', state.inputEmailFormAuth);
       return {
         ...state,
         logged: true,
@@ -97,17 +102,34 @@ function reducer(state = initialState, action = {}) {
         inputTextareaBio: action.payload.newValue,
       };
 
-    case 'CLEAR_JWT':
+    case CLEAR_JWT:
       return {
         ...state,
         jwt: '',
         logged: false,
+        firstConnection: false,
       };
 
     case UPDATE_MEMBER_PICTURES:
       return {
         ...state,
         memberListOfPictures: action.payload,
+      };
+
+    case CLEAR_REGISTER_FIELDS:
+      return {
+        ...state,
+        inputLoginFormRegister: '',
+        inputEmailFormRegister: '',
+        inputPasswordFormRegister: '',
+        inputConfirmPasswordFormRegister: '',
+        firstConnection: true,
+      };
+
+    case SAVE_INFOS_CONNECTED_USER:
+      return {
+        ...state,
+        connectedUser: action.payload,
       };
 
     default:
