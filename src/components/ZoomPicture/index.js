@@ -24,6 +24,7 @@ function ZoomPicture() {
   const dispatch = useDispatch();
   const logged = useSelector((state) => state.user.logged);
   const picture = useSelector((state) => state.pictures.pictureZoom);
+  console.log(picture);
 
   // console.log('picture dans le state = ', picture);
   // Retrieves the picture's id
@@ -91,7 +92,7 @@ function ZoomPicture() {
         />
       </div>
       <MoreReviewsButton />
-      {logged && <AddReviews />}
+      {logged && <AddReviews pictureId={picture.id} />}
     </div>
   );
 }

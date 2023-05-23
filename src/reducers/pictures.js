@@ -70,6 +70,7 @@ function reducer(state = initialState, action = {}) {
       // after the first call to API to get the homepage's pictures
       return {
         ...state,
+        inputFormReviews: '',
       };
 
     case UPDATE_INPUT_ADD_PROMPT:
