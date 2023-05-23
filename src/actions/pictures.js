@@ -90,8 +90,11 @@ export const actionUpdateFormAddReviews = (newValue) => ({
   },
 });
 
-export const actionSendReviews = () => ({
+export const actionSendReviews = (id) => ({
   type: SEND_REVIEWS,
+  payload: {
+    id,
+  },
 });
 
 export const actionReducerSendReviews = () => ({

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actionSendReviews, actionUpdateFormAddReviews } from '../../../actions/pictures';
 import './style.scss';
 
-function AddReviews() {
+function AddReviews({ pictureId }) {
   const inputFormReviews = useSelector((state) => state.pictures.inputFormReviews);
 
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ function AddReviews() {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    dispatch(actionSendReviews());
+    dispatch(actionSendReviews(pictureId));
   };
 
   return (

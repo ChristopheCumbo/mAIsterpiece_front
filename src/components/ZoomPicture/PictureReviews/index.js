@@ -16,7 +16,7 @@ function PictureReviews({ reviews }) {
           </div>
         ))
       }
-    </div >
+    </div>
   );
 }
 

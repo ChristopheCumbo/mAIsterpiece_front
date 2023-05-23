@@ -103,22 +103,31 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
     case SEND_REVIEWS: {
       const { inputFormReviews } = store.getState().pictures;
+      const { jwt } = store.getState().user;
 
       try {
-        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/picture/id', {
-          inputFormReviews,
-        });
-        // console.log('SEND_REVIEWS');
+        const { id } = action.payload;
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}/review`,
+          {
+            content: inputFormReviews,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
 
         store.dispatch(actionReducerSendReviews());
-      }
-      catch (e) {
+      } catch (e) {
         console.log(e);
         // afficher un message d'erreur
       }
 
       break;
     }
+
 
     case SEND_NEW_PICTURE: {
       const { inputPrompt, inputTags } = store.getState().pictures;
