@@ -31,7 +31,7 @@ const initialState = {
   userId: '1',
   pseudo: 'Martin Martin',
   avatar: '',
-  logged: true,
+  logged: false,
   jwt: '',
   // state for member page
   memberListOfPictures: [],

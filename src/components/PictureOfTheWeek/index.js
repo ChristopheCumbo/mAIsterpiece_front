@@ -19,9 +19,9 @@ function PictureOfTheWeek() {
   // TODO fonction d'initialisation du like si on est connecté
   const [like, setLike] = useState(false);
   const [nbLikes, setNbLikes] = useState(picture.nombre_like);
-  if (picture.nombre_like !== nbLikes) {
-    setNbLikes(picture.nombre_like);
-  }
+  // if (picture.nombre_like !== nbLikes) {
+  //   setNbLikes(picture.nombre_like);
+  // }
   // console.log('nbLikes ', picture.nombre_like);
   // console.log('nbLikes ', nbLikes);
 
@@ -37,7 +37,7 @@ function PictureOfTheWeek() {
       // console.log('nombre de like - = ', nbLikes);
     }
     // toggle like via API
-    // console.log(id);
+    console.log(nbLikes);
     dispatch(actionToggleLikeAPI(picture.id));
   };
   return (
