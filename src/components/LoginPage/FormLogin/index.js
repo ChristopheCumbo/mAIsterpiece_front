@@ -13,6 +13,7 @@ import './style.scss';
 function FormLogin() {
   const InputEmailFormAuth = useSelector((state) => state.user.inputEmailFormAuth);
   const inputPasswordFormAuth = useSelector((state) => state.user.inputPasswordFormAuth);
+  const firstConnection = useSelector((state) => state.user.firstConnection);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,7 +28,13 @@ function FormLogin() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     dispatch(actionCheckLogin());
-    navigate(-1);
+    // check if this is the first connection
+    if (firstConnection) {
+      navigate('/');
+    }
+    else {
+      navigate(-1);
+    }
   };
 
   return (

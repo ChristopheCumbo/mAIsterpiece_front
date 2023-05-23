@@ -1,7 +1,16 @@
 // axios
 import axios from 'axios';
 // actions
-import { CHECK_LOGIN, LOAD_MEMBER_PICTURES, REGISTER_NEW_USER, SEND_PROFILE, actionSaveConnectedUser, actionUpdateMemberPictures } from '../actions/user';
+import {
+  CHECK_LOGIN,
+  LOAD_MEMBER_PICTURES,
+  REGISTER_NEW_USER,
+  SEND_PROFILE,
+  actionClearRegisterFields,
+  actionSaveConnectedUser,
+  actionSaveInfosConnectedUser,
+  actionUpdateMemberPictures,
+} from '../actions/user';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -14,11 +23,22 @@ const userMiddleware = (store) => (next) => async (action) => {
           username: inputEmailFormAuth,
           password: inputPasswordFormAuth,
         });
-        console.log('token du middleware :', result.data.token);
-        // on veut enregirstrer dans le state le fait qu'on soit logué
-        // on va demander au reducer : dispatch d'une action
+        console.log('userMiddleware\'s Token :', result.data.token);
         // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
         store.dispatch(actionSaveConnectedUser(result.data.token));
+        // We need to retrieve personnal informations of that connected user
+        const { token } = result.data;
+        // console.log('essai :', token);
+        const result2 = await axios.get(
+          'http://alexandre-longeaud-server.eddi.cloud/api/users/info',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        // console.log(result2);
+        store.dispatch(actionSaveInfosConnectedUser(result2.data));
       }
       catch (e) {
         console.log(e);
@@ -33,24 +53,20 @@ const userMiddleware = (store) => (next) => async (action) => {
         inputLoginFormRegister,
         inputEmailFormRegister,
         inputPasswordFormRegister,
-        inputConfirmPasswordFormRegister,
       } = store.getState().user;
 
       try {
-        const result = await axios.post('http://localhost:3002/login', {
-          inputLoginFormRegister,
-          inputEmailFormRegister,
-          inputPasswordFormRegister,
-          inputConfirmPasswordFormRegister,
+        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/users/sign-up', {
+          pseudo: inputLoginFormRegister,
+          email: inputEmailFormRegister,
+          password: inputPasswordFormRegister,
         });
-        console.log(result.data.token);
-        // on veut enregirstrer dans le state le fait qu'on soit logué
-        // on va demander au reducer : dispatch d'une action
-        store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+        // console.log(result);
+        store.dispatch(actionClearRegisterFields());
       }
       catch (e) {
         console.log(e);
-        // afficher un message d'erreur
+        // error message
       }
 
       break;

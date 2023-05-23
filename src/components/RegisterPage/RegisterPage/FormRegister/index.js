@@ -1,6 +1,6 @@
 // imports from react-redux and react-router-dom
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
   actionUpdateLoginFormRegister,
@@ -24,6 +24,7 @@ function FormRegister() {
   const inputConfirmPasswordFormRegister = useSelector((state) => state.user.inputConfirmPasswordFormRegister);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Handlers ****************
   const handleChangeInputLogin = (event) => {
@@ -40,7 +41,14 @@ function FormRegister() {
   };
   const handleRegister = (event) => {
     event.preventDefault();
-    dispatch(actionRegister());
+    if (inputPasswordFormRegister === inputConfirmPasswordFormRegister) {
+      dispatch(actionRegister());
+      navigate('/login');
+    }
+    else {
+      // TODO introduire un sytème de messages pour indiquer les situations en erreur
+      console.log('Passwords différends');
+    }
   };
 
   return (

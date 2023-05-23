@@ -46,6 +46,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // request
         // const result = await axios.get('https://api.pexels.com/v1/curated?page=1&per_page=30', {
         const result = await axios.get(adressAPI);
+        // console.log(result);
         // const result = await axios.get(adressAPI, {
         // headers: {
         //   Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',

@@ -9,6 +9,8 @@ export const UPDATE_EMAIL_FORM_REGISTER = 'UPDATE_EMAIL_FORM_REGISTER';
 export const UPDATE_PASSWORD_REGISTER = 'UPDATE_PASSWORD_REGISTER';
 export const UPDATE_CONFIRM_PASSWORD_REGISTER = 'UPDATE_CONFIRM_PASSWORD_REGISTER';
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
+export const CLEAR_REGISTER_FIELDS = 'CLEAR_REGISTER_FIELDS';
+export const SAVE_INFOS_CONNECTED_USER = 'SAVE_INFOS_CONNECTED_USER';
 // Profile
 export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
 export const SEND_PROFILE = 'SEND_PROFILE';
@@ -20,7 +22,7 @@ export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
 // - action creators LoginPage
 
 export const actionClearJwt = () => ({
-  type: 'CLEAR_JWT',
+  type: CLEAR_JWT,
 });
 
 /**
@@ -126,6 +128,14 @@ export const actionRegister = () => ({
 });
 
 /**
+ * clear all register fields (and identify a first connection)
+ * @return {Action}
+ */
+export const actionClearRegisterFields = () => ({
+  type: CLEAR_REGISTER_FIELDS,
+});
+
+/**
  * action creator for UPDATE_TEXTAREA_BIO
  * @return {Object} action
  */
@@ -162,4 +172,13 @@ export const actionLoadMemberPictures = (id) => ({
 export const actionUpdateMemberPictures = (listMemberPicture) => ({
   type: UPDATE_MEMBER_PICTURES,
   payload: listMemberPicture,
+});
+
+/**
+ * Saving in state the connected user's infos
+ * @param { Array }
+*/
+export const actionSaveInfosConnectedUser = (datas) => ({
+  type: SAVE_INFOS_CONNECTED_USER,
+  payload: datas,
 });
