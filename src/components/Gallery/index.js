@@ -2,6 +2,7 @@
 // imports from react-redux and react-router-dom
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 // actions
 import { LOAD_PICTURES_FILTERED, actionLoadPictures, actionLoadPicturesFiltered, actionUpdateSortingHomepagePictures } from '../../actions/pictures';
 // Compoenents
@@ -15,8 +16,16 @@ import { Heart, MessageSquare, User } from 'react-feather';
 
 
 function Gallery() {
+  // console.log('Chargement Gallery');
   // sets the dispatch function
   const dispatch = useDispatch();
+  useEffect(
+    () => {
+      // loading by default : most recents pictures
+      dispatch(actionLoadPictures('picturesMostRecents'));
+    },
+    [], // first render
+  );
   // list of images
   const pictures = useSelector((state) => state.pictures.listHomePage);
   // console.log(pictures);

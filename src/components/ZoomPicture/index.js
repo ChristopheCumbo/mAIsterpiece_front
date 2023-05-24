@@ -73,7 +73,7 @@ function ZoomPicture() {
       </div>
       <ContainerPicture
         imgSrc={(picture !== null) ? picture.url : ''}
-        imgPrompt="a good picture of myself"
+        imgPrompt={(picture !== null) ? picture.prompt : ''}
       />
       <div className="zoomPicture__reviewsAndAside">
         <div className="zoomPicture__reviewsContainer">

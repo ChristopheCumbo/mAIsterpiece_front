@@ -36,9 +36,9 @@ function App() {
   useEffect(
     () => {
       // Update of the picture of the week
-      dispatch(actionLoadPictureOfTheWeek());
+      // dispatch(actionLoadPictureOfTheWeek());
       // loading by default : most recents pictures
-      dispatch(actionLoadPictures('picturesMostRecents'));
+      // dispatch(actionLoadPictures('picturesMostRecents'));
       const appHeaderHeight = document.querySelector('.appHeader').offsetHeight;
       // console.log(document.querySelector('.appHeader').offsetHeight);
       const handleScroll = () => {
