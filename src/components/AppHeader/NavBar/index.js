@@ -48,7 +48,7 @@ function NavBar({ isOpen, setIsOpen }) {
             </>
           )}
           {isLogged && (
-            <li><Link to="">Deconnexion</Link></li>
+            <li><Link onClick={handleLogout} to="">Deconnexion</Link></li>
           )}
           <li> <Link to="/contact">Contact</Link></li>
           <li> <Link to="/mentionslegales">Mention Legales</Link></li>
