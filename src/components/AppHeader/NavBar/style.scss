@@ -7,6 +7,12 @@
   // -webkit-text-stroke: 0.2px;
   // -webkit-text-stroke-color: #ffffff;
   // background-color: rgba(0, 0, 0, .2);
+
+  .logo_user{
+    @media (width < 480px) {
+      display: none;
+    }
+  }
  
  
  
