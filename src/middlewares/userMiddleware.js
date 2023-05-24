@@ -37,7 +37,7 @@ const userMiddleware = (store) => (next) => async (action) => {
             },
           },
         );
-        // console.log(result2);
+        console.log(result2);
         store.dispatch(actionSaveInfosConnectedUser(result2.data));
       }
       catch (e) {
