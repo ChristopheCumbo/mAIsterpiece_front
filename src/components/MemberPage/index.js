@@ -74,7 +74,7 @@ function MemberPage() {
 
             {
               (isLogged && (userId === memberId))
-                ? <ProfileEditable pseudo={pictures.pseudo} avatar={pictures.avatar} bio={pictures.bio} />
+                ? <ProfileEditable pseudo={pictures.pseudo} />
                 : <ProfileNonEditable pseudo={pictures.pseudo} avatar={pictures.avatar} bio={pictures.bio} />
             }
 

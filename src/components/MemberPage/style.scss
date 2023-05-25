@@ -249,7 +249,8 @@ img {
   }
 }
 
-.memberPage__profilEditable {
+.memberPage__profilNonEditable,
+.memberPage__formProfile {
   display: flex;
   flex-direction: column;
   align-items: center;

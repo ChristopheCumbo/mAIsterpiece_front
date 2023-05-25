@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './style.scss';
-import { Heart, MessageSquare } from 'react-feather';
+import { Heart, MessageSquare, Trash2 } from 'react-feather';
 
 function SliderFooter(picture) {
   // console.log('FOOTER = ');
@@ -17,6 +17,9 @@ function SliderFooter(picture) {
       </div>
       <div className="memberPage__sliderFooter--comments">
         {picture.reviewsCount} &nbsp; <MessageSquare />
+      </div>
+      <div className="memberPage__sliderFooter--delete">
+        <Trash2 />
       </div>
     </div>
 

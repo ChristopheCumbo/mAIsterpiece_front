@@ -31,6 +31,8 @@ const initialState = {
   firstConnection: false,
   // input for bio's textarea
   inputTextareaBio: 'Présentez-vous aux autres utilisateurs',
+  // input for url's avatar
+  inputAvatar: '',
   // others
   connectedUser: [],
   userId: '1',
