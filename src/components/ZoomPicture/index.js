@@ -35,7 +35,7 @@ function ZoomPicture() {
       // Uploading the datas of the picture identified by 'id' in the state
       dispatch(actionLoadPictureDatas(id));
     },
-    [], // first render
+    // [], // first render
   );
 
   // Retrieves the datas of this picture
