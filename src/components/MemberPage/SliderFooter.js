@@ -6,7 +6,7 @@ import { Heart, MessageSquare, Trash2 } from 'react-feather';
 
 function SliderFooter(picture) {
   // console.log('FOOTER = ');
-  // console.log('picture dans SliderFooter : ', picture);
+  console.log('picture dans SliderFooter : ', picture);
   return (
     <div className="memberPage__sliderFooter">
       <Link to={picture.ia_link} className="memberPage__sliderFooter--ia">{picture.ia_name}</Link>

@@ -132,6 +132,9 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         connectedUser: action.payload,
+        inputAvatar: action.payload.avatar,
+        inputTextareaBio: action.payload.bio,
+        userId: action.payload.id,
       };
 
     default:

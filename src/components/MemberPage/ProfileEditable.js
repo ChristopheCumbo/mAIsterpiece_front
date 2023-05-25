@@ -41,7 +41,7 @@ function ProfileEditable({ pseudo }) {
       Vous pouvez modifier ici vos données, {pseudo}
 
       <form className="memberPage__formProfile" onSubmit={handleSubmitProfile}>
-        <div>
+        <div className="memberPage__avatarEditable">
           <label htmlFor="memberPage__formProfile--avatar">Url avatar : </label>
           {/* <button onClick={toggleMenu} type="button">Changer d'avatar</button>
           {isVisible && <DropZoneAvatar
@@ -61,7 +61,7 @@ function ProfileEditable({ pseudo }) {
           />
 
         </div>
-        <div>
+        <div className="memberPage__bioEditable">
           <label htmlFor="memberPage__formProfile--bio">Bio : </label>
           <textarea
             // rows="7"

@@ -11,7 +11,7 @@ function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreRevie
   const dispatch = useDispatch();
   // TODO fonction d'initialisation du like si on est connecté
   const [like, setLike] = useState(false);
-  const [nbLikes, setNbLikes] = useState(nombreLike);
+  const [nbLikes, setNbLikes] = useState(parseInt(nombreLike, 10));
   // check in the state if the user is logged
   const isLogged = useSelector((state) => state.user.logged);
 
