@@ -1,3 +1,4 @@
+export const CLEAR_JWT = 'CLEAR_JWT';
 // Action type Login Page
 export const UPDATE_EMAIL_FORM_AUTH = 'UPDATE_EMAIL_FORM_AUTH';
 export const UPDATE_PASSWORD_AUTH = 'UPDATE_LOGIN_PASSWORD_AUTH';
@@ -14,7 +15,7 @@ export const SAVE_INFOS_CONNECTED_USER = 'SAVE_INFOS_CONNECTED_USER';
 // Profile
 export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
 export const SEND_PROFILE = 'SEND_PROFILE';
-export const CLEAR_JWT = 'CLEAR_JWT';
+export const UPDATE_URL_AVATAR = 'UPDATE_URL_AVATAR';
 // for member page
 export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
@@ -156,6 +157,19 @@ export const actionSendProfile = (newAvatarFile) => ({
     newAvatarFile,
   },
 });
+
+/**
+ * action creator for UPDATE_URL_AVATAR
+ * @return {Object} action
+ */
+export const actionUpdateUrlAvatar = (newUrlAvatar) => ({
+  type: UPDATE_URL_AVATAR,
+  payload: {
+    newUrlAvatar,
+  },
+});
+
+
 
 /**
  * Loading one member's pictures
