@@ -17,7 +17,7 @@ function AddReviews({ pictureId }) {
   };
 
   const handleSubmit = (evt) => {
-    evt.preventDefault();
+    // evt.preventDefault();
     dispatch(actionSendReviews(pictureId));
   };
 

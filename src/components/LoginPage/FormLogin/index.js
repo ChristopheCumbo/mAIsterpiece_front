@@ -46,24 +46,30 @@ function FormLogin() {
       <p className="connexion">Connexion</p>
       <div>
         <form className="formLogin__input" onSubmit={handleSubmit}>
-          <input
-            className="formLogin__email"
-            type="text"
-            name="inputEmail"
-            id="inputEmail"
-            placeholder="Votre email de connexion"
-            value={InputEmailFormAuth} // controle en lecture
-            onChange={handleChangeInputEmail}
-          />
-          <input
-            className="formLogin__password"
-            type="password"
-            name="inputPassword"
-            id="inputPassword"
-            placeholder="Mot de passe"
-            value={inputPasswordFormAuth} // controle en lecture
-            onChange={handleChangePasswordLogin}
-          />
+          <div className="formRegister__label">
+            <label htmlFor="inputEmail" className="">Email</label>
+            <input
+              className="formLogin__email"
+              type="text"
+              name="inputEmail"
+              id="inputEmail"
+              placeholder="Votre email de connexion"
+              value={InputEmailFormAuth} // controle en lecture
+              onChange={handleChangeInputEmail}
+            />
+          </div>
+          <div className="formRegister__label">
+            <label htmlFor="inputPassword" className="">Password</label>
+            <input
+              className="formLogin__password"
+              type="password"
+              name="inputPassword"
+              id="inputPassword"
+              placeholder="Mot de passe"
+              value={inputPasswordFormAuth} // controle en lecture
+              onChange={handleChangePasswordLogin}
+            />
+          </div>
           <div className="formLogin__button">
             <button className="formLogin__connexion" type="submit">Connexion</button>
 
