@@ -6,6 +6,7 @@ import {
   LOAD_MEMBER_PICTURES,
   REGISTER_NEW_USER,
   SEND_PROFILE,
+  SUBMIT_NEW_SETTINGS,
   actionClearRegisterFields,
   actionSaveConnectedUser,
   actionSaveInfosConnectedUser,
@@ -73,30 +74,66 @@ const userMiddleware = (store) => (next) => async (action) => {
     }
 
     case SEND_PROFILE: {
-      const { inputTextareaBio } = store.getState().user;
+      const { inputTextareaBio, inputAvatar } = store.getState().user;
+      const { id } = store.getState().user.connectedUser;
+      const { jwt } = store.getState().user;
 
-      const formDataToJson = (formData) => {
-        const jsonObject = {};
-        formData.forEach((value, key) => {
-          jsonObject[key] = value;
-        });
-        return JSON.stringify(jsonObject);
-      };
+      // const formDataToJson = (formData) => {
+      //   const jsonObject = {};
+      //   formData.forEach((value, key) => {
+      //     jsonObject[key] = value;
+      //   });
+      //   return JSON.stringify(jsonObject);
+      // };
 
       try {
-        const formData = new FormData();
-        formData.append('files', action.payload.newAvatarFile);
-        const jsonData = formDataToJson(formData);
+        // const formData = new FormData();
+        // formData.append('files', action.payload.newAvatarFile);
+        // const jsonData = formDataToJson(formData);
 
-        const result = await axios.post('http://localhost:3001', {
-          jsonData,
-          inputTextareaBio,
+        const result = await axios.put(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account/bio`, {
+          bio: inputTextareaBio,
+          avatar: inputAvatar,
         }, {
           headers: {
-            'Content-Type': 'application/json',
+            Authorization: `Bearer ${jwt}`,
           },
         });
-        // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+        //   jsonData,
+        //   inputTextareaBio,
+        // }, {
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        // });
+        console.log(result);
+        // store.dispatch(actionSaveBioAndAvatar());
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case SUBMIT_NEW_SETTINGS: {
+      const { inputPseudoFormSettings, inputEmailFormSettings, inputPasswordFormSettings } = store.getState().user;
+      const { id } = store.getState().user.connectedUser;
+      const { jwt } = store.getState().user;
+
+      try {
+        const result = await axios.put(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account/bio`, {
+          pseudo: inputPseudoFormSettings,
+          email: inputEmailFormSettings,
+          password: inputPasswordFormSettings,
+        }, {
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
+        });
+        console.log(result);
+        // store.dispatch(actionSaveSettings());
       }
       catch (e) {
         console.log(e);

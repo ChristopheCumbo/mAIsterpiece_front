@@ -84,7 +84,7 @@ function MemberPage() {
 
             {
               (isLogged && (userId == memberId))
-              && <Settings pseudo={pictures.pseudo} email={pictures.email} />
+              && <Settings />
             }
           </>
         )}

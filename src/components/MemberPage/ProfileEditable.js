@@ -10,8 +10,10 @@ import { actionSendProfile, actionUpdateTextAreaBio, actionUpdateUrlAvatar } fro
 
 function ProfileEditable({ pseudo }) {
   const dispatch = useDispatch();
+  // Controlled fields
   const bioInput = useSelector((state) => state.user.inputTextareaBio);
   const avatarInput = useSelector((state) => state.user.inputAvatar);
+  //
   const [uploadedFiles, setUploadedFiles] = useState([]);
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
@@ -30,8 +32,8 @@ function ProfileEditable({ pseudo }) {
     dispatch(actionUpdateUrlAvatar(event.target.value));
   };
 
-  const handleSubmitProfile = (evt) => {
-    evt.preventDefault();
+  const handleSubmitProfile = (event) => {
+    event.preventDefault();
     dispatch(actionSendProfile(uploadedFiles));
   };
 
