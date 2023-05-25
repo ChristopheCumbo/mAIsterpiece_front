@@ -54,7 +54,7 @@ function PictureOfTheWeek() {
       <h2>Image de la semaine</h2>
       <Link className="pictureOfTheWeek__imgContainer" to={`/picture/${picture.id}`}>
         {/* <img className="pictureOfTheWeek__img" src={picture.src.medium} alt="images de la semaine" /> */}
-        <img className="pictureOfTheWeek__img" src={picture.url} alt="images de la semaine" />
+        <img className="pictureOfTheWeek__img" src={picture.fileName} alt="images de la semaine" />
         <div className="pictureOfTheWeek__imgDatas">
           <div className="pictureOfTheWeek__author">
             {picture.user_avatar === '' ? <User /> : <img src={picture.user_avatar} alt="" className="gallery__avatarPicture" />}
