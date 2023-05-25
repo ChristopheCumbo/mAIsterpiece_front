@@ -72,7 +72,7 @@ function ZoomPicture() {
         <PreviousPage />
       </div>
       <ContainerPicture
-        imgSrc={(picture !== null) ? picture.url : ''}
+        imgSrc={(picture !== null) ? picture.fileName : ''}
         imgPrompt={(picture !== null) ? picture.prompt : ''}
       />
       <div className="zoomPicture__reviewsAndAside">
