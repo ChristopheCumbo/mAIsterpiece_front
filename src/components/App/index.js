@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 // imports from react and react-redux
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // components
 import LoginPage from '../LoginPage';
@@ -28,11 +28,11 @@ import GallerySearch from '../GallerySearch';
 
 // Main fonction for the application
 function App() {
-  const dispatch = useDispatch();
   // state's variable to set the small menu (bool)
   const [showScrollHeader, setShowScrollHeader] = useState(false);
   // state which allows to manage the poster of the burger menu or not
   const [isOpen, setIsOpen] = useState(false);
+
 
   useEffect(
     () => {

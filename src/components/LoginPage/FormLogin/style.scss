@@ -79,4 +79,15 @@
   & a {
     color:#FF8A00;
   }
+  
+  .formRegister__label{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.8rem;
+    font-weight: bold;
+    label{
+    margin-bottom: 0.2rem;
+  }
+  }
 }

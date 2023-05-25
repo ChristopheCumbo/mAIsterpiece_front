@@ -11,6 +11,7 @@ export const SEND_NEW_PICTURE = 'SEND_NEW_PICTURE';
 export const LOAD_PICTURE_DATAS = 'LOAD_PICTURE_DATAS';
 export const UPDATE_PICTURE_DATAS = 'UPDATE_PICTURE_DATAS';
 export const ACTION_TOGGLE_LIKE_API = 'ACTION_TOGGLE_LIKE_API';
+export const UPDATE_NB_LIKE = 'UPDATE_NB_LIKE';
 // for member page
 // export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 // export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
@@ -166,6 +167,7 @@ export const actionToggleLikeAPI = (id) => ({
     id,
   },
 });
+
 
 // SEARCHBAR
 /**

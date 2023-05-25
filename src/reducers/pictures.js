@@ -7,6 +7,7 @@ import {
   UPDATE_INPUT_ADD_PROMPT,
   UPDATE_INPUT_ADD_TAGS,
   UPDATE_INPUT_SEARCH_BAR,
+  UPDATE_NB_LIKE,
   UPDATE_PICTURES_HOMEPAGE,
   UPDATE_PICTURE_DATAS,
   UPDATE_PICTURE_OF_THE_WEEK,
@@ -32,6 +33,8 @@ const initialState = {
   //   isLoaded: false,
   // },
   listResultPage: [],
+  like: false,
+  nbLike: '',
 };
 
 function reducer(state = initialState, action = {}) {

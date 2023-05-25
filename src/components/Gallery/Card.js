@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { actionToggleLikeAPI } from '../../actions/pictures';
+import { actionToggleLikeAPI, actionUpdateNbLike } from '../../actions/pictures';
 
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';
@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreReview }) {
   const dispatch = useDispatch();
   // TODO fonction d'initialisation du like si on est connecté
+
   const [like, setLike] = useState(false);
   const [nbLikes, setNbLikes] = useState(nombreLike);
   // check in the state if the user is logged
@@ -20,14 +21,14 @@ function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreRevie
     setLike(!like);
     if (!like) {
       setNbLikes(nbLikes + 1);
-      // console.log('nombre de like + = ', nbLikes);
+      //     // console.log('nombre de like + = ', nbLikes);
     }
     else {
       setNbLikes(nbLikes - 1);
-      // console.log('nombre de like - = ', nbLikes);
+      //     // console.log('nombre de like - = ', nbLikes);
     }
-    // toggle like via API
-    // console.log(id);
+    //   // toggle like via API
+    //   // console.log(id);
     dispatch(actionToggleLikeAPI(id));
   };
 
