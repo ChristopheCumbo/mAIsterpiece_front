@@ -1,4 +1,7 @@
 import {
+  ACTION_LOAD_SEARCH_BY_AUTHOR,
+  ACTION_LOAD_SEARCH_BY_PROMPT,
+  ACTION_LOAD_SEARCH_BY_TAG,
   REDUCER_SEND_REVIEWS,
   UPDATE_FORM_ADD_REVIEWS,
   UPDATE_INPUT_ADD_PROMPT,
@@ -28,6 +31,7 @@ const initialState = {
   // pictureZoom: {
   //   isLoaded: false,
   // },
+  listResultPage: [],
 };
 
 function reducer(state = initialState, action = {}) {
@@ -88,10 +92,30 @@ function reducer(state = initialState, action = {}) {
       };
 
     case UPDATE_PICTURE_DATAS:
-      // 
       return {
         ...state,
         pictureZoom: { ...action.payload.picture },
+      };
+
+    case ACTION_LOAD_SEARCH_BY_TAG:
+      return {
+        ...state,
+        listResultPage: action.payload.searchData,
+        inputSearchBar: '',
+      };
+
+    case ACTION_LOAD_SEARCH_BY_AUTHOR:
+      return {
+        ...state,
+        listResultPage: action.payload.searchData,
+        inputSearchBar: '',
+      };
+
+    case ACTION_LOAD_SEARCH_BY_PROMPT:
+      return {
+        ...state,
+        listResultPage: action.payload.searchData,
+        inputSearchBar: '',
       };
 
     default:

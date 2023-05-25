@@ -32,7 +32,7 @@ function PictureOfTheWeek() {
   // }
   // console.log('nbLikes ', picture.nombre_like);
   // console.log('nbLikes ', nbLikes);
-  console.log('nbLikes : ', nbLikes);
+  // console.log('nbLikes : ', nbLikes);
 
   const handleToggleLike = (event) => {
     event.preventDefault();
@@ -46,7 +46,7 @@ function PictureOfTheWeek() {
       // console.log('nombre de like - = ', nbLikes);
     }
     // toggle like via API
-    console.log('nbLikes : ', nbLikes);
+    // console.log('nbLikes : ', nbLikes);
     dispatch(actionToggleLikeAPI(picture.id));
   };
   return (

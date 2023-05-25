@@ -6,15 +6,17 @@ import { Link } from 'react-router-dom';
 import Logo from '../../../assets/proposition_logo.png';
 import NavBar from '../NavBar';
 import { actionUpdateSearchBar } from '../../../actions/pictures';
+import { Search } from 'react-feather';
+import SearchBar from '../SearchBar';
 
 function AppHeaderMin({ isOpen, setIsOpen }) {
-  const inputSearchBar = useSelector((state) => state.pictures.inputSearchBar);
+  // const inputSearchBar = useSelector((state) => state.pictures.inputSearchBar);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const handleChangeInputSearchBar = (event) => {
-    dispatch(actionUpdateSearchBar(event.target.value));
-  };
+  // const handleChangeInputSearchBar = (event) => {
+  //   dispatch(actionUpdateSearchBar(event.target.value));
+  // };
 
   return (
 
@@ -35,8 +37,13 @@ function AppHeaderMin({ isOpen, setIsOpen }) {
         {/* </div> */}
       </div>
 
-      <div className="appHeaderMin__searchBar">
+      {/* <div className="appHeaderMin__searchBar">
         <form>
+          <select name="fieldSearch">
+            <option value="prompt">Prompt</option>
+            <option value="tag">Mot-clé</option>
+            <option value="author">Auteur</option>
+          </select>
           <input
             className="appHeaderMin__headerSearch"
             type="text"
@@ -46,8 +53,13 @@ function AppHeaderMin({ isOpen, setIsOpen }) {
             value={inputSearchBar}
             onChange={handleChangeInputSearchBar}
           />
+          <button type="submit" className="appHeaderMin__searchButton">
+            <Search className="appHeaderMin__searchIcon" />
+          </button>
         </form>
-      </div>
+      </div> */}
+
+      <SearchBar />
 
       <NavBar isOpen={isOpen} setIsOpen={setIsOpen} />
 

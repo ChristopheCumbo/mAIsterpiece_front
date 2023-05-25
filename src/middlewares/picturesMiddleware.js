@@ -1,12 +1,18 @@
 import axios from 'axios';
 // import { createClient } from 'pexels';
 import {
+  ACTION_SEARCH_BY_AUTHOR,
+  ACTION_SEARCH_BY_PROMPT,
+  ACTION_SEARCH_BY_TAG,
   ACTION_TOGGLE_LIKE_API,
   LOAD_PICTURES,
   LOAD_PICTURE_DATAS,
   LOAD_PICTURE_OF_THE_WEEK,
   SEND_NEW_PICTURE,
   SEND_REVIEWS,
+  actionLoadSearchbyAuthor,
+  actionLoadSearchbyPrompt,
+  actionLoadSearchbyTag,
   actionReducerSendReviews,
   actionUpdatePictureDatas,
   actionUpdatePictureOfTheWeek,
@@ -143,7 +149,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
       try {
         const formData = new FormData();
-        formData.append('files', action.payload.newPictureFile);
+        formData.append('file', action.payload.newPictureFile);
         const jsonData = formDataToJson(formData);
 
         const result = await axios.post('http://localhost:3001', {
@@ -179,6 +185,57 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           },
         );
         // console.log(result);
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_SEARCH_BY_TAG: {
+      const { searchValue } = action.payload;
+      try {
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/tag?search=${searchValue}`,
+        );
+        console.log(result);
+        store.dispatch(actionLoadSearchbyTag(result.data));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_SEARCH_BY_AUTHOR: {
+      const { searchValue } = action.payload;
+      try {
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/user?search=${searchValue}`,
+        );
+        console.log(result);
+        store.dispatch(actionLoadSearchbyAuthor(result.data));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_SEARCH_BY_PROMPT: {
+      const { searchValue } = action.payload;
+      try {
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/prompt?search=${searchValue}`,
+        );
+        console.log(result);
+        store.dispatch(actionLoadSearchbyPrompt(result.data));
       }
       catch (e) {
         console.log(e);

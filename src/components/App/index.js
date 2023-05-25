@@ -23,6 +23,7 @@ import './styles.css';
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
 import DropZone from '../DropZone';
+import GallerySearch from '../GallerySearch';
 
 
 // Main fonction for the application
@@ -98,6 +99,7 @@ function App() {
         <Route path="/membre/:memberId" element=<MemberPage /> />
         <Route path="/picture/:id" element=<ZoomPicture /> />
         <Route path="/test" element=<DropZone /> />
+        <Route path="/resultats" element=<GallerySearch /> />
         <Route path="/error" element=<Error404 /> />
         <Route path="*" element=<Error404 /> />
       </Routes>

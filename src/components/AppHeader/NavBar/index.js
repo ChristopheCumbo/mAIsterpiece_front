@@ -38,7 +38,7 @@ function NavBar({ isOpen, setIsOpen }) {
         )}
       <div className="navBar__container__mobile">
         <button type="button" onClick={toggleMenu}>
-          {isOpen ? <X /> : <Menu />}
+          {isOpen ? <X /> : <Menu className="navBar__button" />}
         </button>
         <ul onClick={toggleMenu} className={`${isOpen ? '' : 'li-close'}`}>
           {!isLogged && (

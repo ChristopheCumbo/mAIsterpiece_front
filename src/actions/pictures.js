@@ -15,6 +15,14 @@ export const ACTION_TOGGLE_LIKE_API = 'ACTION_TOGGLE_LIKE_API';
 // export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 // export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
 
+// for searchBar
+export const ACTION_SEARCH_BY_TAG = 'ACTION_SEARCH_BY_TAG';
+export const ACTION_SEARCH_BY_AUTHOR = 'ACTION_SEARCH_BY_AUTHOR';
+export const ACTION_SEARCH_BY_PROMPT = 'ACTION_SEARCH_BY_PROMPT';
+export const ACTION_LOAD_SEARCH_BY_TAG = 'ACTION_LOAD_SEARCH_BY_TAG';
+export const ACTION_LOAD_SEARCH_BY_AUTHOR = 'ACTION_LOAD_SEARCH_BY_AUTHOR';
+export const ACTION_LOAD_SEARCH_BY_PROMPT = 'ACTION_LOAD_SEARCH_BY_PROMPT';
+
 // for controlled fields
 export const UPDATE_INPUT_ADD_PROMPT = 'UPDATE_INPUT_ADD_PROMPT';
 export const UPDATE_INPUT_ADD_TAGS = 'UPDATE_INPUT_ADD_TAGS';
@@ -156,5 +164,72 @@ export const actionToggleLikeAPI = (id) => ({
   type: ACTION_TOGGLE_LIKE_API,
   payload: {
     id,
+  },
+});
+
+// SEARCHBAR
+/**
+ * action creator search by tag
+ * @return {Object} action
+ */
+export const actionSearchbyTag = (searchValue) => ({
+  type: ACTION_SEARCH_BY_TAG,
+  payload: {
+    searchValue,
+  },
+});
+
+/**
+ * action creator search by author
+ * @return {Object} action
+ */
+export const actionSearchbyAuthor = (searchValue) => ({
+  type: ACTION_SEARCH_BY_AUTHOR,
+  payload: {
+    searchValue,
+  },
+});
+
+/**
+ * action creator search by prompt
+ * @return {Object} action
+ */
+export const actionSearchbyPrompt = (searchValue) => ({
+  type: ACTION_SEARCH_BY_PROMPT,
+  payload: {
+    searchValue,
+  },
+});
+
+/**
+ * action creator load search by tag
+ * @return {Object} action
+ */
+export const actionLoadSearchbyTag = (searchData) => ({
+  type: ACTION_LOAD_SEARCH_BY_TAG,
+  payload: {
+    searchData,
+  },
+});
+
+/**
+ * action creator load search by author
+ * @return {Object} action
+ */
+export const actionLoadSearchbyAuthor = (searchData) => ({
+  type: ACTION_LOAD_SEARCH_BY_AUTHOR,
+  payload: {
+    searchData,
+  },
+});
+
+/**
+ * action creator load search by prompt
+ * @return {Object} action
+ */
+export const actionLoadSearchbyPrompt = (searchData) => ({
+  type: ACTION_LOAD_SEARCH_BY_PROMPT,
+  payload: {
+    searchData,
   },
 });
