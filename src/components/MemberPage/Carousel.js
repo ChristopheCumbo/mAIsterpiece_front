@@ -59,7 +59,7 @@ function Carousel() {
               <SwiperSlide key={picture.picture_id}>
                 <Link to={`/picture/${picture.picture_id}`}>
                   <img
-                    src={picture.picture_url}
+                    src={picture.picture_fileName}
                     alt=""
                   />
                 </Link>
