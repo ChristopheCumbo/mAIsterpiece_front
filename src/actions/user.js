@@ -23,6 +23,7 @@ export const UPDATE_EMAIL_FORM_SETTINGS = 'UPDATE_EMAIL_FORM_SETTINGS';
 export const UPDATE_PASSWORD_FORM_SETTINGS = 'UPDATE_PASSWORD_FORM_SETTINGS';
 export const UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS = 'UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS';
 export const SUBMIT_NEW_SETTINGS = 'SUBMIT_NEW_SETTINGS';
+export const SAVE_SETTINGS = 'SAVE_SETTINGS';
 // for member page
 export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
@@ -263,4 +264,12 @@ export const actionUpdateConfirmPasswordSettings = (newValue) => ({
  */
 export const actionSubmitUpdatedSettings = () => ({
   type: SUBMIT_NEW_SETTINGS,
+});
+
+/**
+ * Save settings in Redux
+ * @return {Action}
+ */
+export const actionSaveSettings = () => ({
+  type: SAVE_SETTINGS,
 });

@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -14,6 +14,8 @@ import {
 function Settings() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // Retrieves the member's id
+  const { memberId } = useParams();
   // Controlled fields
   const pseudo = useSelector((state) => state.user.inputPseudoFormSettings);
   const email = useSelector((state) => state.user.inputEmailFormSettings);
@@ -38,7 +40,8 @@ function Settings() {
     event.preventDefault();
     if (password1 === password2) {
       dispatch(actionSubmitUpdatedSettings());
-      // navigate('/login');
+      console.log('Changement de profil => submit');
+      navigate(`/membre/${memberId}`);
     }
     else {
       // TODO introduire un sytème de messages pour indiquer les situations en erreur
@@ -96,10 +99,5 @@ function Settings() {
     </div>
   );
 }
-
-Settings.propTypes = {
-  pseudo: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-};
 
 export default Settings;

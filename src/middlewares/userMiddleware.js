@@ -10,6 +10,7 @@ import {
   actionClearRegisterFields,
   actionSaveConnectedUser,
   actionSaveInfosConnectedUser,
+  actionSaveSettings,
   actionUpdateMemberPictures,
 } from '../actions/user';
 
@@ -123,17 +124,17 @@ const userMiddleware = (store) => (next) => async (action) => {
       const { jwt } = store.getState().user;
 
       try {
-        const result = await axios.put(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account/bio`, {
-          pseudo: inputPseudoFormSettings,
+        const result = await axios.put(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account/profil`, {
           email: inputEmailFormSettings,
           password: inputPasswordFormSettings,
+          pseudo: inputPseudoFormSettings,
         }, {
           headers: {
             Authorization: `Bearer ${jwt}`,
           },
         });
-        console.log(result);
-        // store.dispatch(actionSaveSettings());
+        console.log('Résultat new settings :', result);
+        store.dispatch(actionSaveSettings());
       }
       catch (e) {
         console.log(e);

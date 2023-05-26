@@ -5,6 +5,7 @@ import {
   SAVE_CONNECTED_USER,
   SAVE_INFOS_CONNECTED_USER,
   SAVE_NEW_AVATAR_AND_PROFILE,
+  SAVE_SETTINGS,
   UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS,
   UPDATE_EMAIL_FORM_AUTH,
   UPDATE_EMAIL_FORM_SETTINGS,
@@ -160,6 +161,8 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         connectedUser: action.payload,
+        pseudo: action.payload.pseudo,
+        avatar: action.payload.avatar,
         inputAvatar: action.payload.avatar,
         inputTextareaBio: action.payload.bio,
         inputPseudoFormSettings: action.payload.pseudo,
@@ -190,6 +193,12 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         inputConfirmPasswordFormSettings: action.payload.newValue,
+      };
+
+    case SAVE_SETTINGS:
+      return {
+        ...state,
+        pseudo: state.inputPseudoFormSettings,
       };
 
     default:

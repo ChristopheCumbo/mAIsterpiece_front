@@ -49,12 +49,18 @@ function PictureOfTheWeek() {
     // console.log('nbLikes : ', nbLikes);
     dispatch(actionToggleLikeAPI(picture.id));
   };
+  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  let urlCompleted = picture.fileName;
+  // console.log(picture.fileName);
+  if ((urlCompleted !== undefined) && urlCompleted.substring(0, 4) !== 'http') {
+    urlCompleted = prefix + urlCompleted;
+  }
   return (
     <div className="pictureOfTheWeek">
       <h2>Image de la semaine</h2>
       <Link className="pictureOfTheWeek__imgContainer" to={`/picture/${picture.id}`}>
         {/* <img className="pictureOfTheWeek__img" src={picture.src.medium} alt="images de la semaine" /> */}
-        <img className="pictureOfTheWeek__img" src={picture.fileName} alt="images de la semaine" />
+        <img className="pictureOfTheWeek__img" src={urlCompleted} alt="images de la semaine" />
         <div className="pictureOfTheWeek__imgDatas">
           <div className="pictureOfTheWeek__author">
             {picture.user_avatar === '' ? <User /> : <img src={picture.user_avatar} alt="" className="gallery__avatarPicture" />}
