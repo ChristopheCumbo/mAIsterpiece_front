@@ -152,7 +152,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
       try {
         const formData = new FormData();
-        const data = { prompt: 'vert', ia: 2, tags: [] };
+        const data = { prompt: inputPrompt, ia: 2, tags: [{ name: inputTags }] };
         formData.append('data', JSON.stringify(data));
         formData.append('file', action.payload.newPictureFile);
         // const jsonData = formDataToJson(formData);
