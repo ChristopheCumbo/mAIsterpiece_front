@@ -138,29 +138,43 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
     case SEND_NEW_PICTURE: {
       const { inputPrompt, inputTags } = store.getState().pictures;
+      const { jwt } = store.getState().user;
 
-      const formDataToJson = (formData) => {
-        const jsonObject = {};
-        formData.forEach((value, key) => {
-          jsonObject[key] = value;
-        });
-        return JSON.stringify(jsonObject);
-      };
+      // const formDataToJson = (formData) => {
+      //   const jsonObject = {};
+      //   formData.forEach((value, key) => {
+      //     jsonObject[key] = value;
+      //   });
+      //   return JSON.stringify(jsonObject);
+      // };
 
       try {
         const formData = new FormData();
+        const data = { prompt: 'vert', ia: 2, tags: [] };
+        formData.append('data', JSON.stringify(data));
         formData.append('file', action.payload.newPictureFile);
-        const jsonData = formDataToJson(formData);
+        // const jsonData = formDataToJson(formData);
 
-        const result = await axios.post('http://localhost:3001', {
-          jsonData,
-          inputPrompt,
-          inputTags,
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
+        const result = await axios.post(
+          'http://alexandre-longeaud-server.eddi.cloud/api/pictures/add',
+          // {
+          // fileName: formData,
+          // prompt: inputPrompt,
+          // ia: 1,
+          // name: inputTags,
+          // data: {"prompt":"vert","ia":2,"tags":[]},
+          // file: formData,
+
+          // }
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+              'Content-Type': 'multipart/form-data',
+            },
           },
-        });
+        );
+        console.log('Résultat de l\'importation d\'image : ', result);
         // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
       }
       catch (e) {

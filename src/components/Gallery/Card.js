@@ -12,7 +12,7 @@ function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreRevie
   // TODO fonction d'initialisation du like si on est connecté
 
   const [like, setLike] = useState(false);
-  const [nbLikes, setNbLikes] = useState(nombreLike);
+  const [nbLikes, setNbLikes] = useState(parseInt(nombreLike, 10));
   // check in the state if the user is logged
   const isLogged = useSelector((state) => state.user.logged);
 
@@ -32,9 +32,16 @@ function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreRevie
     dispatch(actionToggleLikeAPI(id));
   };
 
+  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  let urlCompleted = url;
+  // console.log(urlCompleted.substring(0, 3));
+  if (urlCompleted.substring(0, 4) !== 'http') {
+    urlCompleted = prefix + urlCompleted;
+  }
+
   return (
     <>
-      <img className="gallery__img" src={url} alt="" />
+      <img className="gallery__img" src={urlCompleted} alt="" />
       <div className="gallery__imgDatas">
         <div className="gallery__author">
           {userAvatar === '' ? <User /> : <img src={userAvatar} alt="" className="gallery__avatarPicture" />}

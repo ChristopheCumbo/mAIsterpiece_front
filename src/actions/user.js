@@ -12,10 +12,18 @@ export const UPDATE_CONFIRM_PASSWORD_REGISTER = 'UPDATE_CONFIRM_PASSWORD_REGISTE
 export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
 export const CLEAR_REGISTER_FIELDS = 'CLEAR_REGISTER_FIELDS';
 export const SAVE_INFOS_CONNECTED_USER = 'SAVE_INFOS_CONNECTED_USER';
-// Profile
+// Form for updating the profile
 export const UPDATE_TEXTAREA_BIO = 'UPDATE_TEXTAREA_BIO';
 export const SEND_PROFILE = 'SEND_PROFILE';
 export const UPDATE_URL_AVATAR = 'UPDATE_URL_AVATAR';
+export const SAVE_NEW_AVATAR_AND_PROFILE = 'SAVE_NEW_AVATAR_AND_PROFILE';
+// Form for updating the settings
+export const UPDATE_PSEUDO_FORM_SETTINGS = 'UPDATE_PSEUDO_FORM_SETTINGS';
+export const UPDATE_EMAIL_FORM_SETTINGS = 'UPDATE_EMAIL_FORM_SETTINGS';
+export const UPDATE_PASSWORD_FORM_SETTINGS = 'UPDATE_PASSWORD_FORM_SETTINGS';
+export const UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS = 'UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS';
+export const SUBMIT_NEW_SETTINGS = 'SUBMIT_NEW_SETTINGS';
+export const SAVE_SETTINGS = 'SAVE_SETTINGS';
 // for member page
 export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
@@ -148,17 +156,6 @@ export const actionUpdateTextAreaBio = (newValue) => ({
 });
 
 /**
- * action creator for SEND_PROFILE
- * @return {Object} action
- */
-export const actionSendProfile = (newAvatarFile) => ({
-  type: SEND_PROFILE,
-  payload: {
-    newAvatarFile,
-  },
-});
-
-/**
  * action creator for UPDATE_URL_AVATAR
  * @return {Object} action
  */
@@ -169,7 +166,21 @@ export const actionUpdateUrlAvatar = (newUrlAvatar) => ({
   },
 });
 
+/**
+ * action creator for SEND_PROFILE
+ * @return {Object} action
+ */
+export const actionSendProfile = () => ({
+  type: SEND_PROFILE,
+});
 
+/**
+ * action creator for SAVE_NEW_AVATAR_AND_PROFILE after sending it to back
+ * @return {Object} action
+ */
+export const actionSaveBioAndAvatar = () => ({
+  type: SAVE_NEW_AVATAR_AND_PROFILE,
+});
 
 /**
  * Loading one member's pictures
@@ -195,4 +206,70 @@ export const actionUpdateMemberPictures = (listMemberPicture) => ({
 export const actionSaveInfosConnectedUser = (datas) => ({
   type: SAVE_INFOS_CONNECTED_USER,
   payload: datas,
+});
+
+// UPDATING THE SETTINGS
+
+// actionUpdatePseudoSettings
+// actionUpdateEmailSettings
+// actionUpdatePasswordSettings
+// actionUpdateConfirmPasswordSettings
+
+/**
+ * action creator UPDATE_PSEUDO_FORM_SETTINGS
+ * @return {Object} action
+ */
+export const actionUpdatePseudoSettings = (newValue) => ({
+  type: UPDATE_PSEUDO_FORM_SETTINGS,
+  payload: {
+    newValue,
+  },
+});
+
+/**
+ * action creator UPDATE_EMAIL_FORM_SETTINGS
+ * @return {Object} action
+ */
+export const actionUpdateEmailSettings = (newValue) => ({
+  type: UPDATE_EMAIL_FORM_SETTINGS,
+  payload: {
+    newValue,
+  },
+});
+/**
+ * action creator UPDATE_PASSWORD_FORM_SETTINGS
+ * @return {Object} action
+ */
+export const actionUpdatePasswordSettings = (newValue) => ({
+  type: UPDATE_PASSWORD_FORM_SETTINGS,
+  payload: {
+    newValue,
+  },
+});
+
+/**
+ * action creator UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS
+ * @return {Object} action
+ */
+export const actionUpdateConfirmPasswordSettings = (newValue) => ({
+  type: UPDATE_CONFIRM_PASSWORD_FORM_SETTINGS,
+  payload: {
+    newValue,
+  },
+});
+
+/**
+ * Sends the new settings to BDD
+ * @return {Action}
+ */
+export const actionSubmitUpdatedSettings = () => ({
+  type: SUBMIT_NEW_SETTINGS,
+});
+
+/**
+ * Save settings in Redux
+ * @return {Action}
+ */
+export const actionSaveSettings = () => ({
+  type: SAVE_SETTINGS,
 });

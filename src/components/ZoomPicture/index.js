@@ -63,6 +63,16 @@ function ZoomPicture() {
   //   return <Navigate to="/error" replace />;
   // }
 
+  let urlCompleted = '';
+  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  if (picture !== null) {
+    urlCompleted = picture.fileName;
+    // console.log(picture.fileName);
+    if ((urlCompleted !== null) && urlCompleted.substring(0, 4) !== 'http') {
+      urlCompleted = prefix + urlCompleted;
+    }
+  }
+
   return (
     <div className="zoomPicture">
       <div className="zoomPicture__header">
@@ -72,7 +82,7 @@ function ZoomPicture() {
         <PreviousPage />
       </div>
       <ContainerPicture
-        imgSrc={(picture !== null) ? picture.fileName : ''}
+        imgSrc={(picture !== null) ? urlCompleted : ''}
         imgPrompt={(picture !== null) ? picture.prompt : ''}
       />
       <div className="zoomPicture__reviewsAndAside">

@@ -33,6 +33,17 @@ function Carousel() {
   // console.log("PICTURES = ");
   // console.log("PICTURES = ", pictures);
 
+  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+
+  const checkUrl = (filename) => {
+    let urlCompleted = filename;
+    // console.log(picture.fileName);
+    if ((urlCompleted !== undefined) && urlCompleted.substring(0, 4) !== 'http') {
+      urlCompleted = prefix + urlCompleted;
+    }
+    return urlCompleted;
+  };
+
   return (
     <>
       <div className="memberPage__sliderContainer">
@@ -59,7 +70,7 @@ function Carousel() {
               <SwiperSlide key={picture.picture_id}>
                 <Link to={`/picture/${picture.picture_id}`}>
                   <img
-                    src={picture.picture_fileName}
+                    src={checkUrl(picture.picture_fileName)}
                     alt=""
                   />
                 </Link>
