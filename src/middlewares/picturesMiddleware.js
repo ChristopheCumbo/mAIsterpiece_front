@@ -10,6 +10,7 @@ import {
   LOAD_PICTURE_OF_THE_WEEK,
   SEND_NEW_PICTURE,
   SEND_REVIEWS,
+  actionLoadPictureDatas,
   actionLoadSearchbyAuthor,
   actionLoadSearchbyPrompt,
   actionLoadSearchbyTag,
@@ -126,7 +127,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           },
         );
 
-        store.dispatch(actionReducerSendReviews());
+        // store.dispatch(actionReducerSendReviews());
+        store.dispatch(actionLoadPictureDatas(id));
       } catch (e) {
         console.log(e);
         // afficher un message d'erreur

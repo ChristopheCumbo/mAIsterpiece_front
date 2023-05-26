@@ -78,6 +78,7 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         inputFormReviews: '',
+        pictureZoom: { ...state.pictureZoom, nombre_review: state.pictureZoom.nombre_review + 1 },
       };
 
     case UPDATE_INPUT_ADD_PROMPT:
@@ -98,6 +99,7 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         pictureZoom: { ...action.payload.picture },
+        inputFormReviews: '',
       };
 
     case ACTION_LOAD_SEARCH_BY_TAG:
