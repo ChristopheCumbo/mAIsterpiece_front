@@ -51,7 +51,7 @@ const initialState = {
     avatar: '',
     bio: '',
   },
-  userId: '1',
+  userId: '',
   pseudo: 'Martin Martin',
   avatar: '',
   logged: false,

@@ -13,6 +13,7 @@ import {
   actionSaveSettings,
   actionUpdateMemberPictures,
 } from '../actions/user';
+import { actionClearHomePage } from '../actions/pictures';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -41,6 +42,7 @@ const userMiddleware = (store) => (next) => async (action) => {
         );
         console.log(result2);
         store.dispatch(actionSaveInfosConnectedUser(result2.data));
+        store.dispatch(actionClearHomePage());
       }
       catch (e) {
         console.log(e);
