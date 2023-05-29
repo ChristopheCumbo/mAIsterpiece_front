@@ -5,6 +5,7 @@ import './style.scss';
 import { Menu, User, X } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionClearJwt } from '../../../actions/user';
+import { actionClearHomePage, actionLoadPictureOfTheWeek, actionLoadPictures } from '../../../actions/pictures';
 
 function NavBar({ isOpen, setIsOpen }) {
   const navigate = useNavigate();
@@ -20,6 +21,9 @@ function NavBar({ isOpen, setIsOpen }) {
   const handleLogout = (event) => {
     event.preventDefault();
     dispatch(actionClearJwt(event.target.value));
+    dispatch(actionClearHomePage());
+    dispatch(actionLoadPictures('picturesMostRecents'));
+    dispatch(actionLoadPictureOfTheWeek());
     navigate('/');
   };
 

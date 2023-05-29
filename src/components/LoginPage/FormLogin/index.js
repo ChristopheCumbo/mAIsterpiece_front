@@ -38,7 +38,7 @@ function FormLogin() {
     console.log("setTimeout");
     setTimeout(() => {
       navigate('/');
-    }, 10000);
+    }, 5000);
     // navigate('/');
   };
 
