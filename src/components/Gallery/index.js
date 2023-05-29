@@ -79,16 +79,16 @@ function Gallery() {
       </div>
       <div className="gallery__content">
         {
-          pictures.map((picture) => (
-            <Link className="gallery__imgContainer" key={picture[0].id} to={`/picture/${picture[0].id}`}>
+          pictures.map((pic) => (
+            <Link className="gallery__imgContainer" key={pic.picture[0].id} to={`/picture/${pic.picture[0].id}`}>
               <Card
-                id={picture[0].id}
-                url={picture[0].fileName}
-                userId={picture.user_id}
-                userPseudo={picture.user_pseudo}
-                userAvatar={picture.user_avatar}
-                nombreLike={picture.nombre_like}
-                nombreReview={picture.nombre_review}
+                id={pic.picture[0].id}
+                url={pic.picture[0].fileName}
+                userId={pic.picture.user_id}
+                userPseudo={pic.picture.user_pseudo}
+                userAvatar={pic.picture.user_avatar}
+                nombreLike={pic.picture.nombre_like}
+                nombreReview={pic.picture.nombre_review}
               />
               {/* <img className="gallery__img" src={picture.src.medium} alt="" /> */}
               {/* <img className="gallery__img" src={picture[0].url} alt="" />

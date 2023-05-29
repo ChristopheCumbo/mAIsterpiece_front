@@ -2,6 +2,7 @@ import {
   ACTION_LOAD_SEARCH_BY_AUTHOR,
   ACTION_LOAD_SEARCH_BY_PROMPT,
   ACTION_LOAD_SEARCH_BY_TAG,
+  CLEAR_FORM_NEW_PICTURE,
   REDUCER_SEND_REVIEWS,
   UPDATE_FORM_ADD_REVIEWS,
   UPDATE_INPUT_ADD_PROMPT,
@@ -121,6 +122,13 @@ function reducer(state = initialState, action = {}) {
         ...state,
         listResultPage: action.payload.searchData,
         inputSearchBar: '',
+      };
+
+    case CLEAR_FORM_NEW_PICTURE:
+      return {
+        ...state,
+        inputPrompt: '',
+        inputTags: '',
       };
 
     default:

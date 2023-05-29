@@ -10,6 +10,7 @@ import {
   LOAD_PICTURE_OF_THE_WEEK,
   SEND_NEW_PICTURE,
   SEND_REVIEWS,
+  actionClearFormNewPicture,
   actionLoadPictureDatas,
   actionLoadSearchbyAuthor,
   actionLoadSearchbyPrompt,
@@ -151,8 +152,12 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       // };
 
       try {
+        // console.log('num IA = ', action.payload.idAI);
+        // console.log(typeof action.payload.idAI);
         const formData = new FormData();
-        const data = { prompt: 'vert', ia: 2, tags: [] };
+        const data = { prompt: inputPrompt, ia: Number(action.payload.idAI), tags: [{ name: inputTags }] };
+        // const data = { prompt: inputPrompt, ia: 5, tags: [{ name: inputTags }] };
+        // console.log('data = ', data);
         formData.append('data', JSON.stringify(data));
         formData.append('file', action.payload.newPictureFile);
         // const jsonData = formDataToJson(formData);
@@ -177,7 +182,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           },
         );
         console.log('Résultat de l\'importation d\'image : ', result);
-        // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+        store.dispatch(actionClearFormNewPicture());
       }
       catch (e) {
         console.log(e);

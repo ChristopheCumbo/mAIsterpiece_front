@@ -12,6 +12,7 @@ export const LOAD_PICTURE_DATAS = 'LOAD_PICTURE_DATAS';
 export const UPDATE_PICTURE_DATAS = 'UPDATE_PICTURE_DATAS';
 export const ACTION_TOGGLE_LIKE_API = 'ACTION_TOGGLE_LIKE_API';
 export const UPDATE_NB_LIKE = 'UPDATE_NB_LIKE';
+export const CLEAR_FORM_NEW_PICTURE = 'CLEAR_FORM_NEW_PICTURE';
 // for member page
 // export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 // export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
@@ -128,11 +129,20 @@ export const actionUpdateInputAddTags = (newValue) => ({
  * action creator for submitting the AddPicture form
  * @return {Object} action
  */
-export const actionSubmitNewPicture = (newPictureFile) => ({
+export const actionSubmitNewPicture = (newPictureFile, idAI) => ({
   type: SEND_NEW_PICTURE,
   payload: {
     newPictureFile,
+    idAI,
   },
+});
+
+/**
+ * action creator for reset the fields of the new picture's form
+ * @return {Object} action
+ */
+export const actionClearFormNewPicture = () => ({
+  type: CLEAR_FORM_NEW_PICTURE,
 });
 
 /**
