@@ -16,6 +16,8 @@ export const CLEAR_FORM_NEW_PICTURE = 'CLEAR_FORM_NEW_PICTURE';
 // for member page
 // export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 // export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
+export const ACTION_DELETE_PICTURE = 'ACTION_DELETE_PICTURE';
+export const ACTION_REFRESH_MEMBER_PAGE = 'ACTION_REFRESH_MEMBER_PAGE';
 
 // for searchBar
 export const ACTION_SEARCH_BY_TAG = 'ACTION_SEARCH_BY_TAG';
@@ -245,3 +247,25 @@ export const actionLoadSearchbyPrompt = (searchData) => ({
     searchData,
   },
 });
+
+// MEMBER PAGE
+
+/**
+ * action creator for delete picture in database
+ * @return {Object} action
+ */
+export const actionDeletePicture = (pictureId, memberId) => ({
+  type: ACTION_DELETE_PICTURE,
+  payload: {
+    pictureId,
+    memberId,
+  },
+});
+
+/**
+ * action creator for refresh the member Page
+ * @return {Object} action
+ */
+// export const actionRefreshMemberPage = () => ({
+//   type: ACTION_REFRESH_MEMBER_PAGE,
+// });
