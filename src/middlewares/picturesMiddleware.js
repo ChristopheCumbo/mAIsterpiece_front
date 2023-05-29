@@ -1,6 +1,7 @@
 import axios from 'axios';
 // import { createClient } from 'pexels';
 import {
+  ACTION_DELETE_PICTURE,
   ACTION_SEARCH_BY_AUTHOR,
   ACTION_SEARCH_BY_PROMPT,
   ACTION_SEARCH_BY_TAG,
@@ -16,10 +17,12 @@ import {
   actionLoadSearchbyPrompt,
   actionLoadSearchbyTag,
   actionReducerSendReviews,
+  actionRefreshMemberPage,
   actionUpdatePictureDatas,
   actionUpdatePictureOfTheWeek,
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
+import { actionLoadMemberPictures } from '../actions/user';
 
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -135,6 +138,29 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // afficher un message d'erreur
       }
 
+      break;
+    }
+
+    case ACTION_DELETE_PICTURE: {
+      try {
+        const { pictureId, memberId } = action.payload;
+        const { jwt } = store.getState().user;
+        // request
+        const result = await axios.delete(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${pictureId}/delete`,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
+        // console.log(result);
+        // store the datas of the picture
+        store.dispatch(actionLoadMemberPictures(memberId));
+      }
+      catch (e) {
+        // error message
+        console.log(e);
+      }
       break;
     }
 

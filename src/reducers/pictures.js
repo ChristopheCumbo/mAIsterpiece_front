@@ -2,6 +2,7 @@ import {
   ACTION_LOAD_SEARCH_BY_AUTHOR,
   ACTION_LOAD_SEARCH_BY_PROMPT,
   ACTION_LOAD_SEARCH_BY_TAG,
+  ACTION_REFRESH_MEMBER_PAGE,
   CLEAR_FORM_NEW_PICTURE,
   REDUCER_SEND_REVIEWS,
   UPDATE_FORM_ADD_REVIEWS,
@@ -36,6 +37,7 @@ const initialState = {
   listResultPage: [],
   like: false,
   nbLike: '',
+  refreshMemberPage: false,
 };
 
 function reducer(state = initialState, action = {}) {
@@ -129,6 +131,12 @@ function reducer(state = initialState, action = {}) {
         ...state,
         inputPrompt: '',
         inputTags: '',
+      };
+
+    case ACTION_REFRESH_MEMBER_PAGE:
+      return {
+        ...state,
+        refreshMemberPage: !state.refreshMemberPage,
       };
 
     default:

@@ -15,6 +15,7 @@ import ProfileNonEditable from './ProfileNonEditable';
 import Settings from './Settings';
 import PreviousPage from '../PreviousPage';
 import AddPicture from '../AddPicture';
+import { useReducer } from 'react';
 
 function MemberPage() {
   const dispatch = useDispatch();
@@ -42,17 +43,13 @@ function MemberPage() {
     [], // first render
   );
 
-  // test only
-  // const pseudo = 'Martin Martin';
-  // const avatar = '';
-  // const bio = 'Le plus fort des créateurs ! Exercitationem unde officia porro veritatis dignissimos eum, id iste dicta fugit neque voluptatem pariatur architecto minus commodi est magni velit doloremque quos!';
   // const email = 'aaa@gmail.com';
   // console.log('isLogged = ', isLogged);
   // console.log('userId   =', userId, 'mmm');
   // console.log('memberId =', memberId, 'mmm');
   // console.log('(isLogged && (userId == memberId)) : ', (isLogged && (userId == memberId)));
   return (
-    <div className="memberPage__container">
+    <div className="memberPage__container" id="topMemberPage">
       <PreviousPage />
       {(pictures.length !== 0)
         && (

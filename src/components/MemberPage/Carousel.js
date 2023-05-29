@@ -27,10 +27,8 @@ function Carousel() {
   // list of this member's images in the state
   // const pictures = useSelector((state) => state.pictures.listHomePage);
   const pictures = useSelector((state) => state.user.memberListOfPictures.pictures);
-
   const [slideIndex, setSlideIndex] = useState(0);
 
-  // console.log("PICTURES = ");
   // console.log("PICTURES = ", pictures);
 
   const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
