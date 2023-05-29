@@ -11,7 +11,7 @@ import AlertModal from '../../AlertModal';
 
 import { actionToggleLikeAPI } from '../../../actions/pictures';
 
-function ZoomAside({ id, author, avatar, ia, iaLink, likes, reviews, views }) {
+function ZoomAside({ id, author, avatar, ia, iaLink, likes, reviews, views, authorId }) {
   const [isVisible, setIsVisible] = useState(false);
   const toggleMenu = () => {
     setIsVisible(!isVisible);
@@ -47,7 +47,7 @@ function ZoomAside({ id, author, avatar, ia, iaLink, likes, reviews, views }) {
             ? <User className="zoomPicture__zoomTitleAside" />
             : <img src={avatar} alt="avatar du créateur" className="zoomPicture__zoomTitleAside" />
         }
-        <p className="zoomPicture__zoomContentAside">{author}</p>
+        <Link to={`/membre/${authorId}`}><p className="zoomPicture__zoomContentAside">{author}</p></Link>
       </div>
       <div className="zoomPicture__zoomInfo">
         <p className="zoomPicture__zoomTitleAside">IA</p>

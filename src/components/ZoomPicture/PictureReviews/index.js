@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+
 import './style.scss';
+import { actionLoadPictureDatas } from '../../../actions/pictures';
 
 function PictureReviews({ reviews }) {
-  // console.log('reviews = ', reviews);
   return (
     <div className="zoomPicture__reviews">
       <h2>Commentaires</h2>
@@ -16,7 +19,7 @@ function PictureReviews({ reviews }) {
           </div>
         ))
       }
-    </div >
+    </div>
   );
 }
 

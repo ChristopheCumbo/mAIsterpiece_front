@@ -1,9 +1,10 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
-import { actionUpdateSearchBar } from '../../actions/pictures';
+import { actionSearchbyAuthor, actionSearchbyPrompt, actionSearchbyTag, actionUpdateSearchBar } from '../../actions/pictures';
 
 // import image de fond
 // import BackgroundImage from 'https://www.zupimages.net/up/23/18/3bwm.jpg'
@@ -14,21 +15,44 @@ import NavBar from './NavBar';
 
 // import scss
 import './style.scss';
+import SearchBar from './SearchBar';
 
 function AppHeader({ isOpen, setIsOpen }) {
-  const inputSearchBar = useSelector((state) => state.pictures.inputSearchBar);
-
-  const dispatch = useDispatch();
-
-  const handleChangeInputSearchBar = (event) => {
-    dispatch(actionUpdateSearchBar(event.target.value));
-  };
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // const [selectedValue, setSelectedValue] = useState('Prompt');
+  // // Controlled fields for input bar
+  // const inputSearchBar = useSelector((state) => state.pictures.inputSearchBar);
+  // const handleChangeInputSearchBar = (event) => {
+  //   dispatch(actionUpdateSearchBar(event.target.value));
+  // };
+  // // value of select
+  // const handleSelectChange = (event) => {
+  //   setSelectedValue(event.target.value);
+  // };
+  // // handle for submit
+  // const handleSubmitSearch = (event) => {
+  //   event.preventDefault();
+  //   switch (selectedValue) {
+  //     case 'tag':
+  //       dispatch(actionSearchbyTag(inputSearchBar));
+  //       console.log('rechercher par tag');
+  //       break;
+  //     case 'author':
+  //       dispatch(actionSearchbyAuthor(inputSearchBar));
+  //       console.log('rechercher par auteur');
+  //       break;
+  //     default:
+  //       dispatch(actionSearchbyPrompt(inputSearchBar));
+  //       console.log('rechercher par prompt');
+  //   }
+  //   navigate('/resultats');
+  // };
 
   return (
     <div
       className="appHeader"
       style={{
-        // backgroundImage: 'url("https://www.zupimages.net/up/23/18/3bwm.jpg")',
         backgroundImage: 'url("https://www.zupimages.net/up/23/19/oqik.jpg")',
       }}
     >
@@ -41,21 +65,11 @@ function AppHeader({ isOpen, setIsOpen }) {
         </div>
         <NavBar isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
-      <div className="appHeader__searchBar">
+      <div className="appHeader__searchBarContainer">
         <p className="appHeader__textAboveSearchBar">Bienvenue sur mAIsterpiece ! Ici, vous pourrez apprécier
           et téléverser vos images générées par IA
         </p>
-        <form>
-          <input
-            className="appHeader__headerSearch"
-            type="text"
-            name="headerSearch"
-            id="headerSearch"
-            placeholder="Rechercher votre image"
-            value={inputSearchBar}
-            onChange={handleChangeInputSearchBar}
-          />
-        </form>
+        <SearchBar />
 
       </div>
     </div>
@@ -65,7 +79,6 @@ function AppHeader({ isOpen, setIsOpen }) {
 AppHeader.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   setIsOpen: PropTypes.func.isRequired,
-
 };
 
 export default AppHeader;

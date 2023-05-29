@@ -5,7 +5,7 @@ import { User } from 'react-feather';
 
 function ProfileNonEditable({ pseudo, avatar, bio }) {
   return (
-    <div className="memberPage__profilEditable">
+    <div className="memberPage__profilNonEditable">
       <div className="memberPage__avatar">
         <User />
       </div>

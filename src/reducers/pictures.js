@@ -1,9 +1,15 @@
 import {
+  ACTION_LOAD_SEARCH_BY_AUTHOR,
+  ACTION_LOAD_SEARCH_BY_PROMPT,
+  ACTION_LOAD_SEARCH_BY_TAG,
+  ACTION_REFRESH_MEMBER_PAGE,
+  CLEAR_FORM_NEW_PICTURE,
   REDUCER_SEND_REVIEWS,
   UPDATE_FORM_ADD_REVIEWS,
   UPDATE_INPUT_ADD_PROMPT,
   UPDATE_INPUT_ADD_TAGS,
   UPDATE_INPUT_SEARCH_BAR,
+  UPDATE_NB_LIKE,
   UPDATE_PICTURES_HOMEPAGE,
   UPDATE_PICTURE_DATAS,
   UPDATE_PICTURE_OF_THE_WEEK,
@@ -28,6 +34,10 @@ const initialState = {
   // pictureZoom: {
   //   isLoaded: false,
   // },
+  listResultPage: [],
+  like: false,
+  nbLike: '',
+  refreshMemberPage: false,
 };
 
 function reducer(state = initialState, action = {}) {
@@ -70,6 +80,8 @@ function reducer(state = initialState, action = {}) {
       // after the first call to API to get the homepage's pictures
       return {
         ...state,
+        inputFormReviews: '',
+        pictureZoom: { ...state.pictureZoom, nombre_review: state.pictureZoom.nombre_review + 1 },
       };
 
     case UPDATE_INPUT_ADD_PROMPT:
@@ -87,10 +99,44 @@ function reducer(state = initialState, action = {}) {
       };
 
     case UPDATE_PICTURE_DATAS:
-      // 
       return {
         ...state,
         pictureZoom: { ...action.payload.picture },
+        inputFormReviews: '',
+      };
+
+    case ACTION_LOAD_SEARCH_BY_TAG:
+      return {
+        ...state,
+        listResultPage: action.payload.searchData,
+        inputSearchBar: '',
+      };
+
+    case ACTION_LOAD_SEARCH_BY_AUTHOR:
+      return {
+        ...state,
+        listResultPage: action.payload.searchData,
+        inputSearchBar: '',
+      };
+
+    case ACTION_LOAD_SEARCH_BY_PROMPT:
+      return {
+        ...state,
+        listResultPage: action.payload.searchData,
+        inputSearchBar: '',
+      };
+
+    case CLEAR_FORM_NEW_PICTURE:
+      return {
+        ...state,
+        inputPrompt: '',
+        inputTags: '',
+      };
+
+    case ACTION_REFRESH_MEMBER_PAGE:
+      return {
+        ...state,
+        refreshMemberPage: !state.refreshMemberPage,
       };
 
     default:

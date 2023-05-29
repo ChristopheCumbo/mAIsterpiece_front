@@ -56,20 +56,22 @@
   form{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
 
   .addPicture__formContainer {
     width: 80%;
     text-align: left;
 
-    input{
+    input,
+    select {
       // margin: 0.3rem;
       padding: 0.4rem;
       width: 100%;
-      margin-top: 1rem;
+      margin-bottom: 1rem;
       border-radius: 5px;
       border: 2px solid #ff8a00;
+      color: #222;
     }
 
     .addPicture__dropzone {
@@ -77,6 +79,7 @@
       padding: 0.4rem;
       width: 100%;
       margin-top: 3rem;
+      margin-bottom: 2rem;
     }
   }
 }

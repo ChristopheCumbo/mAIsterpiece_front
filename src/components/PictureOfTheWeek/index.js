@@ -1,29 +1,38 @@
 // import PropTypes from 'prop-types';
 // imports from react-redux and react-redux-dom
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { actionToggleLikeAPI } from '../../actions/pictures';
+import { actionLoadPictureOfTheWeek, actionToggleLikeAPI } from '../../actions/pictures';
 // style and icons
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';
 
 
 function PictureOfTheWeek() {
+  // sets the dispatch function
+  const dispatch = useDispatch();
+  useEffect(
+    () => {
+      // loading by default : most recents pictures
+      dispatch(actionLoadPictureOfTheWeek());
+    },
+    [], // first render
+  );
   // datas of the picture of the week
   const picture = useSelector((state) => state.pictures.pictureOfTheWeek);
   // console.log(picture);
-  const dispatch = useDispatch();
   // check in the state if the user is logged
   const isLogged = useSelector((state) => state.user.logged);
   // TODO fonction d'initialisation du like si on est connecté
   const [like, setLike] = useState(false);
   const [nbLikes, setNbLikes] = useState(picture.nombre_like);
-  // if (picture.nombre_like !== nbLikes) {
+  // if (picture.nombre_like === undefined) {
   //   setNbLikes(picture.nombre_like);
   // }
   // console.log('nbLikes ', picture.nombre_like);
   // console.log('nbLikes ', nbLikes);
+  // console.log('nbLikes : ', nbLikes);
 
   const handleToggleLike = (event) => {
     event.preventDefault();
@@ -37,15 +46,21 @@ function PictureOfTheWeek() {
       // console.log('nombre de like - = ', nbLikes);
     }
     // toggle like via API
-    console.log(nbLikes);
+    // console.log('nbLikes : ', nbLikes);
     dispatch(actionToggleLikeAPI(picture.id));
   };
+  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  let urlCompleted = picture.fileName;
+  // console.log(picture.fileName);
+  if ((urlCompleted !== undefined) && urlCompleted.substring(0, 4) !== 'http') {
+    urlCompleted = prefix + urlCompleted;
+  }
   return (
     <div className="pictureOfTheWeek">
       <h2>Image de la semaine</h2>
       <Link className="pictureOfTheWeek__imgContainer" to={`/picture/${picture.id}`}>
         {/* <img className="pictureOfTheWeek__img" src={picture.src.medium} alt="images de la semaine" /> */}
-        <img className="pictureOfTheWeek__img" src={picture.url} alt="images de la semaine" />
+        <img className="pictureOfTheWeek__img" src={urlCompleted} alt="images de la semaine" />
         <div className="pictureOfTheWeek__imgDatas">
           <div className="pictureOfTheWeek__author">
             {picture.user_avatar === '' ? <User /> : <img src={picture.user_avatar} alt="" className="gallery__avatarPicture" />}

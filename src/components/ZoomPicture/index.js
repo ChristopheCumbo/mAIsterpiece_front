@@ -24,8 +24,8 @@ function ZoomPicture() {
   const dispatch = useDispatch();
   const logged = useSelector((state) => state.user.logged);
   const picture = useSelector((state) => state.pictures.pictureZoom);
+  // console.log(picture);
 
-  // console.log('picture dans le state = ', picture);
   // Retrieves the picture's id
   const { id } = useParams();
 
@@ -37,30 +37,15 @@ function ZoomPicture() {
     [], // first render
   );
 
-  // Retrieves the datas of this picture
-  // let picture = useSelector((state) => {
-  //   return state.pictures.listHomePage.find((testedPicture) => {
-  //     // "==" instead of "===" because there is a space after testedPicture.id
-  //     // return testedPicture.id == id;
-  //     return testedPicture[0].id == id;
-  //   });
-  // });
-  // console.log(picture);
-
-  // if picture is the picture of the week
-  // if (!picture) {
-  //   picture = useSelector((state) => {
-  //     // "==" instead of "===" because there is a space after pictureOfTheWeek.id
-  //     if (id == state.pictures.pictureOfTheWeek.id) {
-  //       return state.pictures.pictureOfTheWeek;
-  //     }
-  //   });
-  // }
-
-  // if no picture for that id navigate to 404
-  // if (!picture) {
-  //   return <Navigate to="/error" replace />;
-  // }
+  let urlCompleted = '';
+  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  if (picture !== null) {
+    urlCompleted = picture.fileName;
+    // console.log(picture.fileName);
+    if ((urlCompleted !== null) && urlCompleted.substring(0, 4) !== 'http') {
+      urlCompleted = prefix + urlCompleted;
+    }
+  }
 
   return (
     <div className="zoomPicture">
@@ -71,12 +56,12 @@ function ZoomPicture() {
         <PreviousPage />
       </div>
       <ContainerPicture
-        imgSrc={(picture !== null) ? picture.url : ''}
-        imgPrompt="a good picture of myself"
+        imgSrc={(picture !== null) ? urlCompleted : ''}
+        imgPrompt={(picture !== null) ? picture.prompt : ''}
       />
       <div className="zoomPicture__reviewsAndAside">
         <div className="zoomPicture__reviewsContainer">
-          <PictureReviews reviews={(picture !== null) ? picture.reviews : []} />
+          <PictureReviews reviews={(picture !== null) ? picture.reviews : []} id={id} />
         </div>
         <ZoomAside
           author={(picture !== null) ? picture.user_pseudo : ''}
@@ -91,7 +76,7 @@ function ZoomPicture() {
         />
       </div>
       <MoreReviewsButton />
-      {logged && <AddReviews />}
+      {logged && <AddReviews pictureId={picture.id} />}
     </div>
   );
 }

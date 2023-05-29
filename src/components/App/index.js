@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 // imports from react and react-redux
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // components
 import LoginPage from '../LoginPage';
@@ -23,22 +23,23 @@ import './styles.css';
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
 import DropZone from '../DropZone';
+import GallerySearch from '../GallerySearch';
 
 
 // Main fonction for the application
 function App() {
-  const dispatch = useDispatch();
   // state's variable to set the small menu (bool)
   const [showScrollHeader, setShowScrollHeader] = useState(false);
   // state which allows to manage the poster of the burger menu or not
   const [isOpen, setIsOpen] = useState(false);
 
+
   useEffect(
     () => {
       // Update of the picture of the week
-      dispatch(actionLoadPictureOfTheWeek());
+      // dispatch(actionLoadPictureOfTheWeek());
       // loading by default : most recents pictures
-      dispatch(actionLoadPictures('picturesMostRecents'));
+      // dispatch(actionLoadPictures('picturesMostRecents'));
       const appHeaderHeight = document.querySelector('.appHeader').offsetHeight;
       // console.log(document.querySelector('.appHeader').offsetHeight);
       const handleScroll = () => {
@@ -98,6 +99,7 @@ function App() {
         <Route path="/membre/:memberId" element=<MemberPage /> />
         <Route path="/picture/:id" element=<ZoomPicture /> />
         <Route path="/test" element=<DropZone /> />
+        <Route path="/resultats" element=<GallerySearch /> />
         <Route path="/error" element=<Error404 /> />
         <Route path="*" element=<Error404 /> />
       </Routes>

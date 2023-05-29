@@ -1,17 +1,28 @@
 import axios from 'axios';
 // import { createClient } from 'pexels';
 import {
+  ACTION_DELETE_PICTURE,
+  ACTION_SEARCH_BY_AUTHOR,
+  ACTION_SEARCH_BY_PROMPT,
+  ACTION_SEARCH_BY_TAG,
   ACTION_TOGGLE_LIKE_API,
   LOAD_PICTURES,
   LOAD_PICTURE_DATAS,
   LOAD_PICTURE_OF_THE_WEEK,
   SEND_NEW_PICTURE,
   SEND_REVIEWS,
+  actionClearFormNewPicture,
+  actionLoadPictureDatas,
+  actionLoadSearchbyAuthor,
+  actionLoadSearchbyPrompt,
+  actionLoadSearchbyTag,
   actionReducerSendReviews,
+  actionRefreshMemberPage,
   actionUpdatePictureDatas,
   actionUpdatePictureOfTheWeek,
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
+import { actionLoadMemberPictures } from '../actions/user';
 
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -46,6 +57,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // request
         // const result = await axios.get('https://api.pexels.com/v1/curated?page=1&per_page=30', {
         const result = await axios.get(adressAPI);
+        // console.log(result);
         // const result = await axios.get(adressAPI, {
         // headers: {
         //   Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
@@ -103,16 +115,25 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
     case SEND_REVIEWS: {
       const { inputFormReviews } = store.getState().pictures;
+      const { jwt } = store.getState().user;
 
       try {
-        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/picture/id', {
-          inputFormReviews,
-        });
-        // console.log('SEND_REVIEWS');
+        const { id } = action.payload;
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}/review`,
+          {
+            content: inputFormReviews,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
 
-        store.dispatch(actionReducerSendReviews());
-      }
-      catch (e) {
+        // store.dispatch(actionReducerSendReviews());
+        store.dispatch(actionLoadPictureDatas(id));
+      } catch (e) {
         console.log(e);
         // afficher un message d'erreur
       }
@@ -120,32 +141,74 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       break;
     }
 
+    case ACTION_DELETE_PICTURE: {
+      try {
+        const { pictureId, memberId } = action.payload;
+        const { jwt } = store.getState().user;
+        // request
+        const result = await axios.delete(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${pictureId}/delete`,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
+        // console.log(result);
+        // store the datas of the picture
+        store.dispatch(actionLoadMemberPictures(memberId));
+      }
+      catch (e) {
+        // error message
+        console.log(e);
+      }
+      break;
+    }
+
+
     case SEND_NEW_PICTURE: {
       const { inputPrompt, inputTags } = store.getState().pictures;
+      const { jwt } = store.getState().user;
 
-      const formDataToJson = (formData) => {
-        const jsonObject = {};
-        formData.forEach((value, key) => {
-          jsonObject[key] = value;
-        });
-        return JSON.stringify(jsonObject);
-      };
+      // const formDataToJson = (formData) => {
+      //   const jsonObject = {};
+      //   formData.forEach((value, key) => {
+      //     jsonObject[key] = value;
+      //   });
+      //   return JSON.stringify(jsonObject);
+      // };
 
       try {
+        // console.log('num IA = ', action.payload.idAI);
+        // console.log(typeof action.payload.idAI);
         const formData = new FormData();
-        formData.append('files', action.payload.newPictureFile);
-        const jsonData = formDataToJson(formData);
+        const data = { prompt: inputPrompt, ia: Number(action.payload.idAI), tags: [{ name: inputTags }] };
+        // const data = { prompt: inputPrompt, ia: 5, tags: [{ name: inputTags }] };
+        // console.log('data = ', data);
+        formData.append('data', JSON.stringify(data));
+        formData.append('file', action.payload.newPictureFile);
+        // const jsonData = formDataToJson(formData);
 
-        const result = await axios.post('http://localhost:3001', {
-          jsonData,
-          inputPrompt,
-          inputTags,
-        }, {
-          headers: {
-            'Content-Type': 'application/json',
+        const result = await axios.post(
+          'http://alexandre-longeaud-server.eddi.cloud/api/pictures/add',
+          // {
+          // fileName: formData,
+          // prompt: inputPrompt,
+          // ia: 1,
+          // name: inputTags,
+          // data: {"prompt":"vert","ia":2,"tags":[]},
+          // file: formData,
+
+          // }
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+              'Content-Type': 'multipart/form-data',
+            },
           },
-        });
-        // store.dispatch(actionSaveConnectedUser(result.data.avatar, result.data.token));
+        );
+        console.log('Résultat de l\'importation d\'image : ', result);
+        store.dispatch(actionClearFormNewPicture());
       }
       catch (e) {
         console.log(e);
@@ -169,6 +232,57 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           },
         );
         // console.log(result);
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_SEARCH_BY_TAG: {
+      const { searchValue } = action.payload;
+      try {
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/tag?search=${searchValue}`,
+        );
+        console.log(result);
+        store.dispatch(actionLoadSearchbyTag(result.data));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_SEARCH_BY_AUTHOR: {
+      const { searchValue } = action.payload;
+      try {
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/user?search=${searchValue}`,
+        );
+        console.log(result);
+        store.dispatch(actionLoadSearchbyAuthor(result.data));
+      }
+      catch (e) {
+        console.log(e);
+        // afficher un message d'erreur
+      }
+
+      break;
+    }
+
+    case ACTION_SEARCH_BY_PROMPT: {
+      const { searchValue } = action.payload;
+      try {
+        const result = await axios.post(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/prompt?search=${searchValue}`,
+        );
+        console.log(result);
+        store.dispatch(actionLoadSearchbyPrompt(result.data));
       }
       catch (e) {
         console.log(e);

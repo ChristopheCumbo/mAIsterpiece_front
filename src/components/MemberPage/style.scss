@@ -85,11 +85,18 @@
   & label {
     display: inline-block;
     width: 6rem;
+    width: auto;
   }
 
   & textarea {
     width: 100%;
     min-height: 5rem;
+  }
+
+  & form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 }
 
@@ -191,7 +198,8 @@ img {
 
 .swiper-button-next,
 .swiper-button-prev {
-  color: black !important;
+  color: rgb(255, 255, 255) !important;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 // .memberPage__slider {
@@ -249,14 +257,15 @@ img {
   }
 }
 
-.memberPage__profilEditable {
+.memberPage__profilNonEditable,
+.memberPage__formProfile {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 2rem 1rem;
 
   @media (width > 480px) {
-    width: 50%;
+    width: 100%;
     margin: 2rem auto;
   }
 
@@ -268,7 +277,11 @@ img {
   & .memberPage__bio {
     font-size: 1.2rem;
   }
+}
 
+.memberPage__avatarEditable,
+.memberPage__bioEditable {
+    width:100%;
 }
 
 
@@ -276,4 +289,21 @@ img {
 .memberPage__settings {
   padding: 2rem;
   width: 60%;
+}
+
+.memberPage__form div {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & .settings-input {
+    width: 80%;
+  }
+}
+
+.memberPage__sliderFooter--delete button {
+  border : none;
+  padding: 0;
+  width: auto;
 }
