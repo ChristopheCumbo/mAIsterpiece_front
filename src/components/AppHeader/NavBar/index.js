@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import './style.scss';
 import { Menu, User, X } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionClearJwt } from '../../../actions/user';
+import { actionClearHomePage, actionLoadPictureOfTheWeek, actionLoadPictures } from '../../../actions/pictures';
 
 function NavBar({ isOpen, setIsOpen }) {
+  const navigate = useNavigate();
   // check in the state if the user is logged
   const isLogged = useSelector((state) => state.user.logged);
 
@@ -19,6 +21,11 @@ function NavBar({ isOpen, setIsOpen }) {
   const handleLogout = (event) => {
     event.preventDefault();
     dispatch(actionClearJwt(event.target.value));
+    dispatch(actionClearHomePage());
+    dispatch(actionLoadPictures('picturesMostRecents'));
+    dispatch(actionLoadPictureOfTheWeek());
+    navigate('/');
+    // redirect('/');
   };
 
   return (

@@ -13,6 +13,7 @@ export const UPDATE_PICTURE_DATAS = 'UPDATE_PICTURE_DATAS';
 export const ACTION_TOGGLE_LIKE_API = 'ACTION_TOGGLE_LIKE_API';
 export const UPDATE_NB_LIKE = 'UPDATE_NB_LIKE';
 export const CLEAR_FORM_NEW_PICTURE = 'CLEAR_FORM_NEW_PICTURE';
+export const ACTION_CLEAR_HOMEPAGE = 'ACTION_CLEAR_HOMEPAGE';
 // for member page
 // export const LOAD_MEMBER_PICTURES = 'LOAD_MEMBER_PICTURES';
 // export const UPDATE_MEMBER_PICTURES = 'UPDATE_MEMBER_PICTURES';
@@ -269,3 +270,13 @@ export const actionDeletePicture = (pictureId, memberId) => ({
 // export const actionRefreshMemberPage = () => ({
 //   type: ACTION_REFRESH_MEMBER_PAGE,
 // });
+
+// OTHERS
+
+/**
+ * action creator for reset the homepage
+ * @return {Object} action
+ */
+export const actionClearHomePage = () => ({
+  type: ACTION_CLEAR_HOMEPAGE,
+});

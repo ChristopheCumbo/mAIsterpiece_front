@@ -1,4 +1,5 @@
 import {
+  ACTION_CLEAR_HOMEPAGE,
   ACTION_LOAD_SEARCH_BY_AUTHOR,
   ACTION_LOAD_SEARCH_BY_PROMPT,
   ACTION_LOAD_SEARCH_BY_TAG,
@@ -137,6 +138,18 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         refreshMemberPage: !state.refreshMemberPage,
+      };
+
+    case ACTION_CLEAR_HOMEPAGE:
+      return {
+        ...state,
+        listHomePage: [],
+        isLoading: false,
+        pictureOfTheWeek: {
+          src: {
+            medium: '',
+          },
+        },
       };
 
     default:

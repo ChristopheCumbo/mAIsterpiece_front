@@ -29,12 +29,17 @@ function FormLogin() {
     evt.preventDefault();
     dispatch(actionCheckLogin());
     // check if this is the first connection
-    if (firstConnection) {
+    // if (firstConnection) {
+    //   navigate('/');
+    // }
+    // else {
+    //   navigate(-1);
+    // }
+    // console.log("setTimeout");
+    setTimeout(() => {
       navigate('/');
-    }
-    else {
-      navigate(-1);
-    }
+    }, 2500);
+    // navigate('/');
   };
 
   return (

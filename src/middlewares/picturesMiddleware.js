@@ -27,6 +27,7 @@ import { actionLoadMemberPictures } from '../actions/user';
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     case LOAD_PICTURES: {
+      const { jwt } = store.getState().user;
       // console.log('picturesMiddleware executé', action);
       try {
         const sortId = action.payload;
@@ -48,26 +49,16 @@ const picturesMiddleware = (store) => (next) => async (action) => {
           default:
             adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures';
         }
-        // if (sortId === 'picturesMostRecents') {
-        // adressAPI = 'https://api.pexels.com/v1/curated?page=9&per_page=30';
-        // adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures';
-        // }
-        // const result = await axios.get(adressAPI);
-
         // request
-        // const result = await axios.get('https://api.pexels.com/v1/curated?page=1&per_page=30', {
-        const result = await axios.get(adressAPI);
+        const result = await axios.get(
+          adressAPI,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
         // console.log(result);
-        // const result = await axios.get(adressAPI, {
-        // headers: {
-        //   Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
-        // },
-        // });
-        // console.log(result);
-        // ici on a recu les resultats on devrait en profiter pour passer isLoading à false
-
-        // on veut mettre dans le state le tableau result.data : on va demander au reducer en dispatchant une action
-        // store.dispatch(actionUpdatePicturesHomePage(result.data.photos, sortId));
         store.dispatch(actionUpdatePicturesHomePage(result.data, sortId));
       }
       catch (e) {
