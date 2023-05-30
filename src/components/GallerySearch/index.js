@@ -47,7 +47,7 @@ function GallerySearch() {
             <Link className="gallery__imgContainer" key={picture[0].id} to={`/picture/${picture[0].id}`}>
               <Card
                 id={picture[0].id}
-                url={picture[0].fileName}
+                url={picture.fileName}
                 userId={picture.user_id}
                 userPseudo={picture.user_pseudo}
                 userAvatar={picture.user_avatar}
