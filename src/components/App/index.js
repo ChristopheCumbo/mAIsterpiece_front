@@ -47,6 +47,7 @@ function App() {
         const isScrollComplete = window.scrollY >= appHeaderHeight - 49;
         setShowScrollHeader(isScrollComplete);
       };
+      window.scrollTo(0, 0);
       window.addEventListener('scroll', handleScroll);
       return () => {
         window.removeEventListener('scroll', handleScroll);

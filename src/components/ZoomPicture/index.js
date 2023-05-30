@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 // import from react-router-dom and react-redux
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
@@ -24,7 +24,9 @@ function ZoomPicture() {
   const dispatch = useDispatch();
   const logged = useSelector((state) => state.user.logged);
   const picture = useSelector((state) => state.pictures.pictureZoom);
-  // console.log(picture);
+  const [nombreLikeAside, setNombreLikeAside] = useState(0);
+  const [nombreReviewAside, setNombreReviewAside] = useState(0);
+  console.log('picture Zoom = ', picture);
 
   // Retrieves the picture's id
   const { id } = useParams();
@@ -32,9 +34,19 @@ function ZoomPicture() {
   useEffect(
     () => {
       // Uploading the datas of the picture identified by 'id' in the state
+      // window.scrollTo(0, 0);
       dispatch(actionLoadPictureDatas(id));
     },
     [], // first render
+  );
+  useEffect(
+    () => {
+      if (picture !== null) {
+        setNombreLikeAside(picture.nombre_like);
+        setNombreReviewAside(picture.nombre_review);
+      }
+    },
+    [picture],
   );
 
   let urlCompleted = '';
@@ -63,17 +75,22 @@ function ZoomPicture() {
         <div className="zoomPicture__reviewsContainer">
           <PictureReviews reviews={(picture !== null) ? picture.reviews : []} id={id} />
         </div>
-        <ZoomAside
+        {/* <ZoomAside
           author={(picture !== null) ? picture.user_pseudo : ''}
           authorId={(picture !== null) ? picture.user_id : ''}
           avatar={(picture !== null) ? picture.user_avatar : null}
           ia={(picture !== null) ? picture.ia_name : null}
           iaLink={(picture !== null) ? picture.ia_link : null}
           views={(picture !== null) ? picture.nbClick : null}
-          likes={(picture !== null) ? picture.nombre_like : 0}
-          reviews={(picture !== null) ? picture.nombre_review : 0}
+          likes={(picture !== null) ? nombreLikeAside : 0}
+          reviews={(picture !== null) ? nombreReviewAside : 0}
           id={picture ? picture.id : null}
-        />
+          isLiked={picture ? picture.isLiked : false}
+        /> */}
+        {
+          (picture !== null)
+          && <ZoomAside picture={picture} />
+        }
       </div>
       <MoreReviewsButton />
       {logged && <AddReviews pictureId={picture.id} />}
