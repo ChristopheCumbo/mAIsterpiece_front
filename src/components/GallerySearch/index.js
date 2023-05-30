@@ -24,7 +24,7 @@ function GallerySearch() {
   // );
   // list of images
   const pictures = useSelector((state) => state.pictures.listResultPage);
-  // console.log(pictures);
+  console.log(pictures);
   // id for sorting images
   // const sortIdFromState = useSelector((state) => state.pictures.sortHomePageId);
   // extracts the choosen sort

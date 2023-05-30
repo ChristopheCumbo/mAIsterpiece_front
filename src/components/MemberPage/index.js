@@ -38,6 +38,7 @@ function MemberPage() {
   useEffect(
     () => {
       // Update of the picture of the week
+      window.scrollTo(0, 0);
       dispatch(actionLoadMemberPictures(memberId));
     },
     [], // first render
