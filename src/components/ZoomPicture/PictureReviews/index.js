@@ -7,11 +7,14 @@ import './style.scss';
 import { actionLoadPictureDatas } from '../../../actions/pictures';
 
 function PictureReviews({ reviews }) {
+  // console.log('Commentaires :', reviews);
+  // console.log(reviews.length);
   return (
     <div className="zoomPicture__reviews">
       <h2>Commentaires</h2>
       {
-        reviews.map((review, indexMap) => (
+        (reviews.length !== 0 && (reviews.length === 1 && reviews[0].review_content !== null))
+        && reviews.map((review, indexMap) => (
           <div className="zoomPicture__containerReviews" key={indexMap}>
             {/* <div className="zoomPicture__containerReviews" key={review.review_content}> */}
             <p className="zoomPicture__login">{review.reviewer_pseudo}</p>

@@ -22,13 +22,14 @@ function Gallery() {
   useEffect(
     () => {
       // loading by default : most recents pictures
+      console.log('first render');
       dispatch(actionLoadPictures('picturesMostRecents'));
     },
     [], // first render
   );
   // list of images
   const pictures = useSelector((state) => state.pictures.listHomePage);
-  // console.log(pictures);
+  console.log(pictures);
   // id for sorting images
   const sortIdFromState = useSelector((state) => state.pictures.sortHomePageId);
   // extracts the choosen sort
@@ -84,6 +85,7 @@ function Gallery() {
               <Card
                 id={pic.picture[0].id}
                 url={pic.picture[0].fileName}
+                isLiked={pic.picture.isLiked}
                 userId={pic.picture.user_id}
                 userPseudo={pic.picture.user_pseudo}
                 userAvatar={pic.picture.user_avatar}
