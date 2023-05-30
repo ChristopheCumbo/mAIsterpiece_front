@@ -35,10 +35,10 @@ function FormLogin() {
     // else {
     //   navigate(-1);
     // }
-    console.log("setTimeout");
+    // console.log("setTimeout");
     setTimeout(() => {
       navigate('/');
-    }, 5000);
+    }, 2500);
     // navigate('/');
   };
 

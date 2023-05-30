@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, redirect, useNavigate } from 'react-router-dom';
 import './style.scss';
 import { Menu, User, X } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,6 +25,7 @@ function NavBar({ isOpen, setIsOpen }) {
     dispatch(actionLoadPictures('picturesMostRecents'));
     dispatch(actionLoadPictureOfTheWeek());
     navigate('/');
+    // redirect('/');
   };
 
   return (
