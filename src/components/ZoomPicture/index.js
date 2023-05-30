@@ -32,6 +32,7 @@ function ZoomPicture() {
   useEffect(
     () => {
       // Uploading the datas of the picture identified by 'id' in the state
+      window.scrollTo(0, 0);
       dispatch(actionLoadPictureDatas(id));
     },
     [], // first render

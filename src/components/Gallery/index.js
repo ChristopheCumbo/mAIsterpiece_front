@@ -22,6 +22,7 @@ function Gallery() {
   useEffect(
     () => {
       // loading by default : most recents pictures
+      window.scrollTo(0, 0);
       console.log('first render');
       dispatch(actionLoadPictures('picturesMostRecents'));
     },
