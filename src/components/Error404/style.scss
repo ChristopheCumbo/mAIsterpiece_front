@@ -10,4 +10,8 @@
 
 .error404__img {
   height: 70%;
+  width: auto;
+  @media (width < 480px) {
+    width: 100%;
+  }
 }
