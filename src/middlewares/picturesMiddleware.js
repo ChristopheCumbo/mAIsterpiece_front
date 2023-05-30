@@ -91,9 +91,17 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     case LOAD_PICTURE_DATAS: {
       try {
         const { id } = action.payload;
+        const { jwt } = store.getState().user;
         // request
-        const result = await axios.get(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}`);
-        // console.log(result);
+        const result = await axios.get(
+          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
+        console.log('Middleware pic zoom = ', result);
         // store the datas of the picture
         store.dispatch(actionUpdatePictureDatas(result.data));
       }

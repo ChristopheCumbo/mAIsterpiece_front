@@ -12,6 +12,7 @@ import { Heart, MessageSquare, User } from 'react-feather';
 function PictureOfTheWeek() {
   // sets the dispatch function
   const dispatch = useDispatch();
+  const [like, setLike] = useState(false);
   const [nbLikes, setNbLikes] = useState(0);
   // datas of the picture of the week
   const picture = useSelector((state) => state.pictures.pictureOfTheWeek);
@@ -24,14 +25,14 @@ function PictureOfTheWeek() {
   useEffect(
     () => {
       setNbLikes(picture.nombre_like);
+      setLike(picture.isLiked);
     },
     [picture],
   );
   // console.log(picture);
   // check in the state if the user is logged
   const isLogged = useSelector((state) => state.user.logged);
-  // TODO fonction d'initialisation du like si on est connecté
-  const [like, setLike] = useState(false);
+
   // const [nbLikes, setNbLikes] = useState(picture.nombre_like);
   // if (picture.nombre_like === undefined) {
   //   setNbLikes(picture.nombre_like);

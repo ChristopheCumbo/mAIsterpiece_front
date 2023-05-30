@@ -10,8 +10,8 @@ import { Link } from 'react-router-dom';
 // function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreReview }) {
 function Card({ id, url, isLiked, userId, userPseudo, userAvatar, nombreLike, nombreReview }) {
   const dispatch = useDispatch();
-  // TODO fonction d'initialisation du like si on est connecté
-  console.log(isLiked);
+  // console.log(isLiked);
+  // initialisation du like si on est connecté
   const [like, setLike] = useState(isLiked);
   const [nbLikes, setNbLikes] = useState(parseInt(nombreLike, 10));
   // check in the state if the user is logged
@@ -22,14 +22,11 @@ function Card({ id, url, isLiked, userId, userPseudo, userAvatar, nombreLike, no
     setLike(!like);
     if (!like) {
       setNbLikes(nbLikes + 1);
-      //     // console.log('nombre de like + = ', nbLikes);
     }
     else {
       setNbLikes(nbLikes - 1);
-      //     // console.log('nombre de like - = ', nbLikes);
     }
-    //   // toggle like via API
-    //   // console.log(id);
+    // toggle like via API
     dispatch(actionToggleLikeAPI(id));
   };
 
