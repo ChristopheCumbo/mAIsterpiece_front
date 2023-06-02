@@ -23,6 +23,7 @@ import {
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
 import { actionLoadMemberPictures } from '../actions/user';
+import { actionAddOneMessage } from '../actions/messages';
 
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -64,6 +65,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
       break;
     }

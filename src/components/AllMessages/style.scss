@@ -1,0 +1,62 @@
+@use "sass:color";
+
+$success-color:  #97FCB9; // alternatives : #0DFFC3; #97FCB9 #19FFC6;
+$success-dark-color: color.scale($success-color, $lightness: -70%);
+$success-border-color: color.scale($success-color, $lightness: -30%);
+$error-color: #FF4F0D;
+$error-dark-color: color.scale($error-color, $lightness: -70%);
+$error-border-color: color.scale($error-color, $lightness: -30%);
+
+
+.allMessages__container {
+  position: fixed;
+  z-index: 101;
+  right: 0;
+  top: 100px;
+  width:50%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  // for development period
+  // background-color: rgba($color:  #ffddc0, $alpha: 0.7);
+
+  @media (width > 480px) {
+    top: 200px;
+    width:300px;
+  }
+}
+
+
+.singleMessage__container {
+  margin: .2rem;
+  border-radius: 5px;
+  width: 95%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-delay: 0s;
+  animation-timing-function: ease-in;
+}
+
+.singleMessage__success{
+  background-color: $success-color;
+  color: $success-dark-color;
+  border: 1px solid $success-border-color;
+}
+
+.singleMessage__error{
+  background-color:$error-color;
+  color: $error-dark-color;
+  border: 1px solid $error-border-color;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

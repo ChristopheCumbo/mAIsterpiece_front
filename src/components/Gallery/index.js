@@ -23,14 +23,14 @@ function Gallery() {
     () => {
       // loading by default : most recents pictures
       window.scrollTo(0, 0);
-      console.log('first render');
+      // console.log('first render');
       dispatch(actionLoadPictures('picturesMostRecents'));
     },
     [], // first render
   );
   // list of images
   const pictures = useSelector((state) => state.pictures.listHomePage);
-  console.log(pictures);
+  // console.log(pictures);
   // id for sorting images
   const sortIdFromState = useSelector((state) => state.pictures.sortHomePageId);
   // extracts the choosen sort
