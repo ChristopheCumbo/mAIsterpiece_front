@@ -4,7 +4,6 @@ export const UPDATE_PICTURES_HOMEPAGE = 'UPDATE_PICTURES_HOMEPAGE';
 export const LOAD_PICTURE_OF_THE_WEEK = 'LOAD_PICTURE_OF_THE_WEEK';
 export const UPDATE_PICTURE_OF_THE_WEEK = 'UPDATE_PICTURE_OF_THE_WEEK';
 export const UPDATE_SORTING_HOMEPAGE_PICTURES = 'UPDATE_SORTING_HOMEPAGE_PICTURES';
-export const LOAD_PICTURES_FILTERED = 'LOAD_PICTURES_FILTERED';
 export const SEND_REVIEWS = 'SEND_REVIEWS';
 export const REDUCER_SEND_REVIEWS = 'REDUCER_SEND_REVIEWS';
 export const SEND_NEW_PICTURE = 'SEND_NEW_PICTURE';
@@ -42,14 +41,6 @@ export const actionLoadPictures = (sortId) => ({
   type: LOAD_PICTURES,
   payload: sortId,
 });
-
-/**
- * ********************************
-*/
-// export const actionLoadPicturesFiltered = (id) => ({
-//   type: LOAD_PICTURES_FILTERED,
-//   payload: id,
-// });
 
 /**
  * Updating the homepage's pictures
