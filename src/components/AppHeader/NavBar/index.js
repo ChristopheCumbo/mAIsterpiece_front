@@ -39,7 +39,7 @@ function NavBar({ isOpen, setIsOpen }) {
         )
         : (
           <>
-            <User className="logo_user" />
+            <Link to="http://alexandre-longeaud-server.eddi.cloud"><User className="logo_user" /></Link>
             <Link onClick={handleLogout} className="navBar__link" to="">Deconnexion</Link>
           </>
         )}
