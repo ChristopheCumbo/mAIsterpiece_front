@@ -4,11 +4,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 // actions
-import { LOAD_PICTURES_FILTERED, actionLoadPictures, actionLoadPicturesFiltered, actionUpdateSortingHomepagePictures } from '../../actions/pictures';
+import {
+  LOAD_PICTURES_FILTERED,
+  actionLoadPictures,
+  actionLoadPicturesFiltered,
+  actionUpdateSortingHomepagePictures,
+} from '../../actions/pictures';
 // Compoenents
 import Card from './Card';
 // import list of sorts
-import data from '../../data';
+import data from '../../utils/data';
 // style and figures
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';

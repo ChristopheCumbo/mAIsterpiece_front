@@ -15,10 +15,11 @@ import ContainerPicture from './ContainerPicture';
 import MoreReviewsButton from './MoreReviewsButton';
 import PictureReviews from './PictureReviews';
 import ZoomAside from './ZoomAside';
-import './style.scss';
 import PreviousPage from '../PreviousPage';
 import AlertModal from '../AlertModal';
 
+import './style.scss';
+import { URL_SERVER_BACK } from '../../utils/url';
 
 function ZoomPicture() {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function ZoomPicture() {
   );
 
   let urlCompleted = '';
-  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  const prefix = `${URL_SERVER_BACK}/uploads/images/`;
   if (picture !== null) {
     urlCompleted = picture.fileName;
     // console.log(picture.fileName);
