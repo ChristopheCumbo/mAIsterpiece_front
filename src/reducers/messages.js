@@ -1,20 +1,22 @@
 import { ADD_ONE_MESSAGE, CLEAR_ONE_MESSAGE } from "../actions/messages";
 
 const initialState = {
-  // listMessages: [],
-  listMessages: [
-    {
-      id: 1,
-      type: 'success',
-      content: 'Chargement réussi',
-    },
-    {
-      id: 2,
-      type: 'error',
-      content: 'Chargement en échec, veuillez réessayer',
-    },
-  ],
-  nextMessageId: 3,
+  listMessages: [],
+  nextMessageId: 1,
+  // listMessages: [
+  //   {
+  //     id: 1,
+  //     type: 'success',
+  //     content: 'Chargement réussi',
+  //   },
+  //   {
+  //     id: 2,
+  //     type: 'error',
+  //     content: 'Chargement en échec, veuillez réessayer',
+  //   },
+  // ],
+  // nextMessageId: 3,
+
 };
 
 function reducer(state = initialState, action = {}) {
