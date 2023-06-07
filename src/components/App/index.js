@@ -16,6 +16,7 @@ import AppHeaderMin from '../AppHeader/AppHeaderMin';
 import Error404 from '../Error404';
 import ZoomPicture from '../ZoomPicture';
 import MemberPage from '../MemberPage';
+import AllMessages from '../AllMessages';
 
 // style
 import './styles.css';
@@ -104,6 +105,7 @@ function App() {
         <Route path="/error" element=<Error404 /> />
         <Route path="*" element=<Error404 /> />
       </Routes>
+      <AllMessages />
       <AppFooter />
     </div>
   );
