@@ -22,6 +22,7 @@ import SliderFooter from './SliderFooter';
 import './style.scss';
 import { CloudLightning, Heart, MessageSquare } from 'react-feather';
 
+import { URL_SERVER_BACK } from '../../utils/url';
 
 function Carousel() {
   // list of this member's images in the state
@@ -31,7 +32,7 @@ function Carousel() {
 
   // console.log("PICTURES = ", pictures);
 
-  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  const prefix = `${URL_SERVER_BACK}/uploads/images/`;
 
   const checkUrl = (filename) => {
     let urlCompleted = filename;

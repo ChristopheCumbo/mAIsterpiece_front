@@ -15,6 +15,7 @@ import {
 } from '../actions/user';
 import { actionClearHomePage } from '../actions/pictures';
 import { actionAddOneMessage } from '../actions/messages';
+import { URL_SERVER_BACK } from '../utils/url';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -23,7 +24,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       const { inputEmailFormAuth, inputPasswordFormAuth } = store.getState().user;
 
       try {
-        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/login_check', {
+        const result = await axios.post(`${URL_SERVER_BACK}/api/login_check`, {
           username: inputEmailFormAuth,
           password: inputPasswordFormAuth,
         });
@@ -34,7 +35,7 @@ const userMiddleware = (store) => (next) => async (action) => {
         const { token } = result.data;
         // console.log('essai :', token);
         const result2 = await axios.get(
-          'http://alexandre-longeaud-server.eddi.cloud/api/users/info',
+          `${URL_SERVER_BACK}/api/users/info`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -49,7 +50,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -63,7 +64,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       } = store.getState().user;
 
       try {
-        const result = await axios.post('http://alexandre-longeaud-server.eddi.cloud/api/users/sign-up', {
+        const result = await axios.post(`${URL_SERVER_BACK}/api/users/sign-up`, {
           pseudo: inputLoginFormRegister,
           email: inputEmailFormRegister,
           password: inputPasswordFormRegister,
@@ -75,7 +76,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -99,7 +100,7 @@ const userMiddleware = (store) => (next) => async (action) => {
         // formData.append('files', action.payload.newAvatarFile);
         // const jsonData = formDataToJson(formData);
 
-        const result = await axios.put(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account/bio`, {
+        const result = await axios.put(`${URL_SERVER_BACK}/api/users/${id}/account/bio`, {
           bio: inputTextareaBio,
           avatar: inputAvatar,
         }, {
@@ -121,7 +122,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -133,7 +134,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       const { jwt } = store.getState().user;
 
       try {
-        const result = await axios.put(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account/profil`, {
+        const result = await axios.put(`${URL_SERVER_BACK}/api/users/${id}/account/profil`, {
           email: inputEmailFormSettings,
           password: inputPasswordFormSettings,
           pseudo: inputPseudoFormSettings,
@@ -149,7 +150,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -160,7 +161,7 @@ const userMiddleware = (store) => (next) => async (action) => {
         const id = action.payload;
         // console.log('MiddleWare user id = ', id);
         // request
-        const result = await axios.get(`http://alexandre-longeaud-server.eddi.cloud/api/users/${id}/account`);
+        const result = await axios.get(`${URL_SERVER_BACK}/api/users/${id}/account`);
         // console.log('Middleware User, Load Member pictures : ', result);
         // store the datas of the picture
         store.dispatch(actionUpdateMemberPictures(result.data));
@@ -168,7 +169,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
       break;
     }

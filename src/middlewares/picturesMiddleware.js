@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { createClient } from 'pexels';
+
 import {
   ACTION_DELETE_PICTURE,
   ACTION_SEARCH_BY_AUTHOR,
@@ -16,14 +16,13 @@ import {
   actionLoadSearchbyAuthor,
   actionLoadSearchbyPrompt,
   actionLoadSearchbyTag,
-  actionReducerSendReviews,
-  actionRefreshMemberPage,
   actionUpdatePictureDatas,
   actionUpdatePictureOfTheWeek,
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
 import { actionLoadMemberPictures } from '../actions/user';
 import { actionAddOneMessage } from '../actions/messages';
+import { URL_SERVER_BACK } from '../utils/url';
 
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -33,22 +32,22 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       try {
         const sortId = action.payload;
         // console.log(sortId);
-        let adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures';
+        let adressAPI = `${URL_SERVER_BACK}/api/pictures`;
         switch (sortId) {
           case 'picturesMostRecents':
-            adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures';
+            adressAPI = `${URL_SERVER_BACK}/api/pictures`;
             break;
           case 'picturesMostReviewed':
-            adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures/filtre/reviewed';
+            adressAPI = `${URL_SERVER_BACK}/api/pictures/filtre/reviewed`;
             break;
           case 'picturesMostClicked':
-            adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures/filtre/clicked';
+            adressAPI = `${URL_SERVER_BACK}/api/pictures/filtre/clicked`;
             break;
           case 'picturesMostLiked':
-            adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures/filtre/liked';
+            adressAPI = `${URL_SERVER_BACK}/api/pictures/filtre/liked`;
             break;
           default:
-            adressAPI = 'http://alexandre-longeaud-server.eddi.cloud/api/pictures';
+            adressAPI = `${URL_SERVER_BACK}/api/pictures`;
         }
         // request
         const result = await axios.get(
@@ -65,7 +64,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
       break;
     }
@@ -73,12 +72,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     case LOAD_PICTURE_OF_THE_WEEK: {
       try {
         // request
-        // const result = await axios.get('https://api.pexels.com/v1/photos/12488389', {
-        const result = await axios.get('http://alexandre-longeaud-server.eddi.cloud/api/pictures/week');
-        // headers: {
-        //   Authorization: 'LHapVYEQzemuoKMIFpFcmZQtxzQm5RO0TLnvRpBshhMNJR1OJYpHVPGK',
-        // },
-        // });
+        const result = await axios.get(`${URL_SERVER_BACK}/api/pictures/week`);
         // console.log('Image de la semaine : ', result);
         // store the datas of the picture of the week
         store.dispatch(actionUpdatePictureOfTheWeek(result.data));
@@ -86,7 +80,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
       break;
     }
@@ -97,7 +91,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         const { jwt } = store.getState().user;
         // request
         const result = await axios.get(
-          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}`,
+          `${URL_SERVER_BACK}/api/pictures/${id}`,
           {
             headers: {
               Authorization: `Bearer ${jwt}`,
@@ -111,7 +105,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
       break;
     }
@@ -123,7 +117,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       try {
         const { id } = action.payload;
         const result = await axios.post(
-          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}/review`,
+          `${URL_SERVER_BACK}/api/pictures/${id}/review`,
           {
             content: inputFormReviews,
           },
@@ -139,7 +133,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       } catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -150,7 +144,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         const { pictureId, memberId } = action.payload;
         const { jwt } = store.getState().user;
         // request
-        const result = await axios.delete(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${pictureId}/delete`,
+        const result = await axios.delete(
+          `${URL_SERVER_BACK}/api/pictures/${pictureId}/delete`,
           {
             headers: {
               Authorization: `Bearer ${jwt}`,
@@ -165,7 +160,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
       break;
     }
@@ -195,7 +190,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // const jsonData = formDataToJson(formData);
 
         const result = await axios.post(
-          'http://alexandre-longeaud-server.eddi.cloud/api/pictures/add',
+          `${URL_SERVER_BACK}/api/pictures/add`,
           // {
           // fileName: formData,
           // prompt: inputPrompt,
@@ -220,7 +215,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -231,7 +226,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       // console.log('Middleware JWT : ', jwt);
       const { id } = action.payload;
       try {
-        const result = await axios.post(`http://alexandre-longeaud-server.eddi.cloud/api/pictures/${id}/like`,
+        const result = await axios.post(
+          `${URL_SERVER_BACK}/api/pictures/${id}/like`,
           {},
           {
             headers: {
@@ -244,7 +240,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -254,7 +250,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       const { searchValue } = action.payload;
       try {
         const result = await axios.post(
-          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/tag?search=${searchValue}`,
+          `${URL_SERVER_BACK}/api/pictures/search/tag?search=${searchValue}`,
         );
         console.log(result);
         store.dispatch(actionLoadSearchbyTag(result.data));
@@ -262,7 +258,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -272,7 +268,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       const { searchValue } = action.payload;
       try {
         const result = await axios.post(
-          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/user?search=${searchValue}`,
+          `${URL_SERVER_BACK}/api/pictures/search/user?search=${searchValue}`,
         );
         console.log(result);
         store.dispatch(actionLoadSearchbyAuthor(result.data));
@@ -280,7 +276,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;
@@ -290,7 +286,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       const { searchValue } = action.payload;
       try {
         const result = await axios.post(
-          `http://alexandre-longeaud-server.eddi.cloud/api/pictures/search/prompt?search=${searchValue}`,
+          `${URL_SERVER_BACK}/api/pictures/search/prompt?search=${searchValue}`,
         );
         console.log(result);
         store.dispatch(actionLoadSearchbyPrompt(result.data));
@@ -298,7 +294,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
-        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
       }
 
       break;

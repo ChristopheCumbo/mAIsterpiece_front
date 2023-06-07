@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actionLoadPictureOfTheWeek, actionToggleLikeAPI } from '../../actions/pictures';
+import { URL_SERVER_BACK } from '../../utils/url';
 // style and icons
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';
@@ -56,7 +57,7 @@ function PictureOfTheWeek() {
     // console.log('nbLikes : ', nbLikes);
     dispatch(actionToggleLikeAPI(picture.id));
   };
-  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  const prefix = `${URL_SERVER_BACK}/uploads/images/`;
   let urlCompleted = picture.fileName;
   // console.log(picture.fileName);
   if ((urlCompleted !== undefined) && urlCompleted.substring(0, 4) !== 'http') {

@@ -6,6 +6,7 @@ import { Menu, User, X } from 'react-feather';
 import { useSelector, useDispatch } from 'react-redux';
 import { actionClearJwt } from '../../../actions/user';
 import { actionClearHomePage, actionLoadPictureOfTheWeek, actionLoadPictures } from '../../../actions/pictures';
+import { URL_SERVER_BACK } from '../../../utils/url';
 
 function NavBar({ isOpen, setIsOpen }) {
   const navigate = useNavigate();
@@ -39,7 +40,7 @@ function NavBar({ isOpen, setIsOpen }) {
         )
         : (
           <>
-            <Link to="http://alexandre-longeaud-server.eddi.cloud"><User className="logo_user" /></Link>
+            <Link to={URL_SERVER_BACK}><User className="logo_user" /></Link>
             <Link onClick={handleLogout} className="navBar__link" to="">Deconnexion</Link>
           </>
         )}
