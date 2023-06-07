@@ -14,6 +14,7 @@ import {
   actionUpdateMemberPictures,
 } from '../actions/user';
 import { actionClearHomePage } from '../actions/pictures';
+import { actionAddOneMessage } from '../actions/messages';
 
 const userMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -43,10 +44,12 @@ const userMiddleware = (store) => (next) => async (action) => {
         console.log(result2);
         store.dispatch(actionSaveInfosConnectedUser(result2.data));
         store.dispatch(actionClearHomePage());
+        store.dispatch(actionAddOneMessage('success', 'Connexion réussie. Bienvenue !'));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -67,10 +70,12 @@ const userMiddleware = (store) => (next) => async (action) => {
         });
         // console.log(result);
         store.dispatch(actionClearRegisterFields());
+        store.dispatch(actionAddOneMessage('success', 'Inscription réussie, vous pouvez vous connecter.'));
       }
       catch (e) {
-        console.log(e);
         // error message
+        console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -111,10 +116,12 @@ const userMiddleware = (store) => (next) => async (action) => {
         // });
         console.log(result);
         // store.dispatch(actionSaveBioAndAvatar());
+        store.dispatch(actionAddOneMessage('success', 'Profil mis à jour.'));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -137,10 +144,12 @@ const userMiddleware = (store) => (next) => async (action) => {
         });
         console.log('Résultat new settings :', result);
         store.dispatch(actionSaveSettings());
+        store.dispatch(actionAddOneMessage('success', 'Paramètres de connexion mis à jour.'));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -159,6 +168,7 @@ const userMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
       break;
     }

@@ -23,6 +23,7 @@ import {
   actionUpdatePicturesHomePage,
 } from '../actions/pictures';
 import { actionLoadMemberPictures } from '../actions/user';
+import { actionAddOneMessage } from '../actions/messages';
 
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
@@ -64,6 +65,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
       break;
     }
@@ -84,6 +86,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
       break;
     }
@@ -108,6 +111,7 @@ const picturesMiddleware = (store) => (next) => async (action) => {
       catch (e) {
         // error message
         console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
       break;
     }
@@ -133,8 +137,9 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // store.dispatch(actionReducerSendReviews());
         store.dispatch(actionLoadPictureDatas(id));
       } catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -155,10 +160,12 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // console.log(result);
         // store the datas of the picture
         store.dispatch(actionLoadMemberPictures(memberId));
+        store.dispatch(actionAddOneMessage('success', 'Image supprimée.'));
       }
       catch (e) {
         // error message
         console.log(e);
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
       break;
     }
@@ -208,10 +215,12 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         );
         console.log('Résultat de l\'importation d\'image : ', result);
         store.dispatch(actionClearFormNewPicture());
+        store.dispatch(actionAddOneMessage('success', 'Nouvelle image enregistrée.'));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -233,8 +242,9 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         // console.log(result);
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -250,8 +260,9 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         store.dispatch(actionLoadSearchbyTag(result.data));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -267,8 +278,9 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         store.dispatch(actionLoadSearchbyAuthor(result.data));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
@@ -284,8 +296,9 @@ const picturesMiddleware = (store) => (next) => async (action) => {
         store.dispatch(actionLoadSearchbyPrompt(result.data));
       }
       catch (e) {
+        // error message
         console.log(e);
-        // afficher un message d'erreur
+        store.dispatch(actionAddOneMessage('error', 'Erreur de type ' + e.message + '. Veuillez réessayer un peu plus tard.'));
       }
 
       break;
