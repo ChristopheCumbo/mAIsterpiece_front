@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { actionToggleLikeAPI, actionUpdateNbLike } from '../../actions/pictures';
 
+import { URL_SERVER_BACK } from '../../utils/url';
+
 import './style.scss';
 import { Heart, MessageSquare, User } from 'react-feather';
 import { Link } from 'react-router-dom';
@@ -30,7 +32,7 @@ function Card({ id, url, isLiked, userId, userPseudo, userAvatar, nombreLike, no
     dispatch(actionToggleLikeAPI(id));
   };
 
-  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  const prefix = `${URL_SERVER_BACK}/uploads/images/`;
   let urlCompleted = url;
   // console.log(urlCompleted.substring(0, 3));
   if (urlCompleted.substring(0, 4) !== 'http') {

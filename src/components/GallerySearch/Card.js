@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import './style.scss';
 
+import { URL_SERVER_BACK } from '../../utils/url';
+
 import { Heart, MessageSquare, User } from 'react-feather';
 import { actionToggleLikeAPI } from '../../actions/pictures';
 
@@ -32,7 +34,7 @@ function Card({ id, url, userId, userPseudo, userAvatar, nombreLike, nombreRevie
     dispatch(actionToggleLikeAPI(id));
   };
 
-  const prefix = 'http://alexandre-longeaud-server.eddi.cloud/uploads/images/';
+  const prefix = `${URL_SERVER_BACK}/uploads/images/`;
   let urlCompleted = url;
   // console.log(urlCompleted.substring(0, 3));
   if (urlCompleted.substring(0, 4) !== 'http') {

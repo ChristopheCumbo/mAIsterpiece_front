@@ -7,8 +7,6 @@ import { useEffect } from 'react';
 import { actionLoadPictures } from '../../actions/pictures';
 // Compoenents
 import Card from './Card';
-// import list of sorts
-// import data from '../../data';
 // style and figures
 import './style.scss';
 
