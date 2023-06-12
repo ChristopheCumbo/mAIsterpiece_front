@@ -74,17 +74,10 @@ export const actionLoadUserInfos = () => ({
 });
 
 /**
- * action pour demander au reducer de mettre isLogged à true et de sauvegarder l'avatar
- * @param {String} avatar and token jwt
- * @return {Action} l'action à dispatcher
+ * Put isLogged to true
+ * @param {String} token jwt
+ * @return {Object}
  */
-// export const actionSaveConnectedUser = (avatar, jwt) => ({
-//   type: SAVE_CONNECTED_USER,
-//   payload: {
-//     avatar,
-//     jwt,
-//   },
-// });
 export const actionSaveConnectedUser = (jwt) => ({
   type: SAVE_CONNECTED_USER,
   payload: {
