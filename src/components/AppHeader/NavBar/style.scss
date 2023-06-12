@@ -1,4 +1,4 @@
-.navBar__container{
+.navBar__container {
   padding-right: 0.5rem;
   text-align: right;
   font-size: 1.5rem;
@@ -8,79 +8,93 @@
   // -webkit-text-stroke-color: #ffffff;
   // background-color: rgba(0, 0, 0, .2);
 
-  .logo_user{
+  .logo_user {
+    display: none;
+
+    @media (width > 480px) {
+      display: inline-block;
+      width: 24px;
+      max-height: 24px;
+    }
+  }
+
+  a {
+    position: relative;
+    // -webkit-text-stroke: .2px;
+    // -webkit-text-stroke-color: #ffffff;
+  }
+
+  a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: rgb(255, 255, 255);
+    transform: scale(0);
+    transform-origin: center;
+    transition: transform 0.2s;
+  }
+
+
+  a:hover::after,
+  a:focus::after {
+    transform: scale(1);
+  }
+
+  // Menu burger
+
+  .navBar__li--close {
+    display: none;
+  }
+
+  .menu-none {
+    display: none;
+  }
+
+  .navBar__link {
+    margin-left: 0.5rem;
+
     @media (width < 480px) {
       display: none;
     }
   }
- 
- 
- 
- 
- a {
-  position: relative;
-  // -webkit-text-stroke: .2px;
-  // -webkit-text-stroke-color: #ffffff;
- }
- 
- 
- a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 0.1em;
-  background-color: rgb(255, 255, 255);
-  transform: scale(0);
-  transform-origin: center;
-  transition: transform 0.2s;
- }
- 
- 
- a:hover::after,
- a:focus::after{
-  transform: scale(1);
- }
 
- // Menu burger
+  span {
+    @media (width < 480px) {
+      display: none;
+    }
+  }
 
- .li-close{
-  display: none;
- }
+  .navBar__container__mobile {
+    @media (width > 480px) {
+      display: none;
+    }
+    position: relative;
 
- .menu-none{
-  display: none;
- }
+    button {
+      background-color: #F5EDED;
+      margin-bottom: 0.2rem;
+    }
 
- .navBar__link {
-  margin-left: 0.5rem;
-  @media (width < 480px) {
+  }
+
+  .navBar__container__desktop {
+
+    position: relative;
     display: none;
-  }
- }
 
- span {
-  @media (width < 480px) {
-    display: none;
+    @media (width > 480px) {
+      display:block;
+    }
   }
- }
 
- .navBar__container__mobile{
-   @media (width > 480px) {
-     display: none;
-   }
-   
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  z-index: 1;
-  button{
-    background-color: white;
-    margin-bottom: 0.2rem;
-  }
-  
-  ul{
+  ul {
+    position: absolute;
+    right: 0px;
+    top: 40px;
+    z-index: 1;
     background-color: orange;
     border-radius: 5px;
     padding: 0.1rem;
@@ -88,14 +102,12 @@
     text-align: left;
   }
 
-  li{
+  li {
     padding: 0.2rem;
   }
 
 }
- }
 
- .navBar__button {
+.navBar__button {
   fill: #F5EDED;
- }
- 
+}

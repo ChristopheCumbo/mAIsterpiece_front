@@ -4,6 +4,7 @@ export const UPDATE_EMAIL_FORM_AUTH = 'UPDATE_EMAIL_FORM_AUTH';
 export const UPDATE_PASSWORD_AUTH = 'UPDATE_LOGIN_PASSWORD_AUTH';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const SAVE_CONNECTED_USER = 'SAVE_CONNECTED_USER';
+export const LOAD_USER_INFOS = 'LOAD_USER_INFOS';
 // Action type Register Page
 export const UPDATE_LOGIN_FORM_REGISTER = 'UPDATE_LOGIN_FORM_REGISTER';
 export const UPDATE_EMAIL_FORM_REGISTER = 'UPDATE_EMAIL_FORM_REGISTER';
@@ -65,17 +66,18 @@ export const actionCheckLogin = () => ({
 });
 
 /**
- * action pour demander au reducer de mettre isLogged à true et de sauvegarder l'avatar
- * @param {String} avatar and token jwt
- * @return {Action} l'action à dispatcher
+ * Load infos of the connected user
+ * @return {Object}
  */
-// export const actionSaveConnectedUser = (avatar, jwt) => ({
-//   type: SAVE_CONNECTED_USER,
-//   payload: {
-//     avatar,
-//     jwt,
-//   },
-// });
+export const actionLoadUserInfos = () => ({
+  type: LOAD_USER_INFOS,
+});
+
+/**
+ * Put isLogged to true
+ * @param {String} token jwt
+ * @return {Object}
+ */
 export const actionSaveConnectedUser = (jwt) => ({
   type: SAVE_CONNECTED_USER,
   payload: {

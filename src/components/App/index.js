@@ -17,14 +17,15 @@ import Error404 from '../Error404';
 import ZoomPicture from '../ZoomPicture';
 import MemberPage from '../MemberPage';
 import AllMessages from '../AllMessages';
+import DropZone from '../DropZone';
+import GallerySearch from '../GallerySearch';
+import LegalNotice from '../LegalNotice';
 
 // style
 import './styles.css';
 
 // actions
 import { actionLoadPictureOfTheWeek, actionLoadPictures } from '../../actions/pictures';
-import DropZone from '../DropZone';
-import GallerySearch from '../GallerySearch';
 
 
 // Main fonction for the application
@@ -33,7 +34,10 @@ function App() {
   const [showScrollHeader, setShowScrollHeader] = useState(false);
   // state which allows to manage the poster of the burger menu or not
   const [isOpen, setIsOpen] = useState(false);
-
+  // check if 'jwtMaisterpiece' exists in localStorage. If not, put an empty string for this key.
+  if (sessionStorage.getItem('jwtMaisterpiece') === null) {
+    sessionStorage.setItem('jwtMaisterpiece', '');
+  }
 
   useEffect(
     () => {
@@ -97,7 +101,7 @@ function App() {
         <Route path="/login" element=<LoginPage /> />
         <Route path="/register" element=<RegisterPage /> />
         <Route path="/contact" element=<PageContact /> />
-        <Route path="/mentionslegales" element=<p>la page de mention légales</p> />
+        <Route path="/mentionslegales" element=<LegalNotice /> />
         <Route path="/membre/:memberId" element=<MemberPage /> />
         <Route path="/picture/:id" element=<ZoomPicture /> />
         <Route path="/test" element=<DropZone /> />

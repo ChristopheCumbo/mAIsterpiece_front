@@ -52,8 +52,9 @@ const initialState = {
     bio: '',
   },
   userId: '',
-  pseudo: 'Martin Martin',
+  pseudo: '',
   avatar: '',
+  admin: false,
   logged: false,
   jwt: '',
   // state for member page
@@ -81,7 +82,7 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         logged: true,
-        jwt: action.payload.jwt,
+        // jwt: action.payload.jwt,
         // pseudo: state.user.inputLoginFormAuth,
         // avatar: action.payload.avatar,
         inputEmailFormAuth: '',
@@ -136,7 +137,7 @@ function reducer(state = initialState, action = {}) {
     case CLEAR_JWT:
       return {
         ...state,
-        jwt: '',
+        // jwt: '',
         logged: false,
         firstConnection: false,
       };
@@ -168,6 +169,8 @@ function reducer(state = initialState, action = {}) {
         inputPseudoFormSettings: action.payload.pseudo,
         inputEmailFormSettings: action.payload.email,
         userId: action.payload.id,
+        admin: (action.payload.roles[0] === 'ROLE_ADMIN'),
+        logged: true,
       };
 
     // Form for updating the settings

@@ -1,0 +1,12 @@
+.legalNotice__container {
+  min-height: 80vh;
+  text-align: center;
+  background-color: #F5EDED;
+  padding: 2rem;
+  font-size: 1.2rem;
+
+  @media (width > 480px) {
+    width: 75%;
+    margin: 5rem auto;
+  }
+}
