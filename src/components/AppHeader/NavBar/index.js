@@ -1,17 +1,21 @@
 import PropTypes from 'prop-types';
-
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, redirect, useNavigate } from 'react-router-dom';
+
 import './style.scss';
 import { Menu, User, X } from 'react-feather';
-import { useSelector, useDispatch } from 'react-redux';
-import { actionClearJwt } from '../../../actions/user';
+import { actionClearJwt, actionLoadUserInfos } from '../../../actions/user';
 import { actionClearHomePage, actionLoadPictureOfTheWeek, actionLoadPictures } from '../../../actions/pictures';
 import { URL_SERVER_BACK } from '../../../utils/url';
 
 function NavBar({ isOpen, setIsOpen }) {
   const navigate = useNavigate();
   // check in the state if the user is logged
-  const isLogged = useSelector((state) => state.user.logged);
+  // const isLogged = useSelector((state) => state.user.logged);
+  const avatarSrc = useSelector((state) => state.user.avatar);
+  // console.log(avatarSrc);
+  const isLogged = (sessionStorage.getItem('jwtMaisterpiece') !== '');
 
   const dispatch = useDispatch();
 
@@ -21,13 +25,23 @@ function NavBar({ isOpen, setIsOpen }) {
 
   const handleLogout = (event) => {
     event.preventDefault();
+    sessionStorage.setItem('jwtMaisterpiece', '');
     dispatch(actionClearJwt(event.target.value));
     dispatch(actionClearHomePage());
     dispatch(actionLoadPictures('picturesMostRecents'));
     dispatch(actionLoadPictureOfTheWeek());
     navigate('/');
-    // redirect('/');
   };
+
+  useEffect(
+    () => {
+      // console.log('first render');
+      if (sessionStorage.getItem('jwtMaisterpiece') !== '') {
+        dispatch(actionLoadUserInfos());
+      }
+    },
+    [], // first render
+  );
 
   return (
     <div className="navBar__container">
@@ -41,7 +55,7 @@ function NavBar({ isOpen, setIsOpen }) {
         : (
           <>
             <Link to={URL_SERVER_BACK}><User className="logo_user" /></Link>
-            <Link onClick={handleLogout} className="navBar__link" to="">Deconnexion</Link>
+            <Link onClick={handleLogout} className="navBar__link" to="">Déconnexion</Link>
           </>
         )}
       <div className="navBar__container__mobile">
@@ -56,7 +70,7 @@ function NavBar({ isOpen, setIsOpen }) {
             </>
           )}
           {isLogged && (
-            <li><Link onClick={handleLogout} to="">Deconnexion</Link></li>
+            <li><Link onClick={handleLogout} to="">Déconnexion</Link></li>
           )}
           <li> <Link to="/contact">Contact</Link></li>
           <li> <Link to="/mentionslegales">Mention Legales</Link></li>

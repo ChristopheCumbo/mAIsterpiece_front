@@ -27,7 +27,8 @@ import { URL_SERVER_BACK } from '../utils/url';
 const picturesMiddleware = (store) => (next) => async (action) => {
   switch (action.type) {
     case LOAD_PICTURES: {
-      const { jwt } = store.getState().user;
+      // const { jwt } = store.getState().user;
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
       // console.log('picturesMiddleware executé', action);
       try {
         const sortId = action.payload;
@@ -71,8 +72,16 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
     case LOAD_PICTURE_OF_THE_WEEK: {
       try {
+        const jwt = sessionStorage.getItem('jwtMaisterpiece');
         // request
-        const result = await axios.get(`${URL_SERVER_BACK}/api/pictures/week`);
+        const result = await axios.get(
+          `${URL_SERVER_BACK}/api/pictures/week`,
+          {
+            headers: {
+              Authorization: `Bearer ${jwt}`,
+            },
+          },
+        );
         // console.log('Image de la semaine : ', result);
         // store the datas of the picture of the week
         store.dispatch(actionUpdatePictureOfTheWeek(result.data));
@@ -88,7 +97,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     case LOAD_PICTURE_DATAS: {
       try {
         const { id } = action.payload;
-        const { jwt } = store.getState().user;
+        // const { jwt } = store.getState().user;
+        const jwt = sessionStorage.getItem('jwtMaisterpiece');
         // request
         const result = await axios.get(
           `${URL_SERVER_BACK}/api/pictures/${id}`,
@@ -112,7 +122,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
     case SEND_REVIEWS: {
       const { inputFormReviews } = store.getState().pictures;
-      const { jwt } = store.getState().user;
+      // const { jwt } = store.getState().user;
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
 
       try {
         const { id } = action.payload;
@@ -142,7 +153,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     case ACTION_DELETE_PICTURE: {
       try {
         const { pictureId, memberId } = action.payload;
-        const { jwt } = store.getState().user;
+        // const { jwt } = store.getState().user;
+        const jwt = sessionStorage.getItem('jwtMaisterpiece');
         // request
         const result = await axios.delete(
           `${URL_SERVER_BACK}/api/pictures/${pictureId}/delete`,
@@ -168,7 +180,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
 
     case SEND_NEW_PICTURE: {
       const { inputPrompt, inputTags } = store.getState().pictures;
-      const { jwt } = store.getState().user;
+      // const { jwt } = store.getState().user;
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
 
       // const formDataToJson = (formData) => {
       //   const jsonObject = {};
@@ -222,7 +235,8 @@ const picturesMiddleware = (store) => (next) => async (action) => {
     }
 
     case ACTION_TOGGLE_LIKE_API: {
-      const { jwt } = store.getState().user;
+      // const { jwt } = store.getState().user;
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
       // console.log('Middleware JWT : ', jwt);
       const { id } = action.payload;
       try {

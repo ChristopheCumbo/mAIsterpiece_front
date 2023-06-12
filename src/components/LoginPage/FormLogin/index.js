@@ -38,7 +38,8 @@ function FormLogin() {
     // console.log("setTimeout");
     setTimeout(() => {
       navigate('/');
-    }, 2500);
+    // }, 2500);
+    }, 1000);
     // navigate('/');
   };
 

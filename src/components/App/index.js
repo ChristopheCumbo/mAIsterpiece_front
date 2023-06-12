@@ -33,7 +33,10 @@ function App() {
   const [showScrollHeader, setShowScrollHeader] = useState(false);
   // state which allows to manage the poster of the burger menu or not
   const [isOpen, setIsOpen] = useState(false);
-
+  // check if 'jwtMaisterpiece' exists in localStorage. If not, put an empty string for this key.
+  if (sessionStorage.getItem('jwtMaisterpiece') === null) {
+    sessionStorage.setItem('jwtMaisterpiece', '');
+  }
 
   useEffect(
     () => {
