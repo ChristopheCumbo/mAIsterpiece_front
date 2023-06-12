@@ -52,8 +52,9 @@ const initialState = {
     bio: '',
   },
   userId: '',
-  pseudo: 'Martin Martin',
+  pseudo: '',
   avatar: '',
+  admin: false,
   logged: false,
   jwt: '',
   // state for member page
@@ -168,6 +169,7 @@ function reducer(state = initialState, action = {}) {
         inputPseudoFormSettings: action.payload.pseudo,
         inputEmailFormSettings: action.payload.email,
         userId: action.payload.id,
+        admin: (action.payload.roles[0] === 'ROLE_ADMIN'),
         logged: true,
       };
 
