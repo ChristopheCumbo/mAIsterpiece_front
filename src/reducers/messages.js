@@ -22,7 +22,7 @@ const initialState = {
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case CLEAR_ONE_MESSAGE:
-      console.log('action.payload : ', typeof action.payload);
+      // console.log('action.payload : ', typeof action.payload);
       return {
         ...state,
         listMessages: state.listMessages.filter((message) => (message.id !== action.payload)),

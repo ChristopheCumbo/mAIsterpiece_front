@@ -4,6 +4,7 @@ import axios from 'axios';
 import {
   CHECK_LOGIN,
   LOAD_MEMBER_PICTURES,
+  LOAD_USER_INFOS,
   REGISTER_NEW_USER,
   SEND_PROFILE,
   SUBMIT_NEW_SETTINGS,
@@ -33,19 +34,44 @@ const userMiddleware = (store) => (next) => async (action) => {
         store.dispatch(actionSaveConnectedUser(result.data.token));
         // We need to retrieve personnal informations of that connected user
         const { token } = result.data;
+        sessionStorage.setItem('jwtMaisterpiece', token);
         // console.log('essai :', token);
-        const result2 = await axios.get(
+        // const result2 = await axios.get(
+        //   `${URL_SERVER_BACK}/api/users/info`,
+        //   {
+        //     headers: {
+        //       Authorization: `Bearer ${token}`,
+        //     },
+        //   },
+        // );
+        // console.log(result2);
+        // store.dispatch(actionSaveInfosConnectedUser(result2.data));
+        store.dispatch(actionClearHomePage());
+        store.dispatch(actionAddOneMessage('success', 'Connexion réussie. Bienvenue !'));
+      }
+      catch (e) {
+        // error message
+        console.log(e);
+        store.dispatch(actionAddOneMessage('error', `Erreur de type ${e.message}. Veuillez réessayer un peu plus tard.`));
+      }
+
+      break;
+    }
+
+    // Loading user's informations identified by JWT in localstorage
+    case LOAD_USER_INFOS: {
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
+      try {
+        const result = await axios.get(
           `${URL_SERVER_BACK}/api/users/info`,
           {
             headers: {
-              Authorization: `Bearer ${token}`,
+              Authorization: `Bearer ${jwt}`,
             },
           },
         );
-        console.log(result2);
-        store.dispatch(actionSaveInfosConnectedUser(result2.data));
-        store.dispatch(actionClearHomePage());
-        store.dispatch(actionAddOneMessage('success', 'Connexion réussie. Bienvenue !'));
+        // console.log(result);
+        store.dispatch(actionSaveInfosConnectedUser(result.data));
       }
       catch (e) {
         // error message
@@ -85,7 +111,8 @@ const userMiddleware = (store) => (next) => async (action) => {
     case SEND_PROFILE: {
       const { inputTextareaBio, inputAvatar } = store.getState().user;
       const { id } = store.getState().user.connectedUser;
-      const { jwt } = store.getState().user;
+      // const { jwt } = store.getState().user;
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
 
       // const formDataToJson = (formData) => {
       //   const jsonObject = {};
@@ -131,7 +158,8 @@ const userMiddleware = (store) => (next) => async (action) => {
     case SUBMIT_NEW_SETTINGS: {
       const { inputPseudoFormSettings, inputEmailFormSettings, inputPasswordFormSettings } = store.getState().user;
       const { id } = store.getState().user.connectedUser;
-      const { jwt } = store.getState().user;
+      // const { jwt } = store.getState().user;
+      const jwt = sessionStorage.getItem('jwtMaisterpiece');
 
       try {
         const result = await axios.put(`${URL_SERVER_BACK}/api/users/${id}/account/profil`, {

@@ -4,6 +4,7 @@ export const UPDATE_EMAIL_FORM_AUTH = 'UPDATE_EMAIL_FORM_AUTH';
 export const UPDATE_PASSWORD_AUTH = 'UPDATE_LOGIN_PASSWORD_AUTH';
 export const CHECK_LOGIN = 'CHECK_LOGIN';
 export const SAVE_CONNECTED_USER = 'SAVE_CONNECTED_USER';
+export const LOAD_USER_INFOS = 'LOAD_USER_INFOS';
 // Action type Register Page
 export const UPDATE_LOGIN_FORM_REGISTER = 'UPDATE_LOGIN_FORM_REGISTER';
 export const UPDATE_EMAIL_FORM_REGISTER = 'UPDATE_EMAIL_FORM_REGISTER';
@@ -62,6 +63,14 @@ export const actionUpdatePasswordFormAuth = (newValue) => ({
  */
 export const actionCheckLogin = () => ({
   type: CHECK_LOGIN,
+});
+
+/**
+ * Load infos of the connected user
+ * @return {Object}
+ */
+export const actionLoadUserInfos = () => ({
+  type: LOAD_USER_INFOS,
 });
 
 /**
